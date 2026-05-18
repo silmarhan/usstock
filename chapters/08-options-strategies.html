@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="期权策略实战：备兑买权、现金担保卖权、牛市价差、铁鹰、跨式——从卖方思维出发，用真实数字讲透六大核心策略。">
+  <meta name="base-url" content="../">
+  <title>第 08 章：期权策略实战 · 读懂美股</title>  <meta property="og:title" content="第 08 章：期权策略实战 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch08-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+
+<div class="reading-progress"></div>
+
+<!-- ── Nav ── -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="08-options-strategies.html" class="active">第 08 章</a></li>
+        <li><a href="../glossary.html">术语表</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Chapter Layout ── -->
+<div class="chapter-layout">
+
+  <!-- Sidebar -->
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html" class="active"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="chapter-content">
+
+    <!-- Hero -->
+    <div class="chapter-hero">
+      <img src="../assets/images/ch08-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 08 · Options Strategies</span>
+          <h1 class="hero-title">期权策略实战</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+
+      <!-- Lead -->
+      <p class="lead">大多数人觉得期权等于赌博。但华尔街最赚钱的期权玩家，往往是卖期权的那一方——他们的思维更像保险公司，而不是赌徒。理解这一点，才是真正进入期权策略世界的钥匙。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">策略不是投机——保险公司的思维</h2>
+
+      <p>上一章我们讲了期权的基本原理：Call 给你买入权，Put 给你卖出权，买方付权利金，卖方收权利金。现在，我们要换一个视角来理解整个期权市场。</p>
+
+      <p>问你一个问题：每年保险公司到底赚不赚钱？</p>
+
+      <p>答案是：长期稳定地赚。原因很简单——他们收取大量小额保费，偶尔赔付一次大额理赔，但统计上总保费收入远超赔付支出。他们不需要猜测哪一天会发生车祸，他们只需要对赔付概率定价合理就行。</p>
+
+      <p><strong>期权卖方的逻辑与此完全相同。</strong>当你卖出一份期权，你就是那家保险公司：买方付给你权利金，你承担义务。如果期权到期作废（买方白付了保费），权利金就是你的纯利润。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">期权市场统计</div>
+        <div class="data-card-value">约 70–80% 的期权到期时一文不值</div>
+        <div class="data-card-sub">芝加哥期权交易所（CBOE）历史数据显示，大多数持有至到期的期权合约最终作废。这意味着卖方在大多数交易中都能保留权利金。</div>
+      </div>
+
+      <p>当然，卖期权不是没有风险——一旦行情剧烈反转，亏损可能很大（裸卖Call理论上亏损无限）。所以专业卖方策略的核心是：<strong>用其他腿来限制风险</strong>。这就是本章要讲的"组合策略"。</p>
+
+      <div class="pull-quote">
+        <p>买期权是买彩票，卖期权是开彩票店。</p>
+        <cite>— 华尔街期权交易员常言</cite>
+      </div>
+
+      <p>以下六种策略，是散户和专业投资者使用频率最高的。它们从保守到激进，从方向性押注到中性收益，覆盖了不同市场环境下的需求。</p>
+
+      <!-- ── Section 2 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch08-inline-4.png" alt="卖期权 = 充当保险公司" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>卖期权 = 充当保险公司</figcaption>
+      </figure>
+
+      <h2 id="s2">备兑买权（Covered Call）：让股票「打工」</h2>
+
+      <p><span data-term="备兑买权">备兑买权</span>（Covered Call）是最适合长期持股者的期权策略，也是入门卖方策略的最佳起点。逻辑简单：你已经持有股票，在此基础上卖出一个<strong>虚值 Call</strong>（Out-of-the-Money Call），收取权利金作为额外收入。</p>
+
+      <h3>构建方式</h3>
+
+      <ul class="key-points">
+        <li><strong>腿一：</strong>持有 100 股（或其倍数）标的股票</li>
+        <li><strong>腿二：</strong>卖出 1 份同等数量的 OTM Call 期权</li>
+        <li><strong>净效果：</strong>立即收到权利金，对应卖出了一份"股价上涨潜力"</li>
+      </ul>
+
+      <h3>具体案例：AAPL 备兑买权</h3>
+
+      <p>假设你持有 100 股苹果（AAPL），当前股价 <span class="data-num">$190</span>。你判断未来 30 天 AAPL 不会大幅上涨，于是：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">你的操作</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">卖出 1 份 AAPL $200 Call，30 天后到期，收到权利金 $2.50/股</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">立即到账</div>
+          <div class="stat-value"><span class="data-up">+$250</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">执行价 (Strike)</div>
+          <div class="stat-value"><span class="data-num">$200</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">相当于年化收益率</div>
+          <div class="stat-value"><span class="data-up">~15.8%</span></div>
+        </div>
+      </div>
+
+      <h3>三种到期情景</h3>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>情景</th><th>AAPL 到期价格</th><th>你的结果</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>股价未涨过执行价</td>
+            <td>$190 或以下（含跌破）</td>
+            <td>Call 到期作废，$250 权利金 100% 归你，股票继续持有。<strong>但若股票下跌，股票亏损由权利金部分对冲。</strong></td>
+          </tr>
+          <tr>
+            <td>股价涨到执行价附近</td>
+            <td>$195 ~ $200</td>
+            <td>Call 仍作废（未超过 $200），你保留 $250 权利金，同时股票获得 $500–$1,000 浮盈。</td>
+          </tr>
+          <tr>
+            <td>股价涨过执行价</td>
+            <td>$205 或以上</td>
+            <td>Call 被行权，你必须以 $200 卖出 100 股。总收益 = $(200–190)×100 + $250 = <span class="data-up">$1,250</span>。上涨超过 $200 的部分利润被买方赚走。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>最大利润锁定在：</strong>执行价与买入成本之差 + 权利金。本例中：$(200−190)×100 + $250 = $1,250。无论 AAPL 涨到 $250 还是 $300，你的最大利润都是 $1,250——你放弃了上方无限的涨幅，换取了权利金。</div>
+      </div>
+
+      <h3>适合谁？</h3>
+
+      <p>备兑买权最适合以下情况：你是 AAPL 的长期持有者，认为未来一个月不会大幅上涨；你想在震荡或缓涨市场中持续产生现金流；你不介意股票在强烈上涨时被"强制卖出"（因为你无论如何都是盈利的）。</p>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>注意：</strong>备兑买权的对冲效果有限。如果股票大幅下跌（比如 AAPL 从 $190 跌到 $150），你收到的 $250 权利金远不足以弥补 $4,000 的股票亏损。该策略的主要风险是你持有股票本身，而不是卖出 Call 这个动作。</div>
+      </div>
+
+      <!-- ── Section 3 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch08-inline-1.png" alt="备兑买权损益图" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>备兑买权损益图</figcaption>
+      </figure>
+
+      <h2 id="s3">现金担保卖权（Cash-Secured Put）：等低买</h2>
+
+      <p><span data-term="卖权">现金担保卖权</span>（Cash-Secured Put，简称 CSP）是备兑买权的"镜像"策略。你手里没有股票，但想低价买入某只你看好的股票。与其直接挂限价单等待，不如卖出一个 OTM Put——如果股票跌到你想买的价格，你被迫买入（这正是你想要的）；如果没跌到，你白赚了一笔权利金。</p>
+
+      <div class="pull-quote">
+        <p>我用 Cash-Secured Put 来「领薪水等机会」——要么以理想价格买到股票，要么收到权利金再等。两种结果我都能接受。</p>
+        <cite>— 常见于专业价值投资者的表述</cite>
+      </div>
+
+      <h3>具体案例：用 CSP 低价买入 AAPL</h3>
+
+      <p>AAPL 当前价格 <span class="data-num">$190</span>。你认为 $185 是理想买入价。你的操作：</p>
+
+      <ul class="key-points">
+        <li>卖出 1 份 AAPL $185 Put，30 天到期，收到权利金 <span class="data-up">$2.00/股（共 $200）</span></li>
+        <li>账户里需锁定 $18,500 现金作为担保（如果被行权，你要以 $185 买入 100 股）</li>
+      </ul>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>情景</th><th>到期价格</th><th>结果</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>股价未跌到 $185</td>
+            <td>$185 以上</td>
+            <td>Put 作废，$200 权利金归你。等一个月，没买到股票，但也不是空手而归。</td>
+          </tr>
+          <tr>
+            <td>股价跌到 $185 以下</td>
+            <td>$185 以下</td>
+            <td>Put 被行权，你以 $185 买入 100 股 AAPL。实际成本 = $185 − $2.00 = <span class="data-up">$183 有效买入成本</span>，比你直接挂单还便宜。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>这就是"<strong>领薪水等机会</strong>"的含义：你设定了一个愿意买入的价格，同时无论如何都能收到权利金。唯一的真实风险是：股票跌得远比你预期的多（比如暴跌到 $150），此时你以 $183 的有效成本持有，仍面临巨大浮亏。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>CSP 适合对价值有判断的投资者：</strong>只在你真的愿意以该价格持有该股票的情况下使用 CSP。如果股票是你不想长期持有的，被迫接货就变成了麻烦。不要用 CSP 去"赌"一只你不了解的股票。</div>
+      </div>
+
+      <!-- ── Section 4 ── -->
+      <h2 id="s4">价差策略（Spread）：限定风险的方向性押注</h2>
+
+      <p><span data-term="价差">价差策略</span>（Spread）解决了买期权的一个核心问题：权利金太贵，时间价值每天都在流失。解决方案是同时买入和卖出不同执行价的期权，用卖出的权利金部分抵消买入成本——代价是封住了上方（或下方）的无限利润空间。</p>
+
+      <h3>牛市看涨价差（Bull Call Spread）</h3>
+
+      <p><strong>适用场景：</strong>你看涨某股票，但想降低购买 Call 的成本，同时接受利润上限。</p>
+
+      <p><strong>构建方式：</strong></p>
+      <ul class="key-points">
+        <li><strong>买入：</strong>较低执行价的 Call（花钱，获得上涨权利）</li>
+        <li><strong>卖出：</strong>较高执行价的 Call（收钱，放弃更高位置的上涨权利）</li>
+        <li><strong>净成本：</strong>买入成本 − 卖出权利金 = 净权利金支出（Net Debit）</li>
+      </ul>
+
+      <h3>案例：AAPL 牛市看涨价差</h3>
+
+      <p>AAPL 当前 <span class="data-num">$190</span>，你认为 30 天内会涨到 $200：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">买入 $190 Call</div>
+          <div class="stat-value"><span class="data-down">−$5.00/股</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">卖出 $200 Call</div>
+          <div class="stat-value"><span class="data-up">+$2.00/股</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">净成本（最大亏损）</div>
+          <div class="stat-value"><span class="data-down">$3.00/股 = $300</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">最大利润</div>
+          <div class="stat-value"><span class="data-up">$7.00/股 = $700</span></div>
+        </div>
+      </div>
+
+      <p>最大利润 = 两个执行价之差（$10）− 净成本（$3.00）= <span class="data-up">$7.00/股</span>，发生在 AAPL 到期时 ≥ $200 的情况下。</p>
+      <p>最大亏损 = 净成本 $3.00/股 = <span class="data-down">$300</span>，发生在 AAPL 到期时 ≤ $190 的情况下（两腿全部作废）。</p>
+      <p>盈亏平衡点 = 低执行价 + 净成本 = $190 + $3.00 = <span class="data-num">$193.00</span>。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">风险回报对比</div>
+        <div class="data-card-value">最大收益 / 最大风险 = 7 / 3 ≈ 2.33×</div>
+        <div class="data-card-sub">相比直接买 $190 Call 花 $500（最大亏损 $500），价差策略降低了 40% 的资本投入，但封住了 $200 以上的上涨空间。</div>
+      </div>
+
+      <h3>熊市看跌价差（Bear Put Spread）</h3>
+
+      <p>做多看涨价差的镜像——你看跌某股票，买入较高执行价的 Put，卖出较低执行价的 Put。逻辑相同：降低成本，限制利润上限。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>价差策略的核心价值：</strong>把"方向押注"从无限风险变成有限风险。即使判断完全错误，你知道最多亏多少。这让仓位管理变得简单而清晰。</div>
+      </div>
+
+      <!-- ── Section 5 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch08-inline-2.png" alt="牛市价差 vs 熊市价差" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>牛市价差 vs 熊市价差</figcaption>
+      </figure>
+
+      <h2 id="s5">铁鹰（Iron Condor）：震荡市的收割机</h2>
+
+      <p><span data-term="铁鹰">铁鹰</span>（Iron Condor）是最经典的中性期权策略——你不押涨，不押跌，只押股票<strong>在一段时间内横盘</strong>。它由四条腿组成，同时卖出一个 Call 价差和一个 Put 价差，在两端建立"安全缓冲区"。</p>
+
+      <h3>构建方式</h3>
+
+      <ul class="key-points">
+        <li><strong>卖出 OTM Call 价差：</strong>卖出较低执行价 Call + 买入更高执行价 Call（限制上行风险）</li>
+        <li><strong>卖出 OTM Put 价差：</strong>卖出较高执行价 Put + 买入更低执行价 Put（限制下行风险）</li>
+        <li><strong>净效果：</strong>收取两个价差的总权利金，在中间区间内盈利</li>
+      </ul>
+
+      <h3>案例：AAPL 铁鹰</h3>
+
+      <p>AAPL 当前 <span class="data-num">$190</span>，你判断 30 天内不会大幅波动（维持在 $175–$205 区间）。</p>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>操作</th><th>执行价</th><th>权利金</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>卖出 OTM Call</td><td>$200</td><td><span class="data-up">+$1.50</span></td></tr>
+          <tr><td>买入 OTM Call（保护）</td><td>$205</td><td><span class="data-down">−$0.70</span></td></tr>
+          <tr><td>卖出 OTM Put</td><td>$180</td><td><span class="data-up">+$1.50</span></td></tr>
+          <tr><td>买入 OTM Put（保护）</td><td>$175</td><td><span class="data-down">−$0.80</span></td></tr>
+          <tr><td colspan="2"><strong>净收取权利金</strong></td><td><span class="data-up"><strong>$2.50/股 = $250</strong></span></td></tr>
+        </tbody>
+      </table>
+
+      <p>只要 AAPL 到期时收盘在 <span class="data-num">$180 ~ $200</span> 之间，四条腿全部作废，你保留 $250 权利金，利润率 = 最大利润 / 最大风险。</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">最大利润</div>
+          <div class="stat-value"><span class="data-up">$250</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">最大亏损</div>
+          <div class="stat-value"><span class="data-down">$250</span>（价差宽度 $5 − 净权利金 $2.50 = $2.50/股）</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">上方盈亏平衡</div>
+          <div class="stat-value"><span class="data-num">$202.50</span>（卖出 Call 执行价 + 净权利金）</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">下方盈亏平衡</div>
+          <div class="stat-value"><span class="data-num">$177.50</span>（卖出 Put 执行价 − 净权利金）</div>
+        </div>
+      </div>
+
+      <h3>铁鹰的最佳时机</h3>
+
+      <p>铁鹰策略在<strong>隐含波动率（IV）高</strong>的时候最有价值。高 IV 意味着期权权利金被高估，你能收到更多的"保险费"。典型的入场时机：</p>
+
+      <ul class="key-points">
+        <li><strong>财报公布后：</strong>财报前 IV 飙升，公布后 IV 暴跌（"IV Crush"），此时卖出价差可以快速盈利</li>
+        <li><strong>VIX 高位：</strong>大盘恐慌指数 VIX 超过 25–30 时，各股 IV 普遍偏高</li>
+        <li><strong>股票在明显支撑位和阻力位之间：</strong>技术面支撑你对区间震荡的判断</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>铁鹰的最大风险：</strong>单边大幅突破。如果 AAPL 突然暴跌到 $160 或暴涨到 $220，你会触及最大亏损。这就是为什么铁鹰适合在没有重大催化剂（如未来没有未公布财报）时构建，并严格设置平仓止损点（例如：亏损达到最大利润的 2× 时平仓离场）。</div>
+      </div>
+
+      <!-- ── Section 6 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch08-inline-3.png" alt="铁鹰策略：四翼锁定盈亏区间" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>铁鹰策略：四翼锁定盈亏区间</figcaption>
+      </figure>
+
+      <h2 id="s6">跨式（Straddle）：押大波动，不押方向</h2>
+
+      <p><span data-term="跨式">跨式</span>（Straddle）与铁鹰完全相反——你押注的不是"价格会稳定"，而是"价格会大幅波动，但我不知道方向"。最典型的使用场景：财报公布前夕。</p>
+
+      <h3>跨式（Straddle）vs 勒式（Strangle）</h3>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>策略</th><th>构建方式</th><th>特点</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>跨式 Straddle</td>
+            <td>买入同一执行价（ATM）的 Call + Put</td>
+            <td>成本较高，但盈亏平衡点更近，适合预期大幅波动</td>
+          </tr>
+          <tr>
+            <td>勒式 Strangle</td>
+            <td>买入 OTM Call + OTM Put（不同执行价）</td>
+            <td>成本较低，但需要更大的价格移动才能盈利</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>案例：AAPL 财报前跨式</h3>
+
+      <p>AAPL 股价 <span class="data-num">$190</span>，距离财报公布还有 3 天。历史上 AAPL 财报日当天平均波动 ±5%。你构建跨式：</p>
+
+      <ul class="key-points">
+        <li>买入 $190 Call，权利金 <span class="data-down">$4.00/股</span></li>
+        <li>买入 $190 Put，权利金 <span class="data-down">$3.80/股</span></li>
+        <li>总成本 = <span class="data-down">$7.80/股 = $780</span></li>
+      </ul>
+
+      <p>盈亏平衡：股价需要涨超 <span class="data-num">$197.80</span> 或跌破 <span class="data-num">$182.20</span> 才开始盈利。如果 AAPL 财报后暴涨 8%（涨到 $205.20）：</p>
+
+      <p>Call 价值 ≈ $15.20，Put 价值 ≈ 0，总盈利 = $15.20 − $7.80 = <span class="data-up">$7.40/股 = $740</span>，回报率约 95%。</p>
+
+      <h3>致命陷阱：IV Crush（隐含波动率崩塌）</h3>
+
+      <p>这是跨式策略最大的风险，初学者必须理解。</p>
+
+      <p>财报前，期权 IV 非常高（因为大家都在为"不确定性"付溢价）。财报公布后，不确定性消除，IV 瞬间崩塌——即使股价确实大幅波动，期权的时间价值损耗可能吃掉大部分方向盈利。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">IV Crush 真实案例</div>
+        <div class="data-card-value">股价涨了 6%，跨式却亏了 30%</div>
+        <div class="data-card-sub">这在财报季极为常见：财报前 IV 可能高达 80%，财报后立即回落到 30%。6% 的涨幅看似很大，但"波动率溢价"已经提前计入了 ±8% 的预期，实际涨幅低于预期，双腿均亏损。</div>
+      </div>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>跨式使用前必须检查：</strong>当前 IV 是否已经"太高"？可用 IV Rank（当前 IV 在过去一年的百分位）来衡量。如果 IV Rank 超过 80，买跨式的成本极高，不如等 IV 下来后再入场。</div>
+      </div>
+
+      <!-- ── Tool ── -->
+      <div class="section-rule"><span>工具 · 期权损益图</span></div>
+
+      <div class="tool-container" id="payoff-builder-tool">
+        <div class="tool-header">
+          <div class="tool-title-group">
+            <div class="tool-icon">📊</div>
+            <div>
+              <div class="tool-name">期权损益图</div>
+              <div class="tool-desc">Options Payoff Builder</div>
+            </div>
+          </div>
+        </div>
+        <div class="payoff-strategy-select" id="strategy-select">
+          <button class="payoff-strategy-btn active" data-strategy="covered-call">备兑买权</button>
+          <button class="payoff-strategy-btn" data-strategy="csp">卖Put</button>
+          <button class="payoff-strategy-btn" data-strategy="bull-call">牛市价差</button>
+          <button class="payoff-strategy-btn" data-strategy="iron-condor">铁鹰</button>
+          <button class="payoff-strategy-btn" data-strategy="straddle">跨式</button>
+          <button class="payoff-strategy-btn" data-strategy="long-call">买入Call</button>
+        </div>
+        <div class="tool-form-row">
+          <div class="tool-field">
+            <label class="tool-label">标的价格 S ($)</label>
+            <input type="range" id="pb-stock" min="80" max="120" value="100" step="1">
+            <div class="tool-slider-labels"><span>$80</span><span class="tool-slider-value" id="pb-stock-val">$100</span><span>$120</span></div>
+          </div>
+          <div class="tool-field">
+            <label class="tool-label">主执行价 K ($)</label>
+            <input type="range" id="pb-strike" min="80" max="120" value="105" step="1">
+            <div class="tool-slider-labels"><span>$80</span><span class="tool-slider-value" id="pb-strike-val">$105</span><span>$120</span></div>
+          </div>
+        </div>
+        <div class="tool-canvas-wrap">
+          <canvas id="payoff-canvas" class="tool-canvas" width="800" height="320"></canvas>
+          <div class="tool-canvas-label">P&amp;L AT EXPIRATION</div>
+        </div>
+        <div class="tool-result" id="payoff-result">
+          <div class="tool-result-item"><div class="result-label">最大利润</div><div class="result-value positive" id="max-profit">—</div></div>
+          <div class="tool-result-item"><div class="result-label">最大亏损</div><div class="result-value negative" id="max-loss">—</div></div>
+          <div class="tool-result-item"><div class="result-label">盈亏平衡点</div><div class="result-value" id="breakeven">—</div></div>
+        </div>
+      </div>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>卖方思维 = 保险公司思维：收取权利金，押注期权到期作废（统计上约 70–80% 的期权确实作废）。</li>
+          <li><strong>备兑买权（Covered Call）：</strong>持有股票 + 卖出 OTM Call，收取权利金，上方利润封顶，用于长期持股增收。</li>
+          <li><strong>现金担保卖权（CSP）：</strong>卖出 OTM Put，"领薪水等低价买股"，被行权时以理想价格接货。</li>
+          <li><strong>牛市看涨价差：</strong>买低执行价 Call + 卖高执行价 Call，降低成本，限定最大亏损。</li>
+          <li><strong>铁鹰（Iron Condor）：</strong>同时卖出 Call 价差和 Put 价差，在区间内收权利金，最佳时机是高 IV 环境。</li>
+          <li><strong>跨式（Straddle）：</strong>买入同执行价的 Call + Put，押大波动不押方向，但当心财报后 IV Crush 吞噬利润。</li>
+        </ul>
+      </div>
+
+      <!-- ── Glossary ── -->
+      <div class="section-rule"><span>关键术语</span></div>
+
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>备兑买权</td><td class="en-term">Covered Call</td><td>持有股票的同时卖出 Call，收取权利金，锁定最高卖出价</td></tr>
+          <tr><td>现金担保卖权</td><td class="en-term">Cash-Secured Put</td><td>账户备足现金，卖出 Put，以理想价格等待买入机会</td></tr>
+          <tr><td>价差</td><td class="en-term">Spread</td><td>同时买卖不同执行价的同类期权，限定最大盈亏区间</td></tr>
+          <tr><td>铁鹰</td><td class="en-term">Iron Condor</td><td>同时卖出 Call 价差和 Put 价差，在区间内盈利的中性策略</td></tr>
+          <tr><td>跨式</td><td class="en-term">Straddle</td><td>买入同执行价的 Call + Put，押大波动，方向不限</td></tr>
+          <tr><td>卖权</td><td class="en-term">Put Option</td><td>赋予持有人以执行价卖出标的的权利</td></tr>
+          <tr><td>权利金</td><td class="en-term">Premium</td><td>购买期权所支付（或卖出期权所收取）的价格</td></tr>
+          <tr><td>到期</td><td class="en-term">Expiration</td><td>期权合约生效的最后日期，之后期权作废或被行权</td></tr>
+          <tr><td>IV Crush</td><td class="en-term">IV Crush</td><td>重大事件（如财报）公布后隐含波动率骤降，期权价值大幅缩水</td></tr>
+          <tr><td>虚值期权</td><td class="en-term">Out-of-the-Money (OTM)</td><td>当前股价未达执行价（Call）或未跌破执行价（Put）的期权</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Quiz ── -->
+      <div class="quiz-section" data-chapter="08">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">3 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="2" data-explain="备兑买权的最大利润 = (执行价 − 买入成本) × 100 + 权利金。本例：(200−190)×100 + 250 = $1,250。无论股价涨到多高，超过执行价的部分被买方赚走，卖方利润封顶。">
+            <p class="quiz-q-text">你以 $190 买入 100 股 AAPL，随后卖出 $200 Call 收到 $2.50 权利金（共 $250）。到期时 AAPL 涨到 $210，备兑买权策略的最大利润是多少？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>$2,250（$210−$190 的全部涨幅 + 权利金）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>$250（仅保留权利金）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>$1,250（执行价涨幅 $1,000 + 权利金 $250）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>$0（被行权后一无所获）</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="2" data-explain="铁鹰是中性策略，在股价横盘震荡时盈利。高隐含波动率（High IV）意味着你能收到更高的权利金，但需要股价维持在区间内。大涨或大跌都会触及最大亏损。">
+            <p class="quiz-q-text">铁鹰（Iron Condor）策略最适合哪种市场环境？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>单边强势上涨，成交量放大</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>市场即将公布重大政策，预计大幅波动</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>高隐含波动率环境下，股价在支撑位和阻力位之间横盘</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>股价连续下跌后接近底部，准备反弹</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="2" data-explain="牛市看涨价差的最大亏损 = 净权利金支出。买入 $190 Call 花 $5.00，卖出 $200 Call 收 $2.00，净成本 = $3.00/股 = $300。无论两腿如何作废，你损失的最多就是这 $300。">
+            <p class="quiz-q-text">构建 AAPL 牛市看涨价差：买入 $190 Call 花 $5.00，卖出 $200 Call 收 $2.00。若到期时 AAPL 跌到 $185，最大亏损是多少？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>$500（买入 Call 全部权利金损失）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>$1,000（两腿执行价差额）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>$300（净权利金支出）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>$700（最大利润反转）</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <!-- Chapter Navigation -->
+    <nav class="chapter-nav-footer">
+      <a href="07-options-basics.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">期权原理与希腊</span>
+      </a>
+      <a href="09-risk-psychology.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">仓位管理与心理</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Right TOC -->
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">策略不是投机</a></li>
+      <li><a href="#s2">备兑买权</a></li>
+      <li><a href="#s3">现金担保卖权</a></li>
+      <li><a href="#s4">价差策略</a></li>
+      <li><a href="#s5">铁鹰</a></li>
+      <li><a href="#s6">跨式</a></li>
+    </ul>
+  </aside>
+
+</div><!-- .chapter-layout -->
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+<script src="../assets/js/tools/payoff-builder.js"></script>
+</body>
+</html>

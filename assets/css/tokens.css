@@ -1,0 +1,111 @@
+/* ===== DESIGN TOKENS ===== */
+:root {
+  /* Backgrounds - Dark Theme (default) */
+  --bg-page: #0B0B0D;
+  --bg-panel: #13131A;
+  --bg-panel-hover: #1A1A24;
+  --bg-elevated: #18181F;
+  --bg-paper: #F4F0E6;
+  --bg-overlay: rgba(11,11,13,0.85);
+
+  /* Ink */
+  --ink-primary: #EDEBE5;
+  --ink-secondary: #9898A4;
+  --ink-muted: #5C5C68;
+  --ink-paper: #18181F;
+  --ink-paper-secondary: #484855;
+
+  /* Accents */
+  --amber: #FFB300;
+  --amber-dim: rgba(255,179,0,0.12);
+  --amber-glow: rgba(255,179,0,0.25);
+  --green: #00C46E;
+  --green-dim: rgba(0,196,110,0.12);
+  --red: #FF3058;
+  --red-dim: rgba(255,48,88,0.12);
+  --sage: #8BBCA0;
+  --blue: #4A9EE6;
+  --blue-dim: rgba(74,158,230,0.12);
+
+  /* Borders */
+  --rule: #232330;
+  --rule-mid: #2E2E40;
+  --rule-amber: rgba(255,179,0,0.4);
+
+  /* Typography */
+  --font-display: 'DM Serif Display', 'Noto Serif SC', 'Songti SC', Georgia, serif;
+  --font-serif: 'Lora', 'Noto Serif SC', 'Songti SC', Georgia, serif;
+  --font-sans: 'PingFang SC', 'Noto Sans SC', -apple-system, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Menlo', monospace;
+
+  /* Type Scale */
+  --ts-xs: clamp(0.7rem, 0.68vw, 0.75rem);
+  --ts-sm: clamp(0.8rem, 0.85vw, 0.875rem);
+  --ts-base: clamp(0.95rem, 1vw, 1rem);
+  --ts-body: clamp(1rem, 1.15vw, 1.125rem);       /* 16-18px */
+  --ts-md: clamp(1.1rem, 1.3vw, 1.25rem);
+  --ts-lg: clamp(1.25rem, 1.6vw, 1.5rem);
+  --ts-xl: clamp(1.5rem, 2.2vw, 2rem);
+  --ts-2xl: clamp(1.875rem, 3vw, 2.75rem);
+  --ts-3xl: clamp(2.25rem, 4.5vw, 4rem);
+  --ts-4xl: clamp(3rem, 6.5vw, 5.5rem);
+  --ts-hero: clamp(2.75rem, 6vw, 6rem);
+
+  /* Leading */
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-loose: 1.8;
+  --leading-prose: 1.85;
+
+  /* Spacing */
+  --sp-1: 0.25rem; --sp-2: 0.5rem; --sp-3: 0.75rem; --sp-4: 1rem;
+  --sp-5: 1.25rem; --sp-6: 1.5rem; --sp-8: 2rem; --sp-10: 2.5rem;
+  --sp-12: 3rem; --sp-16: 4rem; --sp-20: 5rem; --sp-24: 6rem;
+  --sp-32: 8rem; --sp-40: 10rem;
+
+  /* Borders */
+  --radius-xs: 2px; --radius-sm: 4px; --radius: 6px;
+  --radius-lg: 10px; --radius-xl: 16px; --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.5);
+  --shadow: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 36px rgba(0,0,0,0.5);
+  --shadow-xl: 0 24px 72px rgba(0,0,0,0.6);
+  --shadow-amber: 0 0 24px rgba(255,179,0,0.18);
+  --shadow-inner: inset 0 1px 3px rgba(0,0,0,0.4);
+
+  /* Transitions */
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --tr-fast: 120ms var(--ease);
+  --tr: 240ms var(--ease);
+  --tr-slow: 480ms var(--ease-out);
+
+  /* Layout */
+  --nav-h: 64px;
+  --sidebar-w: 240px;
+  --toc-w: 192px;
+  --content-w: 720px;
+  --wide-w: 960px;
+  --max-w: 1440px;
+}
+
+/* Light theme */
+[data-theme="paper"] {
+  --bg-page: #F4F0E6;
+  --bg-panel: #EAE5D8;
+  --bg-panel-hover: #E0DACE;
+  --bg-elevated: #FFFDF7;
+  --bg-overlay: rgba(244,240,230,0.88);
+  --ink-primary: #18181F;
+  --ink-secondary: #484855;
+  --ink-muted: #888898;
+  --rule: #D5CEBD;
+  --rule-mid: #C8C0AE;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow: 0 4px 10px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 30px rgba(0,0,0,0.1);
+}

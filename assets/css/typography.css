@@ -1,0 +1,268 @@
+/* ===== TYPOGRAPHY ===== */
+body {
+  font-family: var(--font-serif);
+  font-size: var(--ts-body);
+  line-height: var(--leading-prose);
+  color: var(--ink-primary);
+  background-color: var(--bg-page);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); line-height: var(--leading-tight); color: var(--ink-primary); font-weight: 400; }
+
+.chapter-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--ts-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-3);
+}
+
+.chapter-number {
+  font-family: var(--font-mono);
+  font-size: var(--ts-xs);
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--ts-hero);
+  line-height: var(--leading-tight);
+  color: var(--ink-primary);
+  font-weight: 400;
+}
+
+.section-title {
+  font-size: var(--ts-3xl);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--sp-6);
+}
+
+.subsection-title {
+  font-size: var(--ts-xl);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--sp-4);
+  margin-top: var(--sp-12);
+}
+
+h3.subsection-title {
+  font-size: var(--ts-lg);
+}
+
+/* Body prose */
+.prose { max-width: var(--content-w); }
+
+.prose p {
+  margin-bottom: var(--sp-5);
+  font-size: var(--ts-body);
+  line-height: var(--leading-prose);
+  color: var(--ink-primary);
+}
+
+/* Drop cap */
+.prose > p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 4.2em;
+  line-height: 0.78;
+  float: left;
+  margin-right: 0.08em;
+  margin-top: 0.06em;
+  color: var(--amber);
+  font-weight: 400;
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: var(--ts-md);
+  line-height: 1.7;
+  color: var(--ink-secondary);
+  margin-bottom: var(--sp-8);
+  font-style: italic;
+}
+
+/* Pull quote */
+.pull-quote {
+  position: relative;
+  margin: var(--sp-12) calc(-1 * var(--sp-8));
+  padding: var(--sp-6) var(--sp-8);
+  border-top: 1px solid var(--amber);
+  border-bottom: 1px solid var(--amber);
+  font-family: var(--font-display);
+  font-size: var(--ts-lg);
+  line-height: var(--leading-snug);
+  color: var(--ink-primary);
+  font-style: italic;
+}
+
+.pull-quote::before {
+  content: '"';
+  font-family: var(--font-display);
+  font-size: 6rem;
+  line-height: 1;
+  color: var(--amber);
+  opacity: 0.25;
+  position: absolute;
+  top: -1.5rem;
+  left: var(--sp-4);
+}
+
+/* Data callout - inline number highlight */
+.data-num {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  color: var(--amber);
+  background: var(--amber-dim);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+  font-weight: 500;
+}
+
+.data-up {
+  font-family: var(--font-mono);
+  color: var(--green);
+  background: var(--green-dim);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+}
+
+.data-down {
+  font-family: var(--font-mono);
+  color: var(--red);
+  background: var(--red-dim);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+}
+
+/* EN term inline */
+.en-term {
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Term with tooltip trigger */
+[data-term] {
+  border-bottom: 1px dashed var(--amber);
+  cursor: help;
+  color: inherit;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 3px solid var(--amber);
+  padding: var(--sp-3) var(--sp-6);
+  margin: var(--sp-8) 0;
+  background: var(--amber-dim);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-style: italic;
+  color: var(--ink-secondary);
+}
+
+blockquote p { margin-bottom: 0; }
+
+/* Key points list */
+.key-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.key-points li {
+  position: relative;
+  padding-left: calc(8px + var(--sp-3));
+  font-size: var(--ts-body);
+  line-height: var(--leading-normal);
+}
+
+.key-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+/* Mono code */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--bg-panel);
+  border: 1px solid var(--rule);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-xs);
+  color: var(--amber);
+}
+
+/* Small caps for acronyms */
+.abbr {
+  font-variant: all-small-caps;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* Section rule with label */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin: var(--sp-16) 0 var(--sp-8);
+}
+
+.section-rule::before, .section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.section-rule span {
+  font-family: var(--font-mono);
+  font-size: var(--ts-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+/* Footnote */
+.footnote {
+  font-size: var(--ts-sm);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--sp-4);
+  margin-top: var(--sp-12);
+  line-height: var(--leading-loose);
+}
+
+strong { font-weight: 700; color: var(--ink-primary); }
+em { font-style: italic; }
+
+/* Mobile overrides — keep pull-quote inside viewport, soften drop-cap */
+@media (max-width: 720px) {
+  .pull-quote {
+    margin: var(--sp-8) 0;
+    padding: var(--sp-5) var(--sp-5);
+    font-size: var(--ts-md);
+  }
+  .pull-quote::before {
+    font-size: 4rem;
+    top: -1rem;
+    left: var(--sp-2);
+  }
+}
+
+@media (max-width: 560px) {
+  .prose > p:first-of-type::first-letter {
+    font-size: 3.4em;
+  }
+  .hero-title { letter-spacing: -0.01em; }
+}

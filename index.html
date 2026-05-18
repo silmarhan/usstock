@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股从入门到期权的完整中文教程——10章内容，覆盖估值、财报、技术分析、期权策略、风险管理，通俗易懂，配有互动工具。">
+  <meta name="base-url" content="./">
+  <title>读懂美股完全中文指南</title>
+  <!-- OG -->
+  <meta property="og:title" content="读懂美股完全中文指南">
+  <meta property="og:description" content="从「股票是什么」到「我能不能卖个铁鹰」——10章通俗美股教程，含8个互动工具。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/ch01-hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Theme init (prevent FOUC) -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('usstock-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t === 'paper' ? 'paper' : '');
+    })();
+  </script>
+
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/typography.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <style>
+    /* ── Index-specific styles ── */
+    .ticker-bar {
+      overflow: hidden;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: var(--sp-2) 0;
+      background: var(--bg-panel);
+      white-space: nowrap;
+    }
+    .ticker-inner { display: inline-flex; gap: var(--sp-8); animation: ticker 40s linear infinite; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: var(--sp-2);
+      font-family: var(--font-mono); font-size: var(--ts-xs);
+      letter-spacing: 0.06em; color: var(--ink-muted);
+    }
+    .ticker-item .sym { color: var(--ink-secondary); font-weight: 500; }
+    .ticker-item .up { color: var(--green); }
+    .ticker-item .down { color: var(--red); }
+
+    /* Hero ambient bg */
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%; filter: blur(80px);
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,179,0,0.12) 0%, transparent 70%);
+      top: -100px; right: -80px;
+      animation: ambientPulse1 18s ease-in-out infinite;
+    }
+    .blob-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(139,188,160,0.08) 0%, transparent 70%);
+      bottom: 50px; left: -100px;
+      animation: ambientPulse2 24s ease-in-out infinite;
+    }
+    .blob-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(74,158,230,0.06) 0%, transparent 70%);
+      top: 40%; right: 20%;
+      animation: ambientPulse2 20s 8s ease-in-out infinite;
+    }
+
+    /* Hero grid overlay */
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(var(--rule) 1px, transparent 1px),
+        linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 100%);
+    }
+
+    /* Hero section */
+    .site-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--sp-24) var(--sp-12) var(--sp-16);
+      overflow: hidden;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+    .hero-super {
+      font-family: var(--font-mono);
+      font-size: var(--ts-xs);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: var(--sp-5);
+      display: flex; align-items: center; gap: var(--sp-3);
+    }
+    .hero-super::before {
+      content: '';
+      display: block; width: 32px; height: 1px;
+      background: var(--amber);
+    }
+
+    .hero-main-title {
+      font-family: var(--font-display);
+      font-size: var(--ts-hero);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      font-style: italic;
+      color: var(--ink-primary);
+      margin-bottom: var(--sp-6);
+    }
+
+    .hero-main-title .title-en {
+      display: block;
+      font-size: 0.38em;
+      letter-spacing: 0.12em;
+      font-style: normal;
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      margin-bottom: var(--sp-2);
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-family: var(--font-serif);
+      font-size: var(--ts-md);
+      color: var(--ink-secondary);
+      line-height: var(--leading-normal);
+      max-width: 600px;
+      margin-bottom: var(--sp-10);
+    }
+
+    .hero-stats {
+      display: flex; gap: var(--sp-8); flex-wrap: wrap;
+      margin-bottom: var(--sp-10);
+    }
+
+    .hero-stat { display: flex; flex-direction: column; gap: var(--sp-1); }
+    .hero-stat-value {
+      font-family: var(--font-mono);
+      font-size: var(--ts-2xl);
+      color: var(--amber);
+    }
+    .hero-stat-label {
+      font-family: var(--font-sans);
+      font-size: var(--ts-xs);
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .hero-cta { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: var(--sp-8); left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: var(--sp-2);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      animation: fadeIn 1s 1.5s both;
+    }
+
+    .scroll-arrow {
+      width: 24px; height: 24px;
+      border: 1px solid var(--rule-mid);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* Section */
+    .site-section {
+      padding: var(--sp-24) var(--sp-12);
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .section-header { margin-bottom: var(--sp-12); }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: var(--ts-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: var(--sp-3);
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--ts-3xl);
+      line-height: var(--leading-snug);
+      color: var(--ink-primary);
+      font-style: italic;
+    }
+    .section-heading em {
+      color: var(--amber);
+      font-style: inherit;
+    }
+
+    /* Level badges */
+    .level-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      font-weight: 500;
+    }
+    .level-beginner { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,196,110,0.3); }
+    .level-intermediate { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(255,179,0,0.3); }
+    .level-advanced { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,48,88,0.3); }
+
+    /* Learning path */
+    .learning-path {
+      display: flex;
+      gap: 0;
+      margin: var(--sp-12) 0;
+      position: relative;
+    }
+    .learning-path::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      top: 28px;
+      height: 2px;
+      background: linear-gradient(to right, var(--amber) 0%, var(--green) 100%);
+      opacity: 0.3;
+    }
+    .path-group {
+      flex: 1;
+      padding: var(--sp-5);
+      position: relative;
+    }
+    .path-group-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: var(--sp-3);
+    }
+    .path-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--amber);
+      position: relative;
+      margin-bottom: var(--sp-3);
+      box-shadow: 0 0 0 4px var(--amber-dim);
+    }
+    .path-chapters {
+      font-family: var(--font-sans);
+      font-size: var(--ts-xs);
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+
+    /* Intro / about section */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-12);
+      align-items: start;
+    }
+
+    .intro-text p {
+      font-size: var(--ts-body);
+      line-height: var(--leading-prose);
+      color: var(--ink-secondary);
+      margin-bottom: var(--sp-5);
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+
+    .feature-item {
+      display: flex;
+      gap: var(--sp-4);
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--bg-panel);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+      transition: border-color var(--tr);
+    }
+    .feature-item:hover { border-color: var(--amber); }
+
+    .feature-emoji { font-size: 1.4rem; flex-shrink: 0; }
+    .feature-body {}
+    .feature-title {
+      font-family: var(--font-sans);
+      font-size: var(--ts-base);
+      font-weight: 600;
+      color: var(--ink-primary);
+      margin-bottom: var(--sp-1);
+    }
+    .feature-desc {
+      font-family: var(--font-sans);
+      font-size: var(--ts-sm);
+      color: var(--ink-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    @media (max-width: 900px) {
+      .site-hero { padding: var(--sp-16) var(--sp-5); }
+      .site-section { padding: var(--sp-16) var(--sp-5); }
+      .hero-stats { gap: var(--sp-5); }
+      .intro-grid { grid-template-columns: 1fr; }
+      .learning-path { flex-wrap: wrap; }
+      .learning-path::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-mark">US</span>
+        读懂美股
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">首页</a></li>
+          <li><a href="chapters/01-getting-started.html">开始学习</a></li>
+          <li><a href="glossary.html">术语表</a></li>
+          <li><a href="about.html">关于</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="切换主题">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="site-hero">
+    <div class="hero-bg">
+      <div class="hero-blob blob-1"></div>
+      <div class="hero-blob blob-2"></div>
+      <div class="hero-blob blob-3"></div>
+      <div class="hero-grid"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-super hero-animate-1">Chapter Series · 美股全攻略</p>
+      <h1 class="hero-main-title hero-animate-2">
+        <span class="title-en">The Complete Chinese Guide to US Stock Market</span>
+        读懂美股完全中文指南
+      </h1>
+      <p class="hero-sub hero-animate-3">
+        从「股票是什么」到「我该怎么卖一个铁鹰期权」——
+        10 个章节，用最通俗的语言，把美股那点事一次说清楚。
+      </p>
+
+      <div class="hero-stats hero-animate-4">
+        <div class="hero-stat">
+          <span class="hero-stat-value">10</span>
+          <span class="hero-stat-label">章节</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">30+</span>
+          <span class="hero-stat-label">AI 插图</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">8</span>
+          <span class="hero-stat-label">互动工具</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">免费</span>
+          <span class="hero-stat-label">完全开放</span>
+        </div>
+      </div>
+
+      <div class="hero-cta hero-animate-5">
+        <a href="chapters/01-getting-started.html" class="btn btn-primary">
+          从第一章开始 →
+        </a>
+        <a href="#chapters" class="btn btn-ghost">
+          浏览所有章节
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-arrow">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M5 1v8M1 5l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- ── Ticker ── -->
+  <div class="ticker-bar">
+    <div class="ticker-inner">
+      <!-- First set -->
+      <span class="ticker-item"><span class="sym">AAPL</span> <span class="up">▲ +1.24%</span> 189.42</span>
+      <span class="ticker-item"><span class="sym">MSFT</span> <span class="up">▲ +0.87%</span> 415.30</span>
+      <span class="ticker-item"><span class="sym">NVDA</span> <span class="up">▲ +2.41%</span> 875.10</span>
+      <span class="ticker-item"><span class="sym">AMZN</span> <span class="down">▼ -0.33%</span> 178.25</span>
+      <span class="ticker-item"><span class="sym">GOOGL</span> <span class="up">▲ +0.65%</span> 168.50</span>
+      <span class="ticker-item"><span class="sym">META</span> <span class="up">▲ +1.10%</span> 502.30</span>
+      <span class="ticker-item"><span class="sym">TSLA</span> <span class="down">▼ -1.82%</span> 182.60</span>
+      <span class="ticker-item"><span class="sym">BRK.B</span> <span class="up">▲ +0.20%</span> 412.00</span>
+      <span class="ticker-item"><span class="sym">JPM</span> <span class="up">▲ +0.45%</span> 196.80</span>
+      <span class="ticker-item"><span class="sym">SPY</span> <span class="up">▲ +0.55%</span> 519.40</span>
+      <span class="ticker-item"><span class="sym">QQQ</span> <span class="up">▲ +0.72%</span> 440.10</span>
+      <span class="ticker-item"><span class="sym">VIX</span> <span class="down">▼ -3.10%</span> 14.82</span>
+      <!-- Mirror (for seamless loop) -->
+      <span class="ticker-item"><span class="sym">AAPL</span> <span class="up">▲ +1.24%</span> 189.42</span>
+      <span class="ticker-item"><span class="sym">MSFT</span> <span class="up">▲ +0.87%</span> 415.30</span>
+      <span class="ticker-item"><span class="sym">NVDA</span> <span class="up">▲ +2.41%</span> 875.10</span>
+      <span class="ticker-item"><span class="sym">AMZN</span> <span class="down">▼ -0.33%</span> 178.25</span>
+      <span class="ticker-item"><span class="sym">GOOGL</span> <span class="up">▲ +0.65%</span> 168.50</span>
+      <span class="ticker-item"><span class="sym">META</span> <span class="up">▲ +1.10%</span> 502.30</span>
+      <span class="ticker-item"><span class="sym">TSLA</span> <span class="down">▼ -1.82%</span> 182.60</span>
+      <span class="ticker-item"><span class="sym">BRK.B</span> <span class="up">▲ +0.20%</span> 412.00</span>
+      <span class="ticker-item"><span class="sym">JPM</span> <span class="up">▲ +0.45%</span> 196.80</span>
+      <span class="ticker-item"><span class="sym">SPY</span> <span class="up">▲ +0.55%</span> 519.40</span>
+      <span class="ticker-item"><span class="sym">QQQ</span> <span class="up">▲ +0.72%</span> 440.10</span>
+      <span class="ticker-item"><span class="sym">VIX</span> <span class="down">▼ -3.10%</span> 14.82</span>
+    </div>
+  </div>
+
+  <!-- ── Intro ── -->
+  <section class="site-section">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <div class="section-header">
+          <p class="section-label">为什么要有这套教程</p>
+          <h2 class="section-heading">金融不难，<em>难的是没有人用人话解释</em></h2>
+        </div>
+        <p>美股的资料多得是，但大多不是英文写给美国人看的，就是中文写得像教材——充斥着「量化宽松货币政策」「波动率曲面微笑」这类让人立刻关掉页面的词。</p>
+        <p>这套教程的目标只有一个：<strong>让你真的看懂</strong>。每个概念先给你打一个你生活里就有的比方，再把专业定义和公式补上来。看完一章，合上页面，你能跟朋友解释清楚——那才算学会了。</p>
+        <p>从基础的「股票是什么」，到进阶的「期权希腊字母」，再到真实案例复盘，10 章内容是一条完整的学习路径，不是零散的百科词条。</p>
+        <a href="about.html" class="btn btn-ghost" style="margin-top: var(--sp-4);">了解本教程的编写思路 →</a>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item reveal">
+          <span class="feature-emoji">🗣️</span>
+          <div class="feature-body">
+            <div class="feature-title">通俗语言优先</div>
+            <div class="feature-desc">每个概念都先从生活类比入手，再引入术语。不强迫你先背名词再理解意义。</div>
+          </div>
+        </div>
+        <div class="feature-item reveal reveal-delay-1">
+          <span class="feature-emoji">🎮</span>
+          <div class="feature-body">
+            <div class="feature-title">8 个可玩的工具</div>
+            <div class="feature-desc">复利计算器、期权损益图、K 线形态图鉴……用数字而不是文字来建立直觉。</div>
+          </div>
+        </div>
+        <div class="feature-item reveal reveal-delay-2">
+          <span class="feature-emoji">🖼️</span>
+          <div class="feature-body">
+            <div class="feature-title">AI 生成专属插图</div>
+            <div class="feature-desc">30+ 张 gpt-image-2 生成的编辑部风格插图，每章都有概念示意图，读文字累了就看图。</div>
+          </div>
+        </div>
+        <div class="feature-item reveal reveal-delay-3">
+          <span class="feature-emoji">✅</span>
+          <div class="feature-body">
+            <div class="feature-title">每章小测验</div>
+            <div class="feature-desc">3–5 道即时反馈的单选题，答完能看到哪里对哪里错，以及为什么。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Learning Path ── -->
+  <section class="site-section" style="padding-top: 0;">
+    <div class="section-header">
+      <p class="section-label">学习路径</p>
+      <h2 class="section-heading">五个阶段，<em>循序渐进</em></h2>
+    </div>
+    <div class="learning-path stagger-children">
+      <div class="path-group">
+        <p class="path-group-label">阶段一 · 入门</p>
+        <div class="path-dot"></div>
+        <div class="path-chapters">
+          第 01 章 — 开户与市场入门<br>
+          第 02 章 — 指数与市场结构
+        </div>
+      </div>
+      <div class="path-group">
+        <p class="path-group-label">阶段二 · 基本面</p>
+        <div class="path-dot"></div>
+        <div class="path-chapters">
+          第 03 章 — 估值指标<br>
+          第 04 章 — 财报三表
+        </div>
+      </div>
+      <div class="path-group">
+        <p class="path-group-label">阶段三 · 技术面</p>
+        <div class="path-dot"></div>
+        <div class="path-chapters">
+          第 05 章 — K 线与技术分析<br>
+          第 06 章 — 板块轮动与宏观
+        </div>
+      </div>
+      <div class="path-group">
+        <p class="path-group-label">阶段四 · 期权</p>
+        <div class="path-dot"></div>
+        <div class="path-chapters">
+          第 07 章 — 期权原理与希腊<br>
+          第 08 章 — 期权策略实战
+        </div>
+      </div>
+      <div class="path-group">
+        <p class="path-group-label">阶段五 · 实战</p>
+        <div class="path-dot"></div>
+        <div class="path-chapters">
+          第 09 章 — 风控与心理<br>
+          第 10 章 — 案例复盘
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Chapters ── -->
+  <section class="site-section" id="chapters">
+    <div class="section-header">
+      <p class="section-label">所有章节</p>
+      <h2 class="section-heading">从这里，<em>选择你的起点</em></h2>
+    </div>
+
+    <div class="chapters-grid stagger-children">
+
+      <!-- Ch01 -->
+      <a href="chapters/01-getting-started.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch01-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">🏛️</div>
+          <span class="card-badge level-beginner">入门</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">开户与市场入门</h3>
+          <p class="card-desc">股票是什么？A 股和美股有啥不同？从在哪里开户，到下第一笔订单，手把手教。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 01</span>
+              <span class="card-tag">~12 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch02 -->
+      <a href="chapters/02-market-structure.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch02-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">📊</div>
+          <span class="card-badge level-beginner">入门</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">指数与市场结构</h3>
+          <p class="card-desc">S&P 500、Nasdaq、道指——它们究竟代表什么？美股开市时间、做市商、ETF，一次搞懂。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 02</span>
+              <span class="card-tag">~10 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch03 -->
+      <a href="chapters/03-valuation.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch03-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">⚖️</div>
+          <span class="card-badge level-beginner">入门</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">估值指标</h3>
+          <p class="card-desc">P/E、P/B、EV/EBITDA、Buffett Indicator——读懂「这只股贵不贵」的几把尺子。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 03</span>
+              <span class="card-tag">~14 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch04 -->
+      <a href="chapters/04-financials.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch04-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">📋</div>
+          <span class="card-badge level-intermediate">进阶</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">财报三表拆解</h3>
+          <p class="card-desc">利润表、资产负债表、现金流量表——为什么净利润好的公司可能正在「失血」？</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 04</span>
+              <span class="card-tag">~16 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch05 -->
+      <a href="chapters/05-technical.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch05-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">📈</div>
+          <span class="card-badge level-intermediate">进阶</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">K 线与技术分析</h3>
+          <p class="card-desc">蜡烛图从哪里来？锤子线、吞没形态、均线金叉——K 线语言的基础词汇表。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 05</span>
+              <span class="card-tag">~18 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch06 -->
+      <a href="chapters/06-sectors-macro.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch06-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">🔄</div>
+          <span class="card-badge level-intermediate">进阶</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">板块轮动与宏观</h3>
+          <p class="card-desc">经济周期四阶段，你的持仓应该在哪个舱？VIX、Sahm 法则读懂宏观信号。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 06</span>
+              <span class="card-tag">~14 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch07 -->
+      <a href="chapters/07-options-basics.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch07-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">🔑</div>
+          <span class="card-badge level-advanced">高阶</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">期权原理与希腊字母</h3>
+          <p class="card-desc">Call、Put、Delta、Gamma、Theta、Vega——你真的不需要学金融数学，只要理解意思。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 07</span>
+              <span class="card-tag">~20 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch08 -->
+      <a href="chapters/08-options-strategies.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch08-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">♟️</div>
+          <span class="card-badge level-advanced">高阶</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">期权策略实战</h3>
+          <p class="card-desc">备兑买权、价差、铁鹰——不同市场环境下选择哪种策略？附互动损益图。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 08</span>
+              <span class="card-tag">~22 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch09 -->
+      <a href="chapters/09-risk-psychology.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch09-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">🧠</div>
+          <span class="card-badge level-advanced">高阶</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">仓位管理与投资心理</h3>
+          <p class="card-desc">止损不是认错，是专业。Kelly 公式、1% 规则、损失厌恶——和你对抗的其实是自己。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 09</span>
+              <span class="card-tag">~14 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+      <!-- Ch10 -->
+      <a href="chapters/10-case-studies.html" class="chapter-card">
+        <div class="card-thumb">
+          <img src="assets/images/ch10-hero.png" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="card-thumb-placeholder">🔬</div>
+          <span class="card-badge level-advanced">高阶</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">三个真实案例复盘</h3>
+          <p class="card-desc">NVDA 长牛、META 大跌、SVB 跳水——把之前学到的一切用在真实的市场故事上。</p>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag">Ch 10</span>
+              <span class="card-tag">~16 分钟</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </div>
+        <div class="card-progress"><div class="card-progress-fill" style="width:0%"></div></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+    <ul class="footer-links">
+      <li><a href="about.html">关于</a></li>
+      <li><a href="glossary.html">术语表</a></li>
+      <li><a href="chapters/01-getting-started.html">开始学习</a></li>
+    </ul>
+  </footer>
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/progress.js"></script>
+</body>
+</html>

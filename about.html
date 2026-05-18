@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="关于《读懂美股》——这套教程的设计理念、学习路径建议和常见问题解答。">
+  <title>关于本教程 · 读懂美股</title>  <meta property="og:title" content="关于本教程 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="assets/images/ch01-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/typography.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .about-page { max-width: 720px; margin: 0 auto; padding: 80px 24px 120px; }
+    .about-title { font-family: var(--font-display); font-size: clamp(2.5rem,6vw,4rem); margin-bottom: 8px; }
+    .about-sub { color: var(--ink-secondary); font-size: 1.05rem; margin-bottom: 56px; }
+    .faq-item { margin-bottom: 36px; }
+    .faq-q { font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem; color: var(--amber); margin-bottom: 10px; }
+    .faq-a { color: var(--ink-secondary); line-height: 1.8; }
+    .path-card { background: var(--bg-panel); border: 1px solid var(--rule); border-radius: 12px; padding: 28px; margin-bottom: 20px; }
+    .path-card-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; color: var(--ink-primary); }
+    .path-card-desc { font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.7; }
+    .path-card-chapters { font-family: var(--font-mono); font-size: 0.8rem; color: var(--amber); margin-top: 10px; }
+    .disclaimer { background: rgba(255,48,88,0.06); border: 1px solid rgba(255,48,88,0.2); border-radius: 8px; padding: 20px 24px; margin-top: 48px; font-size: 0.88rem; color: var(--ink-secondary); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav class="nav-chapters">
+      <a href="index.html">首页</a>
+      <span class="nav-sep">·</span>
+      <a href="glossary.html">术语表</a>
+    </nav>
+    <button class="theme-toggle" aria-label="切换主题">◐</button>
+  </div>
+</header>
+
+<main class="about-page prose">
+  <div class="chapter-kicker">About · 关于</div>
+  <h1 class="about-title">关于本教程</h1>
+  <p class="about-sub">为什么做这个，怎么用它，以及一些诚实的建议。</p>
+
+  <h2>这套教程是为谁准备的</h2>
+  <p>如果你对美股感兴趣，却被"期权希腊字母"这样的词吓到过，这套教程就是为你写的。目标读者是完全没有炒过美股的中文母语用户——但有好奇心，愿意认真读完。</p>
+  <p>不需要数学背景，不需要金融学历。唯一的要求是：慢下来，真的读。</p>
+
+  <h2>设计理念</h2>
+  <p>每一章都遵循同一个结构：<strong>先讲一个类比或故事</strong>，再引出概念，配上真实数字，最后用交互工具让你自己动手验证。这是因为人类大脑记住"故事"比记住"定义"容易得多。</p>
+  <p>语言风格选择了"严肃但不装"——金融是复杂的，但它不需要故意艰涩。如果一段话读起来很累，往往是作者没说清楚，而不是读者不够聪明。</p>
+
+  <h2>推荐学习路径</h2>
+
+  <div class="path-card reveal">
+    <div class="path-card-title">🌱 完全新手路径（约 3-4 周）</div>
+    <div class="path-card-desc">按顺序从第一章读到第六章，每章配合小测验做一遍，遇到不懂的术语去词汇表查。读完这六章，你就能看懂财经新闻里 90% 的内容。</div>
+    <div class="path-card-chapters">第 01 → 02 → 03 → 04 → 05 → 06 章</div>
+  </div>
+
+  <div class="path-card reveal">
+    <div class="path-card-title">📈 进阶期权路径（基础完成后）</div>
+    <div class="path-card-desc">第七、八章期权内容需要多读一遍——第一遍建立概念，第二遍用希腊字母模拟器和 Payoff 图动手操作，第三遍再回头看，会有豁然开朗的感觉。</div>
+    <div class="path-card-chapters">第 07 → 08 章（建议反复三遍）</div>
+  </div>
+
+  <div class="path-card reveal">
+    <div class="path-card-title">🧠 心理强化路径（任何阶段均可）</div>
+    <div class="path-card-desc">第九章仓位管理和心理偏差，建议在你第一次亏损之后，或者第一次赚到钱之后，再读一遍。那时候每个字都会更有分量。</div>
+    <div class="path-card-chapters">第 09 章（建议亏损或盈利后重读）</div>
+  </div>
+
+  <h2>关于小测验和进度</h2>
+  <p>每章末尾有 3-5 道测验，选错了会立刻告诉你正确答案和解释。你的答题记录会保存在浏览器本地（<code>localStorage</code>）——不会传到任何服务器，刷新浏览器不会丢失，但换了设备会重置。</p>
+
+  <h2>关于交互工具</h2>
+  <p>所有 8 个工具（复利计算器、PE 对比器、现金流动画、K线图鉴、板块时钟、期权 Payoff 图、希腊字母模拟器、仓位计算器）都是纯前端实现，不访问任何实时数据，数字仅用于教学演示。</p>
+
+  <h2>常见问题</h2>
+
+  <div class="faq-item reveal">
+    <div class="faq-q">读完这套教程，我能开始炒股了吗？</div>
+    <div class="faq-a">你将具备独立研究的基础能力。但"能研究"不等于"应该马上操作"——建议先用模拟账户练习 3-6 个月，让理论在没有真实金钱压力的环境下内化。</div>
+  </div>
+
+  <div class="faq-item reveal">
+    <div class="faq-q">教程里的数据是实时的吗？</div>
+    <div class="faq-a">不是。所有数字仅用于举例说明，股价、PE 等指标均截至本教程编写时，实际投资请以券商软件或官方数据为准。</div>
+  </div>
+
+  <div class="faq-item reveal">
+    <div class="faq-q">推荐哪个券商开户？</div>
+    <div class="faq-a">中国大陆居民常用老虎证券、富途证券，美国居民可选 Fidelity、Schwab、Interactive Brokers。各有优劣，建议对比开户费、汇款手续费、研究工具后自行决定——本教程不提供具体券商推荐。</div>
+  </div>
+
+  <div class="disclaimer reveal">
+    <strong>免责声明：</strong>本教程所有内容仅供教育目的，不构成任何投资建议。股票投资有风险，过往业绩不代表未来表现。请在充分了解自身风险承受能力的前提下进行投资决策。
+  </div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

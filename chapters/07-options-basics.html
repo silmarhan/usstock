@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股期权入门：Call和Put的权利、内在价值与时间价值、Delta/Gamma/Theta/Vega四个希腊字母、隐含波动率IV与波动率崩塌——从零理解期权定价原理。">
+  <meta name="base-url" content="../">
+  <title>第 07 章：期权原理与希腊字母 · 读懂美股</title>  <meta property="og:title" content="第 07 章：期权原理与希腊字母 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch07-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+<div class="reading-progress"></div>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-mark">US</span>读懂美股</a>
+    <nav><ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="07-options-basics.html" class="active">第 07 章</a></li>
+      <li><a href="../glossary.html">术语表</a></li>
+    </ul></nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="chapter-layout">
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html" class="active"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+    <div class="chapter-hero">
+      <img src="../assets/images/ch07-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 07 · Options &amp; The Greeks</span>
+          <h1 class="hero-title">期权原理与希腊字母</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+      <p class="lead">假设你看好苹果下个月的财报，但又怕买错了亏钱。有没有一种工具，让你可以「押对方向大赚，押错方向损失有限」？有——这就是<strong data-term="期权">期权</strong>。它是美股市场上最强大也最容易被误用的工具，而理解它的关键，是先搞清楚那四个希腊字母到底在量什么。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">期权是什么：保险合约的炒股版</h2>
+
+      <p>要理解期权，最好的比喻是<strong>保险合约</strong>。</p>
+
+      <p>当你买了一份车险，你支付了一笔保费（权利金），换来了在特定期间内，如果汽车发生事故，保险公司按约定赔偿的权利。这个「赔偿权利」的触发条件是「出事故」，如果一整年平安无事，你的保费就「损耗」掉了。</p>
+
+      <p>期权的逻辑完全一样：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">保险合约</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">你（投保人）→ 支付保费 → 获得理赔权利<br>保险公司（承保人）→ 收取保费 → 承担赔付义务</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">期权合约</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">期权买方 → 支付权利金 → 获得买卖权利（无义务）<br>期权卖方 → 收取权利金 → 承担履约义务</div>
+        </div>
+      </div>
+
+      <p>期权最核心的特征：<strong>买方享有权利但没有义务，卖方收了钱就必须履约。</strong></p>
+
+      <p>每一份美股期权合约的标准规格：</p>
+      <ul class="key-points">
+        <li><strong>标的资产：</strong>对应的股票或ETF（如AAPL期权对应苹果股票）</li>
+        <li><strong>合约乘数：</strong>1份期权 = 100股的权利（所以实际成本要 × 100）</li>
+        <li><strong>执行价（Strike Price）：</strong>约定的买卖价格，到期时以此价格执行</li>
+        <li><strong>到期日（Expiration Date）：</strong>合约失效的日期，美股期权通常到期于周五</li>
+        <li><strong>权利金（Premium）：</strong>购买期权支付的价格，这是买方的最大损失，也是卖方的最大收益</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>期权不是赌博，但可以被用来赌博。</strong>期权既可以用来对冲风险（降低波动），也可以被用来极度放大杠杆。理解原理才能知道自己在做什么。在此之前，请不要把超过你能承受损失的资金投入期权交易。</div>
+      </div>
+
+      <!-- ── Section 2 ── -->
+      <h2 id="s2">Call 和 Put：两种基础权利</h2>
+
+      <p>期权只有两种基础类型：看涨期权（Call）和看跌期权（Put）。</p>
+
+      <h3>看涨期权（Call Option）</h3>
+
+      <p>Call 赋予你<strong>以约定价格「买入」100股股票的权利</strong>（注意：是权利，不是义务）。</p>
+
+      <p>一个具体的例子：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">真实案例：AAPL Call</div>
+        <div class="data-card-value">AAPL $190 Call，到期日 30 天后，权利金 $3.50/股</div>
+        <div class="data-card-sub">
+          你支付：$3.50 × 100 = <strong>$350</strong>（这是你的最大损失）<br><br>
+          情景 A：30天后 AAPL 涨到 $210<br>
+          → 你有权以 $190 买入，立即卖出市价 $210，每股利润 $20<br>
+          → 减去权利金 $3.50，净利润 = $16.50/股 × 100 = <strong>$1,650</strong>（投入$350，回报372%！）<br><br>
+          情景 B：30天后 AAPL 跌到 $180<br>
+          → 执行价$190高于市价$180，没有人会愿意以$190买股票<br>
+          → 期权作废，损失权利金 = <strong>$350</strong>（仅此而已，不会亏更多）
+        </div>
+      </div>
+
+      <p>Call 的盈亏特征：<strong>最大损失 = 权利金（有限）；最大利润 = 理论上无上限（因为股价可以无限涨）。</strong>这是为什么期权买方有不对称的风险收益结构。</p>
+
+      <h3>看跌期权（Put Option）</h3>
+
+      <p>Put 赋予你<strong>以约定价格「卖出」100股股票的权利</strong>。Put 在两种情景下有用：</p>
+      <ul class="key-points">
+        <li><strong>做空股票：</strong>你认为苹果要跌，买 Put 如果苹果下跌，你的 Put 升值。这是不持有股票也能从下跌中获利的方式。</li>
+        <li><strong>为持仓保险：</strong>你已经持有苹果1000股，担心短期下跌，买几份 Put 对冲——就像给持仓买了保险。这就是机构投资者常用的「保护性 Put」。</li>
+      </ul>
+
+      <div class="data-card">
+        <div class="data-card-label">真实案例：AAPL Put（保护性用途）</div>
+        <div class="data-card-value">持有 AAPL 100股（成本$190），买入 AAPL $185 Put，权利金 $2.80</div>
+        <div class="data-card-sub">
+          如果 AAPL 跌到 $160：<br>
+          → 股票亏损：（$190 − $160）× 100 = -$3,000<br>
+          → Put 获利：（$185 − $160）× 100 = +$2,500，减去权利金 $280 = +$2,220<br>
+          → 净亏损：-$3,000 + $2,220 = <strong>-$780</strong>（而不是 -$3,000）<br>
+          这份 Put 把损失从 $3,000 压缩到了 $780——保险发挥作用了。
+        </div>
+      </div>
+
+      <h3>价值状态：ITM、ATM、OTM</h3>
+
+      <p>期权相对于标的股价的位置，用三个术语描述：</p>
+
+      <table class="glossary-table" style="margin:var(--sp-8) 0;">
+        <thead><tr><th>状态</th><th>英文缩写</th><th>Call 的含义</th><th>Put 的含义</th></tr></thead>
+        <tbody>
+          <tr><td>价内</td><td class="en-term">ITM（In-the-money）</td><td>股价 &gt; 执行价（可以立即盈利行权）</td><td>股价 &lt; 执行价（可以立即盈利行权）</td></tr>
+          <tr><td>平价</td><td class="en-term">ATM（At-the-money）</td><td>股价 ≈ 执行价（最接近当前股价）</td><td>股价 ≈ 执行价</td></tr>
+          <tr><td>价外</td><td class="en-term">OTM（Out-of-the-money）</td><td>股价 &lt; 执行价（不值得行权）</td><td>股价 &gt; 执行价（不值得行权）</td></tr>
+        </tbody>
+      </table>
+
+      <p>OTM 期权最便宜（纯时间价值），杠杆最高但到期归零的概率也最大——这是大多数散户亏钱的地方。ATM 期权Delta最接近0.5，对股价变动最敏感，流动性通常最好。ITM 期权最贵，但更接近直接持有股票的感觉，杠杆相对小。</p>
+
+      <!-- ── Section 3 ── -->
+      <h2 id="s3">内在价值与时间价值</h2>
+
+      <p>期权的权利金（价格）由两个部分构成，理解这两个部分，是理解期权定价的基础：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">内在价值（Intrinsic Value）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">如果<em>立即</em>行权能得到的价值。<br><br>Call 内在价值 = max(0, 股价 − 执行价)<br>Put 内在价值 = max(0, 执行价 − 股价)<br><br>OTM 期权的内在价值永远为零。只有 ITM 期权有内在价值。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">时间价值（Time Value / Extrinsic Value）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">= 权利金总价 − 内在价值<br><br>代表市场对「未来可能性」的定价——期权还有时间，股价还有可能朝有利方向移动。时间越长、波动率越高，时间价值越大。到期日时，时间价值归零。</div>
+        </div>
+      </div>
+
+      <p>一个具体例子：AAPL 当前股价 <span class="data-num">$195</span>，持有 AAPL $190 Call（价内），权利金 <span class="data-num">$8.20</span>。</p>
+      <ul class="key-points">
+        <li><strong>内在价值</strong> = $195 − $190 = <span class="data-num">$5.00</span></li>
+        <li><strong>时间价值</strong> = $8.20 − $5.00 = <span class="data-num">$3.20</span></li>
+        <li>这 $3.20 是市场愿意为「未来30天内苹果可能继续涨」支付的溢价。</li>
+      </ul>
+
+      <div class="pull-quote">
+        <p>期权的时间价值就像冰块——每天都在融化，只是你感觉不到它在流失，直到到期日前夕。</p>
+        <cite>— 期权交易员格言</cite>
+      </div>
+
+      <!-- ── Section 4 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch07-inline-1.png" alt="期权价值分解：内在价值 + 时间价值" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>期权价值分解：内在价值 + 时间价值</figcaption>
+      </figure>
+
+      <h2 id="s4">Delta：期权的「方向感」</h2>
+
+      <p><span data-term="Delta">Delta（Δ）</span>是最重要的希腊字母，也是最直观的。它告诉你：<strong>当标的股价变动 $1 时，期权价格大约会变动多少。</strong></p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">Call 的 Delta</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">范围：0 到 +1<br><br>Delta = 0.50（ATM Call）：股价涨$1，期权涨$0.50<br>Delta = 0.80（深度ITM Call）：股价涨$1，期权涨$0.80<br>Delta = 0.10（深度OTM Call）：股价涨$1，期权涨$0.10</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Put 的 Delta</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">范围：0 到 −1<br><br>Delta = −0.50（ATM Put）：股价涨$1，期权跌$0.50<br>Delta = −0.80（深度ITM Put）：股价涨$1，期权跌$0.80<br>Delta = −0.10（深度OTM Put）：股价涨$1，期权跌$0.10</div>
+        </div>
+      </div>
+
+      <p>Delta 还有第二层含义：<strong>期权到期时处于价内（ITM）的概率近似值。</strong>Delta = 0.30 的 Call，大约有30%的概率在到期时股价在执行价以上（使期权有价值）。这对期权策略的风险评估非常有用。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">Delta 的实际应用示例</div>
+        <div class="data-card-value">你买了 AAPL $190 Call，Delta = 0.55，权利金 $5.00</div>
+        <div class="data-card-sub">
+          苹果股价从 $190 涨到 $195（涨 $5）：<br>
+          → 期权价格变化 ≈ 0.55 × $5 = +$2.75（理论值，实际略有差异因Gamma）<br>
+          → 新期权价格约 $7.75<br>
+          → 一份合约（100股）：盈利 $275，投入 $500，回报率 = <span class="data-up">+55%</span><br>
+          → 同样的$5涨幅，直接持股100股回报 $500，但需要投入 $19,000<br>
+          → 期权杠杆效应：相同资本，期权回报率远高于直接持股
+        </div>
+      </div>
+
+      <p>一个叫做「Delta对冲（Delta Hedging）」的概念：如果你持有 Delta = 0.50 的 Call（一份合约 = 100股），你的期权仓位等同于持有 50 股的多头暴露。如果你做空 50 股来对冲，你的 Delta 就接近于 0（市场中性）——这是机构交易台常用的风险管理方法。</p>
+
+      <!-- ── Section 5 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch07-inline-2.png" alt="Delta：期权的方向感" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>Delta：期权的方向感</figcaption>
+      </figure>
+
+      <h2 id="s5">Gamma、Theta、Vega：其他三个希腊字母</h2>
+
+      <p>如果说 Delta 是方向，那么另外三个希腊字母告诉你这个方向有多「不稳定」、「时间有多贵」，以及「波动率有多重要」。</p>
+
+      <div class="section-rule"><span>希腊字母模拟器</span></div>
+
+      <div class="tool-container" id="greeks-sim-tool">
+        <div class="tool-header">
+          <div class="tool-title-group">
+            <div class="tool-icon">🔢</div>
+            <div><div class="tool-name">希腊字母模拟器</div><div class="tool-desc">Options Greeks Simulator</div></div>
+          </div>
+        </div>
+        <div class="tool-form">
+          <div class="tool-form-row">
+            <div class="tool-field">
+              <label class="tool-label">标的股价 S ($)</label>
+              <input type="range" id="gs-stock" min="80" max="120" value="100" step="1">
+              <div class="tool-slider-labels"><span>$80</span><span class="tool-slider-value" id="gs-stock-val">$100</span><span>$120</span></div>
+            </div>
+            <div class="tool-field">
+              <label class="tool-label">执行价 K ($)</label>
+              <input type="range" id="gs-strike" min="80" max="120" value="100" step="1">
+              <div class="tool-slider-labels"><span>$80</span><span class="tool-slider-value" id="gs-strike-val">$100</span><span>$120</span></div>
+            </div>
+          </div>
+          <div class="tool-form-row">
+            <div class="tool-field">
+              <label class="tool-label">到期天数 T (DTE)</label>
+              <input type="range" id="gs-days" min="1" max="90" value="30" step="1">
+              <div class="tool-slider-labels"><span>1天</span><span class="tool-slider-value" id="gs-days-val">30天</span><span>90天</span></div>
+            </div>
+            <div class="tool-field">
+              <label class="tool-label">隐含波动率 IV (%)</label>
+              <input type="range" id="gs-iv" min="5" max="100" value="30" step="1">
+              <div class="tool-slider-labels"><span>5%</span><span class="tool-slider-value" id="gs-iv-val">30%</span><span>100%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="greeks-grid" id="greeks-display">
+          <div class="greek-card"><div class="greek-name"><span class="greek-symbol">Δ</span> Delta</div><div class="greek-value" id="g-delta">0.50</div><div class="greek-desc">股价每涨$1，期权价格变化量</div></div>
+          <div class="greek-card"><div class="greek-name"><span class="greek-symbol">Γ</span> Gamma</div><div class="greek-value" id="g-gamma">0.04</div><div class="greek-desc">Delta 的变化速率</div></div>
+          <div class="greek-card"><div class="greek-name"><span class="greek-symbol">Θ</span> Theta</div><div class="greek-value" id="g-theta">-0.05</div><div class="greek-desc">每过一天，期权损耗的价值</div></div>
+          <div class="greek-card"><div class="greek-name"><span class="greek-symbol">ν</span> Vega</div><div class="greek-value" id="g-vega">0.18</div><div class="greek-desc">IV每升1%，期权价格变化量</div></div>
+        </div>
+      </div>
+
+      <h3>Gamma（Γ）—— Delta 的加速度</h3>
+
+      <p>Gamma 衡量的是 Delta 的变化速率：当股价移动 $1 时，Delta 会改变多少。可以把它想象成物理学里的「加速度」（而 Delta 是速度）。</p>
+
+      <p>Gamma 在 ATM 期权（执行价 ≈ 股价）和临近到期时最高。高 Gamma 意味着：</p>
+      <ul class="key-points">
+        <li><strong>对买方来说是机会：</strong>股价移动时，Delta 迅速增大，期权价值加速上涨（正向 Gamma 暴露）。</li>
+        <li><strong>对卖方来说是危险：</strong>如果你卖出了 ATM 期权，股价大幅波动会让你的亏损以加速度扩大——这就是「Gamma 风险」。</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>零日期权（0DTE）的危险：</strong>到期当天的 ATM 期权 Gamma 极高，价格变动极其剧烈——股价移动1%，期权可能翻倍或归零。很多散户把 0DTE 期权当「彩票」玩，是高度投机行为，不适合初学者。</div>
+      </div>
+
+      <h3>Theta（Θ）—— 时间是买方的敌人</h3>
+
+      <p><span data-term="Theta">Theta</span> 衡量每过一天，期权价格自然损耗多少（时间衰减）。对于买方，Theta 是负数——你每天「坐」在一个融化中的冰块上。</p>
+
+      <p>关键事实：</p>
+      <ul class="key-points">
+        <li>Theta 在临近到期时<strong>加速</strong>：30天到期的期权可能每天损耗$0.05，但同样的期权在最后7天可能每天损耗$0.15以上。</li>
+        <li>期权卖方（Seller）是 Theta 的受益者——只要股价不大幅移动，时间每过一天，他们的利润就增加一点。</li>
+        <li>这就是为什么很多专业交易者更喜欢<em>卖期权</em>（赚时间价值）而不是买期权（抵抗时间衰减）。</li>
+      </ul>
+
+      <div class="data-card">
+        <div class="data-card-label">Theta 的实际影响</div>
+        <div class="data-card-value">ATM Call，30天到期，权利金 $4.00，Theta = −$0.08/天</div>
+        <div class="data-card-sub">
+          如果苹果股价一动不动，静静地过了10天：<br>
+          → 期权价值约减少 0.08 × 10 = $0.80<br>
+          → 新价格约 $3.20（跌了20%）<br>
+          → 而苹果股票一分没变！<br>
+          这就是为什么「方向对了但还是亏钱」的情况时有发生——时间吃掉了你的利润。
+        </div>
+      </div>
+
+      <h3>Vega（ν）—— 波动率的定价</h3>
+
+      <p><span data-term="Vega">Vega</span> 衡量隐含波动率（IV）每变动 1%，期权价格的变化量。Vega 对于买卖双方都是双刃剑，但其最重要的实际应用，是理解<strong>财报前后的IV变化</strong>。</p>
+
+      <p>当 Vega = 0.15，这意味着：</p>
+      <ul class="key-points">
+        <li>IV 从30% 涨到 31% → 期权价格上涨约 <span class="data-up">$0.15</span></li>
+        <li>IV 从30% 跌到 29% → 期权价格下跌约 <span class="data-down">$0.15</span></li>
+      </ul>
+
+      <!-- ── Section 6 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch07-inline-4.png" alt="Theta 时间衰减：沙漏在倒计时" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>Theta 时间衰减：沙漏在倒计时</figcaption>
+      </figure>
+
+      <h2 id="s6">隐含波动率（IV）：期权价格的灵魂</h2>
+
+      <p><span data-term="隐含波动率">隐含波动率</span>（Implied Volatility，IV）是期权定价中最复杂也最重要的变量。简单说：<strong>IV 越高，期权越贵；IV 越低，期权越便宜。</strong></p>
+
+      <p>IV 不是历史波动率（过去发生了什么），而是市场参与者对<em>未来</em>波动的预期——从期权价格反推出来的数值。当市场预期某只股票即将大幅波动（如财报前），期权买家愿意付更高权利金，IV 随之上升。</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">低IV（&lt; 20%）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">市场认为未来波动不大，期权便宜。这时候是期权买方的好时机——你用低价买到了潜在的大波动机会。反之，卖期权可能收益有限。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">高IV（&gt; 50%）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">市场预期剧烈波动，期权非常贵。这时候是期权卖方的机会——收取高额权利金。但高IV也可能是真实大事件（财报、并购、监管）前的合理定价，不要轻易逆势卖。</div>
+        </div>
+      </div>
+
+      <h3>IV Crush：财报后的波动率崩塌</h3>
+
+      <p>这是期权新手最容易踩的坑之一。以苹果财报为例：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">IV Crush · 波动率崩塌 典型案例</div>
+        <div class="data-card-value">财报前：AAPL IV = 65%；财报后：AAPL IV = 28%</div>
+        <div class="data-card-sub">
+          财报前一天：你买入 AAPL ATM Call，花了 $8.50<br>
+          财报后：苹果EPS超预期，股价从$190涨到$196（涨3%）<br><br>
+          你以为赚到了——但期权价格从$8.50变成了……$5.20<br><br>
+          发生了什么？IV从65%暴跌到28%（崩塌了37个百分点）<br>
+          IV崩塌损失 ≈ 0.18（Vega）× 37 = −$6.66，抵消了Delta带来的+$3.30，<br>
+          最终你<span class="data-down">亏损了 $330</span>——尽管苹果如你预料地上涨了！
+        </div>
+      </div>
+
+      <p>这就是「方向对了，还是亏钱」的最经典场景。<strong>财报前 IV 高企，是期权卖方而非买方的机会。</strong>专业的期权交易者在财报前往往会卖出跨式期权（Straddle/Strangle），赚取 IV Crush 带来的时间价值收益。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>如何查 IV Rank（IV 排名）？</strong>很多期权平台（如 tastytrade、Think or Swim）都会显示 IV Rank（当前IV在过去52周区间中的百分位）。IV Rank &gt; 50 说明IV处于历史偏高位置，卖方有优势；IV Rank &lt; 30 说明IV低，买方相对合适。</div>
+      </div>
+
+      <p>最后，把四个希腊字母串起来，用一个公式理解期权价格的变动：</p>
+
+      <p style="font-family:var(--font-mono);background:var(--surface-2);padding:var(--sp-4) var(--sp-6);border-radius:var(--radius-md);border-left:3px solid var(--amber);color:var(--ink-primary);line-height:2;">
+        期权价格变化 ≈<br>
+        <strong>Δ × ΔS</strong>（Delta × 股价变化）<br>
+        + <strong>½Γ × ΔS²</strong>（Gamma 二阶影响）<br>
+        + <strong>Θ × Δt</strong>（Theta × 时间流逝）<br>
+        + <strong>ν × ΔIV</strong>（Vega × 波动率变化）
+      </p>
+
+      <p>这不需要死记，理解它的含义就好：期权价格受到<em>方向、加速度、时间和波动率</em>四个维度的共同影响。这正是期权比直接买股票复杂，但也更灵活的原因。</p>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>期权 = 保险合约的炒股版。买方支付权利金，获得权利但无义务；卖方收权利金，承担义务。买方最大损失 = 权利金（有限），最大获利理论上无限。</li>
+          <li>Call 赋予「买入」权利（看涨），Put 赋予「卖出」权利（看跌/对冲）。每份合约对应100股，价格要乘以100。</li>
+          <li>期权价格 = 内在价值 + 时间价值。OTM期权全是时间价值，到期归零；ITM期权有内在价值。</li>
+          <li>Delta（0~1 for Call）= 股价每变动$1，期权变动多少，也近似代表到期ITM的概率。</li>
+          <li>Gamma = Delta的变化速率，ATM和临近到期时最高。高Gamma对买方是机会，对卖方是风险。</li>
+          <li>Theta = 每日时间衰减，对买方是持续损耗（负数）。越临近到期，Theta越大（加速侵蚀）。</li>
+          <li>IV Crush是新手最大的坑：财报前IV高，财报后IV暴跌，即使方向对了也可能亏钱。财报前是卖方策略，不是买方策略。</li>
+        </ul>
+      </div>
+
+      <div class="section-rule"><span>关键术语</span></div>
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>期权</td><td class="en-term">Option</td><td>以约定价格买卖标的资产的权利合约</td></tr>
+          <tr><td>看涨期权</td><td class="en-term">Call Option</td><td>赋予持有人以执行价买入100股的权利</td></tr>
+          <tr><td>看跌期权</td><td class="en-term">Put Option</td><td>赋予持有人以执行价卖出100股的权利</td></tr>
+          <tr><td>执行价</td><td class="en-term">Strike Price</td><td>期权合约中约定的买卖价格</td></tr>
+          <tr><td>权利金</td><td class="en-term">Premium</td><td>购买期权支付的价格，是买方最大损失</td></tr>
+          <tr><td>到期日</td><td class="en-term">Expiration Date</td><td>期权合约失效的日期，美股通常为周五</td></tr>
+          <tr><td>内在价值</td><td class="en-term">Intrinsic Value</td><td>立即行权可获得的价值，OTM期权为零</td></tr>
+          <tr><td>时间价值</td><td class="en-term">Time Value / Extrinsic Value</td><td>权利金减去内在价值，随时间流逝衰减</td></tr>
+          <tr><td>Delta</td><td class="en-term">Delta（Δ）</td><td>股价变$1时期权价格的变化量；也约等于到期ITM概率</td></tr>
+          <tr><td>Gamma</td><td class="en-term">Gamma（Γ）</td><td>Delta的变化速率，ATM和临近到期时最高</td></tr>
+          <tr><td>Theta</td><td class="en-term">Theta（Θ）</td><td>每日时间衰减，对买方是损耗，对卖方是收益</td></tr>
+          <tr><td>Vega</td><td class="en-term">Vega（ν）</td><td>IV每变动1%，期权价格的变化量</td></tr>
+          <tr><td>隐含波动率</td><td class="en-term">Implied Volatility（IV）</td><td>从期权价格反推的市场对未来波动的预期</td></tr>
+          <tr><td>波动率崩塌</td><td class="en-term">IV Crush</td><td>财报等事件后IV骤降，导致期权价格暴跌</td></tr>
+        </tbody>
+      </table>
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch07-inline-3.png" alt="隐含波动率微笑曲线" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>隐含波动率微笑曲线</figcaption>
+      </figure>
+
+
+      <div class="quiz-section" data-chapter="07">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">4 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="1" data-explain="Call（看涨期权）赋予持有人在到期日前，以执行价（Strike Price）买入100股标的股票的权利——注意是权利，不是义务。如果股价没涨过执行价，你可以选择不行权，最大损失就是你支付的权利金。">
+            <p class="quiz-q-text">购买一份 Call Option（看涨期权），赋予了你什么权利？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>以约定价格卖出100股股票的义务</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>以约定执行价买入100股股票的权利（非义务）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>收取权利金并承担标的股票下跌风险</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>以市价卖出任意数量股票的权利</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="Theta 代表每日时间衰减——对期权买方来说是负数，每天持有都会损失一点时间价值（即使股价不动）。就像持有一块融化中的冰，时间越长损耗越多，且越临近到期损耗越快。这是期权买方面对的最大「隐性成本」。">
+            <p class="quiz-q-text">Theta 为负（如 −$0.08/天）对期权买方意味着什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>股价每涨$1，期权价格跌$0.08</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>每过一天，期权因时间流逝自然损耗$0.08的价值</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>当IV下降1%，期权跌$0.08</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>这是卖方每天要支付给买方的补偿</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="2" data-explain="Delta = 0.70 意味着当标的股价上涨$1时，期权价格大约上涨$0.70。所以股价从$100涨到$101（涨$1），持有一份合约（100股）的期权价格变动 = 0.70 × $1 × 100 = $70。这就是Delta衡量的「方向敏感度」。">
+            <p class="quiz-q-text">一份 Call 期权的 Delta = 0.70，当标的股票上涨 $1 时，该期权价格大约变化多少？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>上涨 $1.00</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>上涨 $0.07</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>上涨 $0.70</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>上涨 $7.00</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="2" data-explain="财报前，市场对股价的不确定性很高，期权买家愿意支付更多来押注方向，推动隐含波动率（IV）上升，期权价格变贵。财报发布后，不确定性消除，IV迅速回落（IV Crush），即使股价如预期涨跌，期权价格也可能因IV崩塌而大幅缩水——这是新手最常踩到的坑。">
+            <p class="quiz-q-text">一家公司财报发布前，其期权的隐含波动率（IV）通常会发生什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>IV会大幅下降，期权变便宜</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>IV完全不受财报影响</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>IV通常会上升，期权变贵</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>IV只影响Put，不影响Call</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <nav class="chapter-nav-footer">
+      <a href="06-sectors-macro.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">板块轮动与宏观</span>
+      </a>
+      <a href="08-options-strategies.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">期权策略实战</span>
+      </a>
+    </nav>
+  </main>
+
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">期权是什么</a></li>
+      <li><a href="#s2">Call 和 Put</a></li>
+      <li><a href="#s3">内在价值与时间价值</a></li>
+      <li><a href="#s4">Delta：方向感</a></li>
+      <li><a href="#s5">Gamma、Theta、Vega</a></li>
+      <li><a href="#s6">隐含波动率（IV）</a></li>
+    </ul>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+<script src="../assets/js/tools/greeks-sim.js"></script>
+</body>
+</html>

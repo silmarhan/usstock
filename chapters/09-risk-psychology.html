@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="仓位管理与投资心理：1%规则、Kelly公式、止损艺术、损失厌恶、确认偏误——用行为金融学和量化工具帮你建立理性的交易系统。">
+  <meta name="base-url" content="../">
+  <title>第 09 章：仓位管理与投资心理 · 读懂美股</title>  <meta property="og:title" content="第 09 章：仓位管理与投资心理 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch09-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+
+<div class="reading-progress"></div>
+
+<!-- ── Nav ── -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="09-risk-psychology.html" class="active">第 09 章</a></li>
+        <li><a href="../glossary.html">术语表</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Chapter Layout ── -->
+<div class="chapter-layout">
+
+  <!-- Sidebar -->
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html" class="active"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="chapter-content">
+
+    <!-- Hero -->
+    <div class="chapter-hero">
+      <img src="../assets/images/ch09-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 09 · Risk Management &amp; Psychology</span>
+          <h1 class="hero-title">仓位管理与投资心理</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+
+      <!-- Lead -->
+      <p class="lead">斯坦利·德鲁肯米勒是史上最成功的宏观交易员之一，年化收益 30% 长达 30 年。他曾坦言："我亏钱的时候，仓位总是太大；赚钱的时候，仓位总是太小。"——这句话道出了一个残酷的真相：选股能力只是成功的一半，风险管理才是决定你最终命运的另一半。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">为什么大多数人亏钱——不是因为选错股</h2>
+
+      <p>散户投资者中，亏钱的比例高得惊人。各国证券监管机构的数据显示，活跃交易的散户中，超过 <span class="data-num">70%</span> 在 5 年内跑输大盘指数，超过 <span class="data-num">50%</span> 的日内交易者在一年内亏损。</p>
+
+      <p>有趣的是，很多亏钱的人选股能力并不差。他们选的股票中有 60% 是上涨的——但他们依然亏钱了。为什么？</p>
+
+      <p>原因有两个：</p>
+
+      <ul class="key-points">
+        <li><strong>仓位失控：</strong>赚钱的仓位太小（只买了 1%），亏钱的仓位太大（买了 30%），几笔大亏抵消了所有小赚。</li>
+        <li><strong>行为偏差：</strong>赚了 10% 就迫不及待卖出"锁定利润"，亏了 30% 却死扛着"等它回来"——这是大脑的默认程序，但恰好与正确做法完全相反。</li>
+      </ul>
+
+      <div class="pull-quote">
+        <p>我从未见过一个仅靠选股就能长期跑赢市场的人。但我见过很多靠风险管理在普通选股水平下取得优秀回报的人。</p>
+        <cite>— Paul Tudor Jones，传奇宏观对冲基金经理</cite>
+      </div>
+
+      <p>本章的目的，就是帮你建立一套可以量化执行的风险管理体系，同时认识大脑中那些会在关键时刻出卖你的心理偏差。</p>
+
+      <!-- ── Section 2 ── -->
+      <h2 id="s2">仓位管理：1% 规则与 Kelly 公式</h2>
+
+      <h3>1% 规则：生存第一</h3>
+
+      <p><span data-term="仓位管理">1% 规则</span>（或 2% 规则）是最简单、最有效的风险管理原则：<strong>任何单笔交易，你愿意承受的最大亏损不超过账户总资金的 1%～2%。</strong></p>
+
+      <div class="data-card">
+        <div class="data-card-label">示例：$100,000 账户</div>
+        <div class="data-card-value">单笔最大风险 = $1,000（1% 规则）</div>
+        <div class="data-card-sub">若你以 $100 买入某股票，设置止损在 $95（下跌 5%），则你最多能买 $1,000 ÷ $5 = 200 股 = $20,000 的仓位。这意味着该仓位占账户的 20%——控制的是风险，不是仓位大小。</div>
+      </div>
+
+      <p>为什么是 1%？让我们看看不同风险比例下，连续亏损的后果：</p>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>单笔风险</th><th>连续亏 10 笔后损失</th><th>回本需要涨幅</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1%</td><td>账户剩余 <span class="data-num">90.4%</span></td><td>仅需 <span class="data-up">+10.7%</span></td></tr>
+          <tr><td>2%</td><td>账户剩余 <span class="data-num">81.7%</span></td><td>需 <span class="data-down">+22.4%</span></td></tr>
+          <tr><td>5%</td><td>账户剩余 <span class="data-num">59.9%</span></td><td>需 <span class="data-down">+66.9%</span></td></tr>
+          <tr><td>10%</td><td>账户剩余 <span class="data-num">34.9%</span></td><td>需 <span class="data-down">+187%</span>，几乎不可能</td></tr>
+        </tbody>
+      </table>
+
+      <p>亏损越深，回本越难。1% 规则让你即使连输 20 笔，账户还剩 <span class="data-num">81.8%</span>，仍然有机会翻盘。而 10% 规则连输 10 笔后，你就永久退出市场了。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>核心理念：生存优先于盈利。</strong>即使你的选股胜率只有 50%，只要每次亏损都控制在 1%，你就能在市场上存活足够长，等待那些大机会到来。不能在市场里活下去，胜率再高也没有意义。</div>
+      </div>
+
+      <h3>Kelly 公式：数学最优仓位</h3>
+
+      <p><span data-term="Kelly公式">Kelly 公式</span>由贝尔实验室科学家 John Kelly 于 1956 年提出，最初用于信息传输理论，后来被赌场玩家和投资者广泛采用。它能告诉你，在已知胜率和盈亏比的条件下，数学上最优的仓位比例是多少。</p>
+
+      <p>公式如下：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">Kelly 公式</div>
+        <div class="data-card-value" style="font-family: var(--font-mono); font-size: var(--ts-lg);">f* = p − (1 − p) / b</div>
+        <div class="data-card-sub">f* = 最优仓位比例；p = 历史胜率（赢的概率）；b = 平均盈亏比（平均每次盈利 / 平均每次亏损）</div>
+      </div>
+
+      <h3>Kelly 公式实例</h3>
+
+      <p>假设你通过回测，发现你的交易系统：</p>
+      <ul class="key-points">
+        <li>历史胜率：<span class="data-num">55%</span>（100 笔交易中有 55 笔盈利）</li>
+        <li>平均盈利：<span class="data-up">$1,000</span></li>
+        <li>平均亏损：<span class="data-down">$500</span></li>
+        <li>平均盈亏比 b = 1,000 / 500 = <span class="data-num">2</span></li>
+      </ul>
+
+      <p>代入 Kelly 公式：</p>
+      <p style="font-family: var(--font-mono); font-size: 1.05em; padding: var(--sp-4) var(--sp-6); background: var(--surface-raised); border-radius: var(--radius-md); margin: var(--sp-4) 0;">f* = 0.55 − (1 − 0.55) / 2 = 0.55 − 0.225 = <strong>0.325</strong></p>
+
+      <p>Kelly 公式建议你每次使用 <span class="data-num">32.5%</span> 的资金进行交易。但实战中，大多数投资者使用"<strong>半 Kelly</strong>"（Half-Kelly），即 16.25%，原因如下：</p>
+
+      <ul class="key-points">
+        <li>Kelly 公式假设你的胜率和盈亏比是精确的——现实中它们都是估算值，有误差</li>
+        <li>满 Kelly 的账户波动极大，心理上很难坚持</li>
+        <li>半 Kelly 将长期增长率降低约 25%，但将账户波动降低约 50%——这是合理的权衡</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>Kelly 为负数意味着：不要做这笔交易。</strong>如果 f* 计算结果为负（比如胜率 40%，盈亏比 1）：f* = 0.40 − 0.60/1 = −0.20。负值意味着这个策略长期必然亏钱，Kelly 公式告诉你不要入场，立刻停止。</div>
+      </div>
+
+      <!-- ── Tool ── -->
+      <div class="section-rule"><span>工具 · 仓位计算器</span></div>
+
+      <div class="tool-container" id="position-sizer-tool">
+        <div class="tool-header">
+          <div class="tool-title-group">
+            <div class="tool-icon">🧮</div>
+            <div>
+              <div class="tool-name">仓位计算器</div>
+              <div class="tool-desc">Position Sizer &amp; Kelly Calculator</div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-tabs">
+          <button class="tool-tab active" data-tab="fixed">固定风险</button>
+          <button class="tool-tab" data-tab="kelly">Kelly 公式</button>
+        </div>
+        <div id="ps-tab-fixed" class="tool-form">
+          <div class="tool-form-row">
+            <div class="tool-field">
+              <label class="tool-label">总账户资金 ($)</label>
+              <input type="number" class="tool-input" id="ps-capital" value="100000" step="1000">
+            </div>
+            <div class="tool-field">
+              <label class="tool-label">单笔最大风险 (%)</label>
+              <input type="number" class="tool-input" id="ps-risk-pct" value="1" step="0.5" min="0.5" max="5">
+            </div>
+          </div>
+          <div class="tool-form-row">
+            <div class="tool-field">
+              <label class="tool-label">入场价 ($)</label>
+              <input type="number" class="tool-input" id="ps-entry" value="100" step="0.5">
+            </div>
+            <div class="tool-field">
+              <label class="tool-label">止损价 ($)</label>
+              <input type="number" class="tool-input" id="ps-stop" value="95" step="0.5">
+            </div>
+          </div>
+        </div>
+        <div id="ps-tab-kelly" class="tool-form" style="display:none;">
+          <div class="tool-form-row">
+            <div class="tool-field">
+              <label class="tool-label">历史胜率 (%)</label>
+              <input type="number" class="tool-input" id="ps-winrate" value="55" min="1" max="99">
+            </div>
+            <div class="tool-field">
+              <label class="tool-label">平均盈亏比 (win/loss)</label>
+              <input type="number" class="tool-input" id="ps-ratio" value="2" step="0.1" min="0.1">
+            </div>
+          </div>
+          <div class="tool-field">
+            <label class="tool-label">总账户资金 ($)</label>
+            <input type="number" class="tool-input" id="ps-kelly-capital" value="100000" step="1000">
+          </div>
+        </div>
+        <div class="position-breakdown" id="ps-result">
+          <div class="position-row"><span class="position-row-label">最大风险金额</span><span class="position-row-value" id="ps-r-risk">$1,000</span></div>
+          <div class="position-row"><span class="position-row-label">建议买入股数</span><span class="position-row-value highlight" id="ps-r-shares">200 股</span></div>
+          <div class="position-row"><span class="position-row-label">持仓总价值</span><span class="position-row-value" id="ps-r-value">$20,000</span></div>
+          <div class="position-row"><span class="position-row-label">占总资金比例</span><span class="position-row-value" id="ps-r-pct">20.0%</span></div>
+        </div>
+      </div>
+
+      <!-- ── Section 3 ── -->
+      <h2 id="s3">止损的艺术——不是软弱，是纪律</h2>
+
+      <p>很多人在心理上抗拒止损，觉得那是"认输"，"割肉"，"给庄家送钱"。这种想法恰好颠倒了逻辑。<strong>止损是你事先设定的、理性的风险上限；不止损才是情绪驱动的、危险的行为。</strong></p>
+
+      <p>投资传奇人物 Jesse Livermore 说过：<em>"如果一笔交易的走势与我的判断相悖，我不会思考，我只是出场。我可以重新审视这只股票，但绝不是在持仓被套的时候。"</em></p>
+
+      <h3>止损设置的三种方法</h3>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">技术止损</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">设置在关键支撑位下方。比如股票在 $95 有强支撑，你以 $100 买入，止损设在 $93.50（支撑位下 1.5%）。支撑一旦破位，说明技术面发生了质变。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">百分比止损</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">从入场价向下 7–8%。适合没有明显技术支撑位的情况，或初学者作为通用规则。优点是简单，缺点是不考虑股票本身的波动幅度。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">ATR 波动率止损</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">止损设在入场价下方 2×ATR（平均真实波动范围）。高波动股止损更宽，低波动股止损更窄，适应性强，是专业交易者最常用的方法。</div>
+        </div>
+      </div>
+
+      <h3>ATR 止损详解</h3>
+
+      <p><span data-term="ATR">ATR</span>（Average True Range，平均真实波动范围）衡量的是股票过去 N 天（通常 14 天）平均每天的波动幅度。它告诉你这只股票"正常的日常波动"是多少。</p>
+
+      <p>如果一只股票 ATR = $3，你以 $100 买入，设置止损在 $100 − 2×$3 = <span class="data-num">$94</span>。这样的止损不会被日常的随机噪音触发，只有当价格真正出现超过正常范围的下跌时才触发。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>止损纪律的关键：</strong>止损点在进场前就设定，进场后不要随便下移（除非是向上移动以保护利润）。下移止损等于事后修改规则，是情绪决策，不是理性管理。</div>
+      </div>
+
+      <!-- ── Section 4 ── -->
+      <h2 id="s4">损失厌恶：大脑的默认设置是错的</h2>
+
+      <p>诺贝尔经济学奖得主、行为经济学之父 Daniel Kahneman 和 Amos Tversky 在 20 世纪 70 年代进行了一系列著名实验，发现了<span data-term="损失厌恶">损失厌恶</span>（Loss Aversion）这一人类大脑的基本特征：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">Kahneman 实验发现</div>
+        <div class="data-card-value">损失带来的痛苦，是等量收益带来的快乐的 2.5 倍</div>
+        <div class="data-card-sub">赚 $100 让你感到高兴；亏 $100 带来的痛苦却相当于你需要再赚 $250 才能弥补。这不是逻辑，这是进化写入人类基因的生存本能——在原始时代，失去往往意味着死亡。</div>
+      </div>
+
+      <p>在股票市场中，损失厌恶会导致两个具体的、高度危险的行为：</p>
+
+      <h3>1. 持有亏损仓位太久</h3>
+
+      <p>股票跌了 20%，你心里想："再等等，等它涨回来再卖。" 但是：</p>
+      <ul class="key-points">
+        <li>你当初买入时的价格（$100）对这只股票的<strong>现在</strong>完全没有意义</li>
+        <li>市场不知道也不在乎你的成本</li>
+        <li>判断是否应该继续持有的唯一标准是：<strong>如果你今天第一次看到这只股票，你还会买吗？</strong>如果答案是否，就应该卖出</li>
+      </ul>
+
+      <h3>2. 过早卖出盈利仓位</h3>
+
+      <p>股票涨了 15%，你开始坐立不安，担心"利润会跑掉"，于是急忙卖出"锁定利润"。但如果你的判断正确、基本面依然向好，你就切断了一棵正在生长的大树。</p>
+
+      <p>这两种行为合在一起，在行为金融学中被称为<span data-term="处置效应">处置效应</span>（Disposition Effect）：<strong>投资者系统性地过早卖掉赢家、过晚卖掉输家</strong>，导致组合中留下的都是垃圾、卖掉的都是珍宝。</p>
+
+      <div class="pull-quote">
+        <p>成功的秘诀是把亏损控制得小小的，让利润奔跑。</p>
+        <cite>— Ed Seykota，传奇商品交易员</cite>
+      </div>
+
+      <h3>如何对抗损失厌恶？</h3>
+
+      <p>对抗大脑默认程序的最好方法，是用<strong>预先承诺的规则</strong>代替临场情绪决策：</p>
+
+      <ul class="key-points">
+        <li>进场前写下止损价，设置好止损单，之后不再手动干预</li>
+        <li>用"如果今天第一次看到这只股票，我会买吗？"来判断是否继续持有，而不是"我当初花了多少钱"</li>
+        <li>设置移动止损（Trailing Stop），让利润有空间奔跑，同时防止大幅回撤</li>
+      </ul>
+
+      <!-- ── Section 5 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch09-inline-1.png" alt="心理偏差面具墙：损失厌恶、确认偏误、锚定效应" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>心理偏差面具墙：损失厌恶、确认偏误、锚定效应</figcaption>
+      </figure>
+
+      <h2 id="s5">确认偏误与锚定效应</h2>
+
+      <h3>确认偏误（Confirmation Bias）</h3>
+
+      <p><span data-term="确认偏误">确认偏误</span>是最普遍的认知偏差之一：我们倾向于寻找支持我们已有观点的信息，而无意识地忽略或贬低与我们观点相反的信息。</p>
+
+      <p>在股票投资中，这意味着：你买入了 NVDA，之后你只会关注看多 NVDA 的分析报告，而下意识地忽略那些指出风险的警告。你持有的时间越长，仓位越大，这种偏差就越严重——因为承认错误的心理代价越来越高。</p>
+
+      <p><strong>解决方案：主动寻找反面证据。</strong>在买入任何股票之前，先写下"至少三个这笔投资可能失败的理由"。这不是悲观主义，而是逼迫自己检验逻辑漏洞。如果找不出任何反对理由，往往说明你已经陷入了确认偏误。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>实战技巧：</strong>每月一次，专门花 30 分钟阅读与你持仓观点<em>相反</em>的分析报告。不是为了动摇自己，而是为了更全面地理解风险。如果对方的论点确实更有道理，那你应该感谢他们，而不是捍卫自己的"情感投入"。</div>
+      </div>
+
+      <h3>锚定效应（Anchoring Effect）</h3>
+
+      <p><span data-term="锚定效应">锚定效应</span>是指人们在做决策时，过度依赖第一个接触到的信息（"锚点"），使后续判断偏向锚点。</p>
+
+      <p>最经典的投资锚定场景：你以 $200 买入某股票，现在它跌到了 $140，你觉得它"跌得很多"，可能会"反弹回去"。但 $200 这个价格对当前的投资决策毫无意义——它只是你的成本，不是股票的内在价值。</p>
+
+      <p>另一个常见的锚定陷阱：股票从 $300 跌到 $150，你觉得它"打了折"，很便宜。但相对于什么"便宜"？如果内在价值只有 $80，那 $150 依然很贵。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">锚定效应的危险</div>
+        <div class="data-card-value">你的买入价格和股票的未来走势，毫无关系</div>
+        <div class="data-card-sub">市场不知道你的成本。判断一只股票是否值得持有，应基于当前的基本面、估值、催化剂和风险，而不是"我当时花了多少钱"。把成本从决策中彻底剥离，是成熟投资者的标志。</div>
+      </div>
+
+      <!-- ── Section 6 ── -->
+      <h2 id="s6">建立你自己的交易系统</h2>
+
+      <p>所有上面讲的规则，只有被写下来、被坚持执行，才有意义。口头上的"我知道止损很重要"，在亏损 20% 的时候没有任何约束力。你需要的是一套<strong>书面化、可检查的交易系统</strong>。</p>
+
+      <h3>一个完整交易系统的五个要素</h3>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">1. 入场规则</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">明确的触发条件。例如："股价突破 250 日均线，且成交量比前 20 日均量高 50% 以上时买入。"模糊的规则等于没有规则。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">2. 仓位规则</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">每笔交易的最大风险是账户的 1%～2%，根据入场价和止损价计算买入数量。不得随意加大仓位"摊平"。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">3. 止损规则</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">进场前确定止损点，进场后立即下好止损单，不因短期波动下调止损位。只允许向上移动止损（保护利润）。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">4. 止盈规则</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">设置目标价或使用移动止损。达到目标后分批出场（比如盈利 15% 时卖出一半，剩余仓位使用移动止损），避免一次性全出导致的踏空或满仓被套。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">5. 复盘规则</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">每周或每月回顾所有已平仓交易：哪些符合系统规则？哪些是"临时发挥"？重点不是结果（盈亏），而是执行过程是否符合系统。</div>
+        </div>
+      </div>
+
+      <h3>交易日志：把感性变成数据</h3>
+
+      <p>每一笔交易都应该有记录，包含：入场理由、入场价、止损价、目标价、实际出场价、出场理由，以及最重要的——<strong>当时的情绪状态</strong>。"因为昨晚看到一条新闻买入"不是好的理由，但写下来，你就能看到自己的行为模式。</p>
+
+      <p>大多数经验丰富的交易者在回顾自己早期的交易日志时，都会发现：亏钱的交易往往不是因为策略错了，而是因为在<strong>自己制定的规则之外</strong>临时起意做出的决定。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>最后一条建议：</strong>你的交易系统不需要是最聪明的，只需要是可以长期执行的。一个胜率 55%、盈亏比 2:1、严格执行止损的系统，长期回报率远超那些聪明绝顶却凭感觉乱来的投资者。坚持，才是最终的优势。</div>
+      </div>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>大多数人亏钱，不是因为选错股，而是因为仓位失控和行为偏差——赚钱的仓位太小，亏钱的仓位太大。</li>
+          <li><strong>1% 规则：</strong>任何单笔交易的最大亏损不超过账户总资金的 1–2%，是长期存活的基础保障。</li>
+          <li><strong>Kelly 公式：</strong>f* = p − (1−p)/b，计算数学最优仓位。实战中使用半 Kelly 以降低波动。结果为负说明策略不可行。</li>
+          <li><strong>止损三法：</strong>技术止损（支撑位下方）、百分比止损（7–8%）、ATR 波动率止损（2× ATR）。设定后严格执行，不随意下移。</li>
+          <li><strong>损失厌恶：</strong>损失的痛苦是等量收益快乐的 2.5 倍，导致持有亏损太久、卖出盈利太早（处置效应）。对抗方法是预先承诺规则。</li>
+          <li><strong>确认偏误：</strong>主动寻找反面证据；<strong>锚定效应：</strong>你的买入价格对未来决策完全无关。</li>
+          <li>书面化交易系统五要素：入场规则、仓位规则、止损规则、止盈规则、复盘规则。</li>
+        </ul>
+      </div>
+
+      <!-- ── Glossary ── -->
+      <div class="section-rule"><span>关键术语</span></div>
+
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>仓位管理</td><td class="en-term">Position Sizing</td><td>决定每笔交易投入多少资金的系统性方法</td></tr>
+          <tr><td>Kelly 公式</td><td class="en-term">Kelly Criterion</td><td>根据胜率和盈亏比计算最优仓位比例的数学公式</td></tr>
+          <tr><td>止损</td><td class="en-term">Stop Loss</td><td>预先设定的亏损上限，触发时自动或手动平仓</td></tr>
+          <tr><td>损失厌恶</td><td class="en-term">Loss Aversion</td><td>亏损的心理痛苦远大于等量收益的心理愉悦</td></tr>
+          <tr><td>确认偏误</td><td class="en-term">Confirmation Bias</td><td>倾向于寻找支持已有观点的信息，忽略反驳信息</td></tr>
+          <tr><td>锚定效应</td><td class="en-term">Anchoring Effect</td><td>决策过度受到初始参考数字（锚点）的影响</td></tr>
+          <tr><td>处置效应</td><td class="en-term">Disposition Effect</td><td>过早卖出盈利仓位、过晚卖出亏损仓位的系统性偏差</td></tr>
+          <tr><td>ATR</td><td class="en-term">Average True Range</td><td>过去 N 天股票日均波动范围，用于衡量股票波动性</td></tr>
+          <tr><td>移动止损</td><td class="en-term">Trailing Stop</td><td>随股价上涨而自动上移的止损线，锁定已有利润</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Quiz ── -->
+      <div class="quiz-section" data-chapter="09">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">3 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="1" data-explain="1% 规则中，1% 指的是每笔交易的最大可承受亏损额不超过账户总资金的 1%。这不是仓位大小，而是风险额度上限。例如 $100,000 账户中，每笔交易最多亏损 $1,000，而不是每笔只投入 $1,000。">
+            <p class="quiz-q-text">在"1% 规则"中，1% 具体指的是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>每笔交易只能使用账户总资金的 1% 来购买股票</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>每笔交易的最大亏损金额不超过账户总资金的 1%</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>每次止损触发时，股价跌幅不超过 1%</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>每月总亏损不超过账户资金的 1%</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="Kelly 公式结果为负（f* < 0）意味着在当前的胜率和盈亏比组合下，这个策略长期必然亏钱。负值的 Kelly 仓位没有数学意义，它明确告诉你：不要做这笔交易，这个系统不可行。">
+            <p class="quiz-q-text">当 Kelly 公式计算出 f* 为负数时，正确的解读是？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>应该做空该股票，用负数作为做空仓位比例</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>该策略长期必然亏钱，不应该进行这笔交易</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>计算有误，需要重新收集历史数据</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>使用更小的仓位（例如 0.5%）进行交易</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="0" data-explain="损失厌恶偏差最直接导致处置效应（Disposition Effect）：投资者因为对亏损痛苦的过度恐惧，不愿意承认并卖出亏损仓位（希望等它回来）；同时因为害怕已有盈利消失，过早卖出盈利仓位。结果是亏损被放大，盈利被缩小。">
+            <p class="quiz-q-text">损失厌恶偏差最容易导致哪种错误的投资行为？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>死扛亏损仓位不止损、过早卖出盈利仓位（处置效应）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>过度分散投资，买入太多只股票</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>只买自己熟悉行业的股票，忽视其他机会</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>追涨杀跌，频繁追高买入强势股</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <!-- Chapter Navigation -->
+    <nav class="chapter-nav-footer">
+      <a href="08-options-strategies.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">期权策略实战</span>
+      </a>
+      <a href="10-case-studies.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">三个案例复盘</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Right TOC -->
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">为什么大多数人亏钱</a></li>
+      <li><a href="#s2">1% 规则与 Kelly 公式</a></li>
+      <li><a href="#s3">止损的艺术</a></li>
+      <li><a href="#s4">损失厌恶</a></li>
+      <li><a href="#s5">确认偏误与锚定</a></li>
+      <li><a href="#s6">建立交易系统</a></li>
+    </ul>
+  </aside>
+
+</div><!-- .chapter-layout -->
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+<script src="../assets/js/tools/position-sizer.js"></script>
+</body>
+</html>

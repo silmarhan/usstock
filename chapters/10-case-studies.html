@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="三个真实案例复盘：英伟达AI长牛、META 2022单日大跌、硅谷银行48小时崩溃——用真实市场故事检验本课程所有知识。">
+  <meta name="base-url" content="../">
+  <title>第 10 章：三个真实案例复盘 · 读懂美股</title>  <meta property="og:title" content="第 10 章：三个真实案例复盘 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch10-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+
+<div class="reading-progress"></div>
+
+<!-- ── Nav ── -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="10-case-studies.html" class="active">第 10 章</a></li>
+        <li><a href="../glossary.html">术语表</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Chapter Layout ── -->
+<div class="chapter-layout">
+
+  <!-- Sidebar -->
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html" class="active"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="chapter-content">
+
+    <!-- Hero -->
+    <div class="chapter-hero">
+      <img src="../assets/images/ch10-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 10 · Real Case Studies</span>
+          <h1 class="hero-title">三个真实案例复盘</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+
+      <!-- Lead -->
+      <p class="lead">学完了所有理论，最好的检验方式是把它们放进真实发生过的市场故事里。这一章复盘三个截然不同的案例：一个长达三年的 AI 大牛市、一次单日蒸发 $2,300 亿市值的惨烈暴跌，以及一场在 48 小时内完成的银行倒闭。它们都曾经真实发生，它们的信号今天依然适用。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">如何读一个真实案例</h2>
+
+      <p>在我们进入具体案例之前，先说清楚读案例的正确姿势。许多人读案例会犯一个错误——用"事后诸葛"的视角去评判，觉得一切都理所当然：NVDA 会大涨、META 会暴跌、SVB 会倒闭，"谁都能看出来"。</p>
+
+      <p>但真正有价值的问题是：<strong>在事情发生之前，哪些信号是可以被发现的？当时大多数人为什么看不见它们？</strong></p>
+
+      <p>读每一个案例，请带着以下三个框架性问题：</p>
+
+      <ul class="key-points">
+        <li><strong>叙事转折点：</strong>什么时候市场对这家公司/资产的"故事"发生了根本性改变？这个改变有没有可以提前捕捉的基本面信号？</li>
+        <li><strong>价格行为：</strong>基本面变化之前，股价是否已经出现了技术面信号（突破、背离、异常成交量）？</li>
+        <li><strong>风险管理应用：</strong>如果你在这个时间节点持有该股票，正确的仓位和止损策略应该是什么？</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>复盘的目的不是证明你聪明：</strong>复盘的目的是训练你在未来遭遇类似模式时，更快识别信号、更冷静执行。每次市场危机都是此前某个危机的变形重播——不完全相同，但结构相似。</div>
+      </div>
+
+      <!-- ── Section 2 ── -->
+      <h2 id="s2">案例一：英伟达（NVDA）的 AI 长牛</h2>
+
+      <p>英伟达（NVDA）的故事，是过去十年美股市场中最戏剧性的基本面转变之一。它不是一夜暴富，而是一个经历了崩溃、迷茫、然后爆发的三幕剧。</p>
+
+      <h3>第一幕：游戏 GPU 公司（2019–2021）</h3>
+
+      <p>在大多数人眼中，英伟达是一家做游戏显卡的公司。GeForce 系列是它的名片，数据中心业务虽然存在，但体量不大。新冠疫情期间，居家办公和游戏需求爆发，NVDA 股价从 2020 年 3 月的低点约 <span class="data-num">$60</span>，一路涨到 2021 年 11 月的约 <span class="data-num">$333</span>（复权价），涨幅超过 <span class="data-up">450%</span>。</p>
+
+      <h3>第二幕：崩溃与误判（2022）</h3>
+
+      <p>2022 年对 NVDA 来说是噩梦。三重打击同时袭来：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">加密货币寒冬</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">2021 年大量矿工购买 GPU 挖矿，崩盘后显卡滞销，二手市场充斥库存，新卡销量暴跌。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">芯片出口限制</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">美国商务部限制向中国出口先进 AI 芯片（A100/H100），直接切断了一个重要市场。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Fed 加息周期</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">高利率压缩科技股估值，高 PE 的成长股首当其冲。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">2022 年全年跌幅</div>
+          <div class="stat-value"><span class="data-down">−66%</span></div>
+        </div>
+      </div>
+
+      <p>在 2022 年底，市场的主流叙事是：NVDA 的增长是疫情异常，现在已经回归正常。许多分析师下调目标价，看空声音充斥市场。</p>
+
+      <h3>第三幕：叙事大转折（2023–2024）</h3>
+
+      <p>2022 年 11 月 30 日，OpenAI 发布了 ChatGPT。</p>
+
+      <p>这一天是 NVDA 命运真正转折的时间点——虽然股价并非立刻反应，但它开启了一个新的叙事：<strong>AI 需要 GPU 算力，而 NVIDIA 是唯一能大规模提供 AI 训练算力的公司。</strong></p>
+
+      <p>2023 年 5 月的财报彻底炸裂了市场的想象力：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">NVDA Q2 2023 财报指引（2023年5月发布）</div>
+        <div class="data-card-value">下季度营收指引 $11B，华尔街预期 $7.2B</div>
+        <div class="data-card-sub">超预期 53%——这是近二十年来大型科技公司中最大幅度的营收指引上调之一。数据中心收入单季度同比增长 171%，其中 AI 服务器需求是核心驱动力。财报当日股价盘后涨超 24%。</div>
+      </div>
+
+      <p>随后发生的一切，成为了市场历史：</p>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>时间节点</th><th>NVDA 收盘价（复权）</th><th>关键事件</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2023年1月初</td><td><span class="data-num">$~108</span></td><td>年初，AI 热潮开始酝酿</td></tr>
+          <tr><td>2023年5月25日</td><td><span class="data-up">$~379</span></td><td>Q2 财报指引炸裂，单日暴涨 24%</td></tr>
+          <tr><td>2023年底</td><td><span class="data-up">$~495</span></td><td>H100 芯片供不应求，各大云厂商争抢</td></tr>
+          <tr><td>2024年1月</td><td><span class="data-up">$~613</span></td><td>市值突破 $1.2 万亿，超越亚马逊</td></tr>
+          <tr><td>2024年6月</td><td><span class="data-up">$~1,208</span>（拆股前）</td><td>短暂成为全球市值第一</td></tr>
+        </tbody>
+      </table>
+
+      <p>从 2023 年初到 2024 年中，NVDA 的股价涨幅超过 <span class="data-up">10×</span>。</p>
+
+      <h3>可以提前发现的信号</h3>
+
+      <p>事后看，有几个信号是可以在当时捕捉到的：</p>
+
+      <ul class="key-points">
+        <li><strong>数据中心收入占比快速提升：</strong>2022 年即使在下行周期中，NVDA 数据中心业务收入依然稳健，说明需求结构在改变。</li>
+        <li><strong>超大型科技公司的资本支出指引：</strong>2022–2023 年，AWS、Azure、Google Cloud、Meta 等均大幅提升 AI 基础设施资本支出，指向 GPU 需求的"卖铲子"逻辑。</li>
+        <li><strong>CUDA 生态的护城河：</strong>几乎所有主流 AI 框架（PyTorch、TensorFlow）默认运行在 NVIDIA CUDA 上，切换成本极高——这是不对称竞争优势。</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>NVDA 案例的核心教训：</strong>当基本面需求呈现爆发式增长，传统 PE 分析会严重低估股票的合理价值。NVDA 在 2023 年初 PE 超过 60 倍，许多人认为"太贵"，但若用未来 12 个月的 EPS 计算，PE 很快降到 30 倍以下。<strong>对超高速增长的公司，Revenue Growth Rate（营收增长率）比 PE 更有参考价值。</strong></div>
+      </div>
+
+      <!-- ── Section 3 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch10-inline-1.png" alt="NVDA 2020–2024 AI 长牛上升曲线" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>NVDA 2020–2024 AI 长牛上升曲线</figcaption>
+      </figure>
+
+      <h2 id="s3">案例二：META 2022 年的单日大跌</h2>
+
+      <p>2022 年 2 月 3 日，Meta（当时刚从 Facebook 改名）在发布 2021 年第四季度财报后的第二天，股价单日暴跌 <span class="data-down">26.4%</span>，市值蒸发约 <span class="data-down">$2,320 亿</span>——这是美国股市历史上单只股票单日市值蒸发的最大纪录之一。</p>
+
+      <div class="pull-quote">
+        <p>这是 Meta 有史以来最糟糕的一天，也是它未来复苏之路的真正起点。</p>
+        <cite>— 市场观察者事后复盘</cite>
+      </div>
+
+      <h3>暴跌的三重原因</h3>
+
+      <p>这次暴跌不是单一原因，而是三个负面因素同时在同一份财报中爆发：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">原因一：苹果 ATT 打击广告收入</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">苹果 iOS 14.5 引入的 App Tracking Transparency（ATT）框架，要求用户主动选择是否允许 App 跨平台追踪。绝大多数用户选择"不追踪"，Meta 无法精准投放广告，每年损失约 $100 亿广告收入。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">原因二：首次出现日活用户下降</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">Facebook DAU（日活跃用户）2021 年 Q4 环比减少约 50 万，历史上首次出现绝对值下降。TikTok 对年轻用户的侵蚀已经渗透到核心产品的用户基础。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">原因三：元宇宙烧钱无底洞</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">Reality Labs（元宇宙部门）2021 年亏损超过 $100 亿，祖克伯格宣布将继续大规模投入，并不设时间表。市场对于"核心业务恶化 + 高昂的新赌注"组合极为恐慌。</div>
+        </div>
+      </div>
+
+      <h3>财报数字的具体表现</h3>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>指标</th><th>Q4 2021 实际</th><th>华尔街预期</th><th>市场反应</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>每日活跃用户（DAU）</td><td><span class="data-down">19.29 亿</span></td><td>19.51 亿</td><td>历史首次环比下降，触发恐慌</td></tr>
+          <tr><td>Q1 2022 营收指引</td><td><span class="data-down">$270–290 亿</span></td><td>$302 亿</td><td>远低于预期，显示广告收入持续承压</td></tr>
+          <tr><td>Reality Labs 亏损</td><td><span class="data-down">$101 亿</span></td><td>—</td><td>全年持续扩大，无明确时间表</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2022 年全年惨状</h3>
+
+      <p>那次财报只是 2022 年 META 噩梦的开始。全年股价跌幅 <span class="data-down">64%</span>，从最高约 $383 跌到年底约 $88。</p>
+
+      <p>从技术分析的角度看，一个关键信号早在暴跌前数周就出现了：</p>
+
+      <ul class="key-points">
+        <li>META 的股价在 2021 年底开始跌破 200 日均线，这是大多数机构投资者的重要参考线</li>
+        <li>跌破 200 日均线后，反弹力度非常弱，说明机构在逢高减仓，而不是在逢低接货</li>
+        <li>成交量在每次下跌时明显放大，在每次反弹时明显萎缩——典型的"弱势反弹，强势下跌"模式</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>多重负面因素叠加的处理原则：</strong>当核心业务增长出现拐点（DAU 首次下降）+ 盈利能力受结构性影响（ATT 打击）+ 管理层选择高成本的新赌注（元宇宙），这三者同时出现时，应遵循"先出场，再分析"的原则——即便你对公司长期看好，在多重不确定性消除之前，减仓是正确的风险管理动作。</div>
+      </div>
+
+      <h3>故事的后半段：复苏与验证</h3>
+
+      <p>2022 年底，祖克伯格宣布 Meta 进入"效率之年（Year of Efficiency）"，大规模裁员、砍掉亏损项目、重新聚焦核心广告业务。Reality Labs 亏损依然巨大，但核心业务的重整带来了盈利的快速改善。</p>
+
+      <p>更重要的是：广告业务在 AI 精准推荐算法的帮助下出现了结构性改善——即使 ATT 限制了数据，Meta 的 AI 模型通过内部数据学习依然维持了较高的广告效果。</p>
+
+      <p>从 2022 年底的低点到 2024 年，META 的股价从约 <span class="data-num">$88</span> 涨到约 <span class="data-up">$530</span>，涨幅超过 <span class="data-up">500%</span>。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">META 案例的双重教训</div>
+        <div class="data-card-value">崩溃 ≠ 终局；但不验证基本面复苏就抄底 = 赌博</div>
+        <div class="data-card-sub">META 的崩溃创造了历史性买入机会，但只有在"效率之年"宣布、裁员数据公布、核心业务指标止跌回升之后才是可以验证的入场点。在此之前抄底，是在用情绪而不是逻辑做决策。</div>
+      </div>
+
+      <!-- ── Section 4 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch10-inline-2.png" alt="META 2022 单日 -26% 断崖" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>META 2022 单日 -26% 断崖</figcaption>
+      </figure>
+
+      <h2 id="s4">案例三：硅谷银行（SVB）的 48 小时崩溃</h2>
+
+      <p>2023 年 3 月 10 日，硅谷银行（Silicon Valley Bank，SVB）被美国联邦存款保险公司（FDIC）接管。从公告风险到银行被政府接管，只用了不到 <span class="data-num">48 小时</span>。这是自 2008 年金融危机以来美国最大的银行倒闭事件。</p>
+
+      <h3>SVB 的商业模式：高度集中的风险</h3>
+
+      <p>硅谷银行不是普通的零售银行。它的商业模式独特：专门服务科技初创公司和风险投资机构。在 2020–2021 年的 VC 热潮中，大量初创公司拿到融资，把资金存入 SVB——SVB 的存款规模在 2021 年翻了一倍，从约 $1,000 亿增长到超过 <span class="data-num">$1,800 亿</span>。</p>
+
+      <p>问题在于：SVB 把这些存款拿去买了大量<strong>长期美国国债和 MBS（抵押贷款支持证券）</strong>——在 2021 年利率超低的环境下，这些债券提供了一点可怜的收益，看起来"安全"。</p>
+
+      <h3>利率上升引爆定时炸弹</h3>
+
+      <p>2022 年，美联储开始史上最激进的加息周期之一：从接近 0% 的利率加到 5% 以上。债券价格与利率成反比——长期债券对利率最敏感。SVB 持有的债券投资组合出现了巨大的<span data-term="久期风险">账面亏损</span>（Unrealized Losses）。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">SVB 的期限错配</div>
+        <div class="data-card-value">负债：短期存款（随时可取）<br>资产：10–20 年期国债（无法立刻变现）</div>
+        <div class="data-card-sub">这是教科书级别的「期限错配」（Duration Mismatch）：借短贷长。只要存款不被大量提取，问题可以掩盖——但一旦存款人集中提款，资产不得不折价出售，账面亏损变成真实亏损。</div>
+      </div>
+
+      <h3>48 小时崩溃时间线</h3>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>时间</th><th>事件</th><th>市场反应</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3月8日（周三）</td>
+            <td>SVB 宣布出售价值 $210 亿的债券，亏损 $18 亿；同时宣布需要募集 $22.5 亿新股</td>
+            <td>股价当日暴跌 <span class="data-down">60%</span>，VC 社区开始警觉</td>
+          </tr>
+          <tr>
+            <td>3月9日（周四）</td>
+            <td>Peter Thiel 旗下基金建议所有被投公司立刻从 SVB 提款；消息在 Twitter/Slack 迅速扩散；单日存款提款申请达 <span class="data-down">$420 亿</span></td>
+            <td>股价再跌 <span class="data-down">60%</span>（盘中），银行无法处理大量提款申请</td>
+          </tr>
+          <tr>
+            <td>3月10日（周五）</td>
+            <td>加州监管机构关闭 SVB，FDIC 接管，暂停股票交易</td>
+            <td>KRE（区域银行 ETF）单日跌 <span class="data-down">12%</span>；恐慌蔓延至 First Republic Bank 等</td>
+          </tr>
+          <tr>
+            <td>3月12日（周日）</td>
+            <td>美联储、FDIC、财政部联合宣布保护所有存款（包括 25 万以上部分）</td>
+            <td>周一银行股企稳，系统性危机被阻断</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>为什么银行挤兑在社交媒体时代更快</h3>
+
+      <p>传统的银行挤兑需要几天甚至几周：消息口耳相传，人们排队取钱，速度受限于物理排队的速度。</p>
+
+      <p>SVB 的挤兑是 21 世纪的版本：一条 Twitter 帖子，一个 Slack 群聊，几百家初创公司的 CFO 同时看到同一条消息，同时发出提款指令。<span data-term="信息级联">信息级联</span>（Information Cascade）的速度超过了任何传统风控机制能应对的速度。</p>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>SVB 案例的系统性警示：</strong>对投资者而言，教训不仅是"不要持有 SVB 股票"，而是：1）金融机构的集中风险（95% 的存款来自 VC 生态）会在危机时刻相互传染；2）利率上升环境中，持有长期债券的金融机构要额外审视其资产质量；3）区域银行板块（KRE）的异常下跌，在 3 月 8 日 SVB 公告后就是明确的卖出或做空信号。</div>
+      </div>
+
+      <h3>风险信号：事前可以发现什么？</h3>
+
+      <p>如果你在 2022 年底或 2023 年初系统地审视区域银行板块，以下信号是可以发现的：</p>
+
+      <ul class="key-points">
+        <li><strong>财报中的"未实现亏损"（Unrealized Losses）：</strong>SVB 的 2022 年年报中，债券组合的未实现亏损约 $150 亿，而公司净资产只有约 $160 亿。这意味着如果被迫变现，银行几乎资不抵债——这个数字是公开披露的。</li>
+        <li><strong>存款结构高度集中：</strong>绝大多数存款来自 VC 生态，而 VC 生态在加息周期中资金极度紧张，存款外流压力远高于普通零售银行。</li>
+        <li><strong>技术面：</strong>SVB 股票（SIVB）从 2022 年初开始就跌破了所有主要均线，全年跌幅超过 60%——股价早就告诉市场这是问题资产。</li>
+      </ul>
+
+      <!-- ── Section 5 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch10-inline-3.png" alt="SVB 48 小时崩溃" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>SVB 48 小时崩溃</figcaption>
+      </figure>
+
+      <h2 id="s5">三个案例教会了我们什么</h2>
+
+      <p>把这三个案例放在一起，它们教给我们的，其实是整个课程的核心框架的实战应用。</p>
+
+      <h3>三条主线的共同逻辑</h3>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">NVDA：叙事转型 × 垄断护城河</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">当基本面需求出现结构性爆发，且公司处于垄断地位（CUDA 生态），传统估值框架失效。关键是识别"叙事转折点"，而不是等 PE 降到"合理"再买。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">META：多重负面 × 复苏验证</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">核心业务恶化 + 昂贵的新赌注 = 先出场再观察。等待复苏的基本面验证（用户数止跌、利润率回升）之后才是合理的再入场时机，而不是在崩溃中感情用事地抄底。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">SVB：集中风险 × 期限错配</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">单一行业集中风险 + 利率环境变化 = 系统性脆弱。在信息高速传播的时代，传统机构的危机可以在小时内完成。分散持仓、检查组合中的相关性，是抵御此类黑天鹅的根本。</div>
+        </div>
+      </div>
+
+      <h3>共同的核心驱动力：信息不对称与信息级联</h3>
+
+      <p>三个案例中最戏剧性的价格行为，本质上都源于同一个机制：<span data-term="信息级联">信息级联</span>（Information Cascade）。</p>
+
+      <p>NVDA：当市场中的"聪明钱"开始理解 AI 算力需求的规模，他们买入，股价上涨，更多人注意到，更多人买入——正反馈循环形成，直到估值再次充分反映新叙事。</p>
+
+      <p>META：当财报数字证实了此前的担忧，机构投资者的"卖出"程序同时启动，零售投资者看到暴跌又加速卖出——负反馈循环在一天内完成了数年的估值调整。</p>
+
+      <p>SVB：在风投社区，信任是一种社会共识。当这个共识在 Twitter 上 48 小时内集体崩塌，没有任何物理机制可以阻止数字银行挤兑的速度。</p>
+
+      <!-- 买股前检查清单 -->
+      <div class="section-rule"><span>实战工具 · 投资研究检查清单</span></div>
+
+      <div class="section-key-points">
+        <div class="key-points-header">在买入任何股票之前，完成以下 7 项检查</div>
+        <ul class="key-points">
+          <li><strong>业务理解：</strong>用一句话解释这家公司如何赚钱。如果你无法清晰解释，你还没准备好买入。</li>
+          <li><strong>收入增长质量：</strong>收入是有机增长还是靠并购堆砌？增速是加速还是放缓？未来 3 年的增长驱动力是什么？</li>
+          <li><strong>竞争护城河：</strong>为什么竞争对手无法轻易复制这家公司的核心产品或服务？（品牌、网络效应、转换成本、规模效应、专利）</li>
+          <li><strong>估值合理性：</strong>相对于历史水平和同行，当前 PE/PS/EV-EBITDA 是偏高还是偏低？增长是否可以为当前估值提供支撑？</li>
+          <li><strong>风险因素（主动找反面）：</strong>写出至少三条这笔投资失败的可能原因。如果任何一条发生，你的止损在哪里？</li>
+          <li><strong>仓位和止损：</strong>根据 1% 规则或 Kelly 公式计算你的买入股数，确定技术止损或 ATR 止损位置，进场前下好止损单。</li>
+          <li><strong>复盘触发条件：</strong>预定一个日期（比如下次财报日），届时重新评估是否持有。如果基本面假设失效，按规则出场，不等"涨回来"。</li>
+        </ul>
+      </div>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li><strong>读案例的正确姿势：</strong>问"当时哪些信号可以被发现"，而不是用事后视角评判"显然会怎样"。</li>
+          <li><strong>NVDA 教训：</strong>当基本面呈爆发式增长 + 垄断护城河，传统 PE 分析失效；叙事转折点（如 ChatGPT 发布）是最重要的入场信号；营收增长率比静态 PE 更能反映高增速公司的真实价值。</li>
+          <li><strong>META 教训：</strong>多重负面因素叠加时先减仓观察；等待基本面复苏验证后再入场；技术面的 200 日均线跌破是重要的风险信号；崩溃不代表不能复苏，但验证才是入场的前提。</li>
+          <li><strong>SVB 教训：</strong>集中风险（存款结构单一）+ 期限错配（借短买长）= 高度脆弱；社交媒体时代的信息级联使危机蔓延比历史上更快；公开财报中的未实现亏损是早期预警信号。</li>
+          <li><strong>共同主线：</strong>三个案例的核心都是信息不对称——谁先理解叙事转变，谁就能在价格完全反映之前行动。</li>
+        </ul>
+      </div>
+
+      <!-- ── Glossary ── -->
+      <div class="section-rule"><span>关键术语</span></div>
+
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>资本利得</td><td class="en-term">Capital Gains</td><td>卖出资产时，售价高于成本的盈利部分</td></tr>
+          <tr><td>久期风险</td><td class="en-term">Duration Risk</td><td>利率上升导致长期债券价格下跌的风险，持有期限越长，风险越大</td></tr>
+          <tr><td>银行挤兑</td><td class="en-term">Bank Run</td><td>大量存款人同时提款，超过银行即时可用资金的现象</td></tr>
+          <tr><td>期限错配</td><td class="en-term">Duration Mismatch</td><td>用短期负债（存款）投资长期资产（长期债券），利率上升时造成流动性危机</td></tr>
+          <tr><td>集中风险</td><td class="en-term">Concentration Risk</td><td>投资组合或业务过度集中于单一资产、行业或客户群，放大了特定风险的影响</td></tr>
+          <tr><td>信息级联</td><td class="en-term">Information Cascade</td><td>个体根据他人行为调整自己决策，形成正反馈循环，导致市场价格快速单向运动</td></tr>
+          <tr><td>未实现亏损</td><td class="en-term">Unrealized Loss</td><td>持有资产的当前市场价值低于成本，但尚未卖出而实现的账面亏损</td></tr>
+          <tr><td>叙事转折</td><td class="en-term">Narrative Inflection</td><td>市场对某资产的主导故事发生根本性改变，通常对应价格的剧烈重估</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Quiz ── -->
+      <div class="quiz-section" data-chapter="10">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">3 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="1" data-explain="英伟达 2023–2024 年暴涨的核心驱动力是 AI 训练对 GPU 算力的爆炸性需求，而英伟达的 CUDA 生态形成了极高的技术护城河，使其成为唯一能大规模供应 AI 训练芯片的公司。这是基本面需求的结构性改变，而非短期炒作。">
+            <p class="quiz-q-text">英伟达（NVDA）在 2023–2024 年股价上涨超过 10 倍的核心驱动力是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>游戏显卡销量大幅超预期，消费级市场需求爆发</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>AI 大模型训练对 GPU 算力的爆炸性需求，加上 CUDA 生态护城河</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>美联储降息，科技股整体估值修复</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>公司宣布大规模股票回购计划，提振市场信心</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="META 2022 年 2 月 3 日单日暴跌 26.4% 的原因是三重负面因素同时爆发：苹果 ATT 打击广告收入（约 $100 亿/年）、Facebook 历史上首次出现日活用户环比下降、元宇宙部门 Reality Labs 全年亏损超过 $100 亿且无明确盈利时间表。三重利空叠加导致了历史级别的单日崩盘。">
+            <p class="quiz-q-text">META（Meta Platforms）在 2022 年 2 月 3 日单日暴跌的主要原因是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>CEO 祖克伯格卖出大量个人持股，引发市场恐慌</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>苹果 ATT 打击广告收入 + Facebook 日活首次下降 + 元宇宙巨额亏损三重利空叠加</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>美国监管机构宣布对 Meta 展开反垄断调查</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>TikTok 宣布推出直接竞争的广告平台，分流广告预算</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="SVB 倒闭的核心原因是经典的「期限错配」（Duration Mismatch）：用短期存款（随时可被提取）购买了大量长期美国国债。利率快速上升后，债券组合出现巨大账面亏损；一旦存款大规模提取，被迫折价出售债券，账面亏损变成真实亏损，资本充足率崩塌，触发监管接管。">
+            <p class="quiz-q-text">硅谷银行（SVB）在 2023 年 3 月倒闭的核心原因是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>向科技初创公司发放了大量坏账贷款，无法收回</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>用短期存款购买长期债券（期限错配），利率上升导致债券大幅贬值，引发挤兑</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>被发现存在欺诈行为，监管机构强制关闭</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>主要客户（科技初创公司）集体破产，造成系统性存款损失</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <!-- Chapter Navigation -->
+    <nav class="chapter-nav-footer">
+      <a href="09-risk-psychology.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">仓位管理与心理</span>
+      </a>
+      <div class="chapter-nav-btn next" style="opacity:0.4;pointer-events:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">（已完成全部章节！）</span>
+      </div>
+    </nav>
+
+  </main>
+
+  <!-- Right TOC -->
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">如何读一个真实案例</a></li>
+      <li><a href="#s2">案例一：NVDA AI 长牛</a></li>
+      <li><a href="#s3">案例二：META 单日大跌</a></li>
+      <li><a href="#s4">案例三：SVB 48小时崩溃</a></li>
+      <li><a href="#s5">三个案例教会了我们什么</a></li>
+    </ul>
+  </aside>
+
+</div><!-- .chapter-layout -->
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+</body>
+</html>

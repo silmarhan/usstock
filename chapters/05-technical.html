@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股技术分析入门：K线蜡烛图起源、OHLC解读、经典形态、均线系统、MACD与成交量——从日本米市到华尔街的图表语言。">
+  <meta name="base-url" content="../">
+  <title>第 05 章：K线与技术分析 · 读懂美股</title>  <meta property="og:title" content="第 05 章：K线与技术分析 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch05-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+<div class="reading-progress"></div>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-mark">US</span>读懂美股</a>
+    <nav><ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="05-technical.html" class="active">第 05 章</a></li>
+      <li><a href="../glossary.html">术语表</a></li>
+    </ul></nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="chapter-layout">
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html" class="active"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+    <div class="chapter-hero">
+      <img src="../assets/images/ch05-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 05 · Technical Analysis</span>
+          <h1 class="hero-title">K 线与技术分析</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+      <p class="lead">17世纪日本大阪，一个叫<strong>本间宗久</strong>的米商，用一套独创的图表方法追踪米价情绪，20年间积累了相当于今天10亿美元的财富。这套方法后来漂洋过海，成了全世界技术分析师共同的语言——<span data-term="K线">蜡烛图</span>。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">K 线（蜡烛图）从哪里来——日本人发明的米价图</h2>
+
+      <p>本间宗久生活在德川幕府时代（1700年代），那时候日本大阪的堂岛米市是全球最早的期货交易所雏形。每天，来自全国各地的米价信息汇集于此，价格随着供需、天气和政治局势起伏波动。</p>
+
+      <p>本间宗久的创见是：<em>价格不光是数字，更是人心的映射。</em>他记录每一个交易周期内的四个关键价格节点，并用一种形似蜡烛的图形来呈现它们之间的关系——这就是蜡烛图（Candlestick Chart）的起源。</p>
+
+      <p>大约两百年后，美国技术分析师史蒂夫·尼森（Steve Nison）在1980年代把这套方法引入西方市场，出版了《日本蜡烛图技术》。从此，K线从东京的米市走进了华尔街的交易终端。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">为什么叫「K线」</div>
+        <div class="data-card-value">源自德文 Kerze（蜡烛）</div>
+        <div class="data-card-sub">K线这个叫法源于早年台湾从德国引进技术分析教材，Kerze 在德文中是「蜡烛」的意思。在英文世界，你会看到 Candlestick Chart 或 OHLC Chart 这两个叫法。本质上是同一回事。</div>
+      </div>
+
+      <p>今天，无论你打开纽交所、纳斯达克还是币安，所有的价格图表都在用这套三百年前的语言说话。学会读K线，就像学会了一门通用的价格方言。</p>
+
+      <div class="pull-quote">
+        <p>图表是市场的X光片。它不能告诉你为什么，但它能告诉你什么正在发生。</p>
+        <cite>— 改编自 John Murphy《技术分析》</cite>
+      </div>
+
+      <!-- ── Section 2 ── -->
+      <h2 id="s2">解读一根 K 线（开高低收 OHLC）</h2>
+
+      <p>每一根K线，无论是日线、周线还是分钟线，都浓缩了该时间段内市场的完整博弈过程。它记录四个关键价格：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">Open · 开盘价</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">该周期（天/小时/分钟）第一笔成交的价格。美股日线的开盘价是东部时间早上9:30第一笔成交价。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">High · 最高价</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">该周期内所有成交价中的最高值，代表买方在这段时间内最强势的时刻。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Low · 最低价</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">该周期内所有成交价中的最低值，代表卖方在这段时间内最强势的时刻。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Close · 收盘价</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">该周期最后一笔成交价。技术分析师认为这是最重要的价格——它代表了买卖双方经过整个周期博弈后的最终「共识」。</div>
+        </div>
+      </div>
+
+      <p>这四个数字构成了K线的两个可见部分：</p>
+
+      <p><strong>实体（Body）</strong>：开盘价和收盘价之间的矩形区域。这是最重要的部分，反映了价格在该周期内净移动了多少：</p>
+      <ul class="key-points">
+        <li><strong>绿色实体（阳线）</strong>：收盘价 &gt; 开盘价，多方（买方）胜出。实体越长，涨势越强。</li>
+        <li><strong>红色实体（阴线）</strong>：收盘价 &lt; 开盘价，空方（卖方）胜出。实体越长，跌势越猛。</li>
+      </ul>
+
+      <p><strong>影线（Wick / Shadow）</strong>：实体上下伸出的细线。上影线 = 最高价与实体上端之间的距离，反映了价格曾经冲高但遭到抛压而回落；下影线 = 最低价与实体下端之间的距离，反映了价格曾经下探但获得支撑而反弹。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>读图秘诀：</strong>看K线不要只看一根。单根K线提供的信息有限，关键是看<em>组合</em>和<em>位置</em>。同一根K线，出现在30日低点和出现在历史高点附近，意义完全不同。</div>
+      </div>
+
+      <p>举个具体的例子：假设今天苹果（AAPL）：</p>
+      <ul class="key-points">
+        <li>开盘：<span class="data-num">$185.00</span></li>
+        <li>最高：<span class="data-num">$188.50</span>（上影线 = 188.50 - 186.20 = $2.30）</li>
+        <li>最低：<span class="data-num">$183.40</span>（下影线 = 185.00 - 183.40 = $1.60）</li>
+        <li>收盘：<span class="data-num">$186.20</span>（绿色实体 = 186.20 - 185.00 = $1.20）</li>
+      </ul>
+      <p>这根K线告诉我们：今天多方最终获胜（阳线），但曾经被打压到183.40的低点后强力反弹，而上方冲到188.50时遭遇抛压回落——一场拉锯战，但多方略占上风。</p>
+
+      <!-- ── Section 3 ── -->
+      <h2 id="s3">经典 K 线形态（锤子、吞没、十字星等）</h2>
+
+      <p>几百年来，技术分析师归纳出了数十种经典的K线形态。这些形态背后都有市场心理逻辑——它们告诉你买卖双方的力量正在如何转换。下面介绍最常用的六种：</p>
+
+      <div class="section-rule"><span>K线形态图鉴</span></div>
+
+      <div class="tool-container" id="kline-gallery-tool">
+        <div class="tool-header">
+          <div class="tool-title-group">
+            <div class="tool-icon">🕯️</div>
+            <div><div class="tool-name">K线形态图鉴</div><div class="tool-desc">Candlestick Pattern Gallery</div></div>
+          </div>
+        </div>
+        <p style="font-family:var(--font-sans);font-size:var(--ts-sm);color:var(--ink-secondary);margin-bottom:var(--sp-4);">点击或悬停查看形态详情</p>
+        <div class="kline-gallery" id="kline-gallery"></div>
+        <div class="kline-detail" id="kline-detail"></div>
+      </div>
+
+      <h3>1. 锤子线（Hammer）</h3>
+      <p>小实体 + 极长下影线（至少是实体的2倍以上）+ 几乎没有上影线。出现在<strong>下跌趋势末端</strong>时，是经典的看涨反转信号。</p>
+      <p>背后逻辑：当天价格一度大幅下跌，但在低点遭到强力买盘承接，把价格拉回接近开盘位——买方展现了意志，卖方的力量正在衰竭。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>验证原则：</strong>锤子线不是独立的买入信号。必须等到<em>下一根</em>K线出现阳线确认，才算形态成立。否则可能只是反弹一下就继续下跌。</div>
+      </div>
+
+      <h3>2. 倒锤子线（Inverted Hammer）</h3>
+      <p>小实体 + 极长上影线 + 几乎没有下影线。同样出现在下跌末端，预示可能反转。背后逻辑：买方尝试推高价格，虽然最终被打回，但说明买方力量开始出现，后续若有阳线确认，趋势可能逆转。</p>
+
+      <h3>3. 看涨吞没（Bullish Engulfing）</h3>
+      <p>两根K线组合：第一根是小阴线，第二根是大阳线，且大阳线的实体完全「吞没」了前一根阴线的实体。出现在下跌趋势末端，是强烈的反转信号——买方在一天内完全压制了前一天的卖方。</p>
+
+      <h3>4. 看跌吞没（Bearish Engulfing）</h3>
+      <p>与上面相反：小阳线之后跟着大阴线，大阴线实体吞没小阳线实体。出现在<strong>上涨趋势末端</strong>，是高位见顶信号。2021年11月拿许多科技股的日线图一看，顶部附近都能找到类似形态。</p>
+
+      <h3>5. 十字星（Doji）</h3>
+      <p>开盘价和收盘价几乎相同（实体极小或近乎为零），上下均有影线。十字星代表<strong>多空双方势均力敌、市场犹豫不决</strong>。单根十字星本身不是买入或卖出信号，但出现在强烈上涨或下跌之后，往往预示着方向转变。</p>
+
+      <h3>6. 早晨之星（Morning Star）</h3>
+      <p>经典的三根K线反转形态：①大阴线（趋势继续）→ ②小实体或十字星（犹豫，往往跳空低开）→ ③大阳线（买方接管，最好能收回第一根阴线实体的一半以上）。这是技术分析中最受信任的底部反转信号之一，出现在显著下跌之后。</p>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>重要警告：</strong>K线形态是概率信号，不是必然规律。任何形态都有失败的情况。专业交易者不会仅凭一个形态下单——他们会结合成交量、均线位置、支撑阻力位和更大级别的趋势综合判断。</div>
+      </div>
+
+      <!-- ── Section 4 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch05-inline-1.png" alt="三种经典 K 线形态：锤子、射击之星、十字星" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>三种经典 K 线形态：锤子、射击之星、十字星</figcaption>
+      </figure>
+
+      <h2 id="s4">均线系统（MA5、MA20、MA200 各代表什么）</h2>
+
+      <p><span data-term="均线">移动平均线</span>（Moving Average，MA）是把过去N天的收盘价加总取平均，然后把每天的平均值连起来形成的曲线。它的作用是<strong>平滑掉价格的随机噪音，显露出背后的趋势方向</strong>。</p>
+
+      <p>最常用的均线有四条，各有不同的「任务分工」：</p>
+
+      <table class="glossary-table" style="margin:var(--sp-8) 0;">
+        <thead><tr><th>均线</th><th>参数</th><th>代表含义</th><th>谁在用</th></tr></thead>
+        <tbody>
+          <tr><td>5日均线（MA5）</td><td>过去5个交易日均价</td><td>超短期动量，一周的「重心」</td><td>短线交易者，日内/摆动交易</td></tr>
+          <tr><td>20日均线（MA20）</td><td>过去20个交易日均价</td><td>约一个月的趋势，常用作「动态支撑线」</td><td>中期趋势判断，布林带中轨</td></tr>
+          <tr><td>50日均线（MA50）</td><td>过去50个交易日均价</td><td>中期趋势，两个半月的「均衡价格」</td><td>机构、基金经理</td></tr>
+          <tr><td>200日均线（MA200）</td><td>过去200个交易日均价</td><td>长期牛熊分界线，最受华尔街关注</td><td>长线投资者、技术面基本面结合者</td></tr>
+        </tbody>
+      </table>
+
+      <p>均线最实用的两个用法：</p>
+
+      <p><strong>一、趋势判断</strong>：股价在MA200上方 = 长期上涨趋势（牛市结构）；股价在MA200下方 = 长期下跌趋势（熊市结构）。机构投资者经常用「是否在200日线上方」作为是否持有的粗略标准。</p>
+
+      <p><strong>二、金叉与死叉</strong>：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--green);">金叉（Golden Cross）🟢</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">短期均线（如MA50）从下方穿越长期均线（MA200）向上。被许多技术分析师视为中长期看涨信号。2020年4月，标普500出现金叉，之后股市一路走牛至2021年底。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--red);">死叉（Death Cross）🔴</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">短期均线从上方穿越长期均线向下。被视为看跌信号。但需注意：死叉是滞后指标，往往在股价已经跌了很多之后才出现，不适合作为逃顶工具。</div>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>均线的局限性：</strong>均线是<em>滞后指标</em>——它告诉你过去发生了什么，而不是预测未来。在震荡行情中，均线会频繁发出错误信号（俗称「打架」）。最好配合趋势明显时使用。</div>
+      </div>
+
+      <p>均线还有一个妙用：<strong>动态支撑和阻力</strong>。当股价从上方回调到MA20附近时，往往会获得支撑（因为很多人把这条线当作加仓机会）；当股价从下方反弹到MA200附近时，往往遭遇阻力（因为很多被套的人等着解套卖出）。</p>
+
+      <!-- ── Section 5 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch05-inline-2.png" alt="均线金叉与死叉" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>均线金叉与死叉</figcaption>
+      </figure>
+
+      <h2 id="s5">MACD：动量的语言</h2>
+
+      <p><span data-term="MACD">MACD</span>（Moving Average Convergence Divergence，移动平均收敛散度）是技术分析里最广为人知的动量指标之一。它的发明者杰拉德·阿佩尔（Gerald Appel）在1970年代创造了这个工具，目的是把均线的趋势信息和价格动量结合起来。</p>
+
+      <p>MACD由三个部分构成：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">MACD 线（快线）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">EMA(12) − EMA(26)。EMA是「指数移动平均」，给近期价格更高权重。快线代表短期动量和长期动量之差——差值越大，动量越强。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">信号线（慢线）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">MACD线的 EMA(9)。作为对快线的平滑，起到「触发信号」的作用。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">柱状图（Histogram）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">MACD线 − 信号线。柱子高于零线（绿柱）= 多方动量占优；低于零线（红柱）= 空方动量占优。柱子越来越短 = 动量正在减弱，可能要反转。</div>
+        </div>
+      </div>
+
+      <p><strong>MACD 金叉：</strong>MACD线从下方穿越信号线向上 = 短期动量增强，常被视为买入机会（尤其当发生在零线以下由负转正时，信号更强）。</p>
+
+      <p><strong>MACD 死叉：</strong>MACD线从上方穿越信号线向下 = 短期动量减弱，常被视为减仓/卖出信号。</p>
+
+      <p>MACD最有价值的用法之一是<strong>背离（Divergence）</strong>：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">顶背离 · Bearish Divergence</div>
+        <div class="data-card-value">价格创新高，MACD 却没有创新高</div>
+        <div class="data-card-sub">价格在涨，但动量在悄悄减弱。经典的见顶信号。2021年11月比特币在$69,000创历史高点时，MACD柱状图峰值比4月份的峰值低得多——顶背离清晰可见，随后价格一路暴跌70%。</div>
+      </div>
+
+      <div class="data-card">
+        <div class="data-card-label">底背离 · Bullish Divergence</div>
+        <div class="data-card-value">价格创新低，MACD 却没有创新低</div>
+        <div class="data-card-sub">价格在跌，但卖方力量正在衰竭。经典的筑底信号。2020年3月股市暴跌时，许多优质股票的MACD底背离出现，之后价格快速反弹。</div>
+      </div>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>注意：</strong>背离信号有时会「失败」——价格可能继续朝原方向移动一段时间。背离告诉你动量在衰减，但并不能告诉你何时反转。永远要结合其他信号一起判断，并设置止损。</div>
+      </div>
+
+      <!-- ── Section 6 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch05-inline-3.png" alt="MACD 直方图与信号线" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>MACD 直方图与信号线</figcaption>
+      </figure>
+
+      <h2 id="s6">成交量：量才是价的证人</h2>
+
+      <p>有一句技术分析界的老话：<em>「价格是说谎者，成交量是法官。」</em>价格的移动可以被少数大资金短暂操控，但成交量很难造假——它代表了有多少真实的资金在参与这场博弈。</p>
+
+      <p><strong>量价关系的四个基本原则：</strong></p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--green);">放量上涨 · 强势信号</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">价格上涨同时成交量放大。说明大量资金在主动买入，趋势有群众基础，上涨可能持续。这是最健康的上涨模式。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--red);">放量下跌 · 恐慌出逃</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">价格下跌同时成交量放大。说明持仓者在恐慌抛售，下跌有力量。若成交量极度放大（比平均量5倍以上），可能是恐慌性「清仓底」，反而要留意反转机会。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--amber);">缩量上涨 · 警惕信号</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">价格上涨但成交量萎缩。说明参与资金越来越少，上涨缺乏新鲜血液支撑，可能是「虚胖」的反弹，随时可能回落。这是<strong>量价背离</strong>的典型表现。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--amber);">缩量下跌 · 调整信号</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">价格下跌但成交量萎缩。说明抛售力量不强，可能只是正常获利回吐，而非趋势反转。上升趋势中的缩量回调，往往是加仓机会。</div>
+        </div>
+      </div>
+
+      <p><strong>量价背离（Price-Volume Divergence）</strong>是最需要警惕的信号：股价不断创新高，但每次新高的成交量却越来越少。这意味着参与者越来越少，虽然价格还在涨，但「用脚投票」的人已经在悄悄离场了。</p>
+
+      <p>一个真实案例：2021年ARK Innovation ETF（ARKK）在价格从$60冲向$150的过程中，到了$120以上，成交量开始持续萎缩，而价格依然创新高——这就是典型的顶部量价背离。随后ARKK从$160高点跌回$35，跌幅超过<span class="data-down">−78%</span>。</p>
+
+      <div class="pull-quote">
+        <p>成交量就像汽油——没有它，价格这辆车跑不远。</p>
+        <cite>— 华尔街技术分析谚语</cite>
+      </div>
+
+      <p><strong>OBV（On-Balance Volume，能量潮）</strong>：是一个把成交量累积的指标。上涨日加上当天成交量，下跌日减去当天成交量。OBV持续上升而价格还在低位，往往是机构悄悄建仓的信号（因为机构买入会推高成交量，但为了不推高价格，他们会分批小量买入）。</p>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>K线起源于17世纪日本米市，每根蜡烛记录开（O）、高（H）、低（L）、收（C）四个价格，实体代表净方向，影线代表极端试探。</li>
+          <li>经典形态需看「位置」：锤子线在下跌末端是看涨信号；同样的形态出现在上涨中途意义截然不同。任何形态都需要等待下一根K线确认。</li>
+          <li>均线的核心价值：MA200是长期牛熊分界；金叉（短线穿越长线向上）看涨，死叉相反；均线是滞后指标，震荡市中容易失效。</li>
+          <li>MACD = EMA(12) − EMA(26)，信号线 = EMA(9)。最有价值的用法是「背离」：价格创新高但MACD未创新高（顶背离），或价格创新低但MACD未创新低（底背离）。</li>
+          <li>成交量是验证价格的「法官」：放量上涨健康，缩量上涨危险。上升趋势中成交量持续萎缩是量价背离的警告信号。</li>
+          <li>技术分析是概率工具，不是水晶球。任何单一信号都有失败的可能，专业做法是多维度交叉验证，并严格执行止损。</li>
+        </ul>
+      </div>
+
+      <div class="section-rule"><span>关键术语</span></div>
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>K线 / 蜡烛图</td><td class="en-term">Candlestick Chart</td><td>用「蜡烛」形状展示开高低收四价的图表</td></tr>
+          <tr><td>实体</td><td class="en-term">Body</td><td>K线中开盘价到收盘价之间的矩形区域</td></tr>
+          <tr><td>影线</td><td class="en-term">Wick / Shadow</td><td>K线实体上下伸出的细线，代表当日价格极端值</td></tr>
+          <tr><td>金叉</td><td class="en-term">Golden Cross</td><td>短期均线从下方穿越长期均线向上，看涨信号</td></tr>
+          <tr><td>死叉</td><td class="en-term">Death Cross</td><td>短期均线从上方穿越长期均线向下，看跌信号</td></tr>
+          <tr><td>均线</td><td class="en-term">Moving Average (MA)</td><td>过去N日收盘价的平均值连成的曲线</td></tr>
+          <tr><td>MACD</td><td class="en-term">MACD</td><td>EMA(12)与EMA(26)之差，衡量价格动量</td></tr>
+          <tr><td>背离</td><td class="en-term">Divergence</td><td>价格方向与指标方向不一致，预示趋势转变</td></tr>
+          <tr><td>量价背离</td><td class="en-term">Price-Volume Divergence</td><td>价格创新高但成交量萎缩，是趋势衰竭的信号</td></tr>
+          <tr><td>吞没形态</td><td class="en-term">Engulfing Pattern</td><td>第二根K线实体完全覆盖第一根实体的两根K线形态</td></tr>
+          <tr><td>十字星</td><td class="en-term">Doji</td><td>开收盘价几乎相同的K线，代表多空均势与犹豫</td></tr>
+        </tbody>
+      </table>
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch05-inline-4.png" alt="量价齐升 vs 量价背离" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>量价齐升 vs 量价背离</figcaption>
+      </figure>
+
+
+      <div class="quiz-section" data-chapter="05">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">4 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="1" data-explain="K线的实体（Body）是由开盘价（Open）和收盘价（Close）之间的区域构成的，代表当天价格的净移动方向和幅度。上下影线才代表当天的极端高低价。">
+            <p class="quiz-q-text">一根K线的「实体」（Body）代表什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>当天最高价与最低价之间的范围</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>开盘价与收盘价之间的区域</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>上一日收盘价与今日开盘价之间的缺口</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>成交量的可视化表示</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="锤子线的特征是小实体加长下影线（至少2倍以上），出现在下跌趋势末端时是看涨反转信号，代表价格下探后获得强力买盘支撑而反弹。但要等下一根阳线确认。">
+            <p class="quiz-q-text">锤子线（Hammer）出现在下跌末端，通常预示着什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>即将进一步加速下跌</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>可能出现看涨反转</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>成交量即将放大</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>市场进入横盘震荡</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="MACD金叉是指MACD快线（EMA12-EMA26）从下方穿越信号线（EMA9）向上，代表短期动量增强超过了信号线，通常被视为看涨信号，尤其是在零线以下发生时信号更强。">
+            <p class="quiz-q-text">MACD 金叉（快线上穿信号线）通常意味着什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>价格即将跌破MA200</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>短期动量转为看涨，潜在买入信号</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>成交量将大幅萎缩</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>股票即将分红除权</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="量价背离是指价格持续创新高但成交量持续萎缩——参与的资金越来越少，趋势失去支撑，这是顶部最经典的预警信号之一。放量上涨才是健康的上涨。">
+            <p class="quiz-q-text">「量价背离」通常指的是哪种情况？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>成交量和价格同时大幅上涨</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>价格持续上涨但成交量持续萎缩</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>MACD和RSI指标同时发出买入信号</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>K线实体和影线长度相等</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <nav class="chapter-nav-footer">
+      <a href="04-financials.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">财报三表拆解</span>
+      </a>
+      <a href="06-sectors-macro.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">板块轮动与宏观</span>
+      </a>
+    </nav>
+  </main>
+
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">K线从哪里来</a></li>
+      <li><a href="#s2">解读一根K线（OHLC）</a></li>
+      <li><a href="#s3">经典K线形态</a></li>
+      <li><a href="#s4">均线系统</a></li>
+      <li><a href="#s5">MACD：动量的语言</a></li>
+      <li><a href="#s6">成交量：量才是价的证人</a></li>
+    </ul>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+<script src="../assets/js/tools/kline-gallery.js"></script>
+</body>
+</html>

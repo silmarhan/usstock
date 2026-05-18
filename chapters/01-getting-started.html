@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股入门第一章：股票是什么、美股vs A股、如何开户、读懂报价、下单类型——用最通俗的语言讲清楚。">
+  <meta name="base-url" content="../">
+  <title>第 01 章：开户与市场入门 · 读懂美股</title>  <meta property="og:title" content="第 01 章：开户与市场入门 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch01-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+
+<div class="reading-progress"></div>
+
+<!-- ── Nav ── -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="01-getting-started.html" class="active">第 01 章</a></li>
+        <li><a href="../glossary.html">术语表</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Chapter Layout ── -->
+<div class="chapter-layout">
+
+  <!-- Sidebar -->
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html" class="active"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="chapter-content">
+
+    <!-- Hero -->
+    <div class="chapter-hero">
+      <img src="../assets/images/ch01-hero.png" alt="" loading="eager" class="ken-burns" onerror="this.style.display='none'">
+      <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 01 · Getting Started</span>
+          <h1 class="hero-title">开户与市场入门</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+
+      <!-- Lead -->
+      <p class="lead">股票、美股、开户、下单——这些词你可能已经听过无数次，但真正迈出第一步的时候，大多数人还是一头雾水。这一章从最基础的问题开始：<em>股票到底是什么？</em></p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">股票是什么：你买的是公司的一小块</h2>
+
+      <p>想象一下，你和三个朋友合伙开了一家奶茶店，总共投了 100 万，你出了 25 万，占 25% 的股份。这 25%，就是你的<strong>股票</strong>（Stock）。</p>
+
+      <p>上市公司做的事情一样——只不过它把公司切成了几亿份小切片，放到交易所里让所有人来买卖。每一份切片就是一股（Share）。</p>
+
+      <p>你持有苹果公司（AAPL）100 股，意味着你拥有苹果公司约 <span class="data-num">0.0000015%</span> 的所有权。虽然小得可怜，但性质上跟巴菲特持有苹果是一样的——你们都是股东（Shareholder），都有权按比例分享公司的利润（分红），也都会随着公司价值起伏而盈亏。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">关键概念</div>
+        <div class="data-card-value">股票 = 公司所有权的凭证</div>
+        <div class="data-card-sub">买股票不是借钱给公司，是成为公司的小股东。公司盈利，你分钱；公司亏损，你亏钱；公司倒闭，你的股票归零。</div>
+      </div>
+
+      <p>这和债券不同。债券更像是借钱给公司——公司按时还本付息，到期还你本金，你不关心公司赚不赚钱。股票没有这种保证，风险更高，但历史上长期回报也远高于债券。</p>
+
+      <div class="pull-quote">
+        <p>股市短期是台投票机，长期是台称重机。</p>
+        <cite>— Benjamin Graham，《聪明的投资者》</cite>
+      </div>
+
+      <!-- ── Section 2 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch01-inline-1.png" alt="公司所有权被切成等份——这就是股票" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>公司所有权被切成等份——这就是股票</figcaption>
+      </figure>
+
+      <h2 id="s2">美股 vs A股：同样是股票，差别大了去</h2>
+
+      <p>很多第一次接触美股的人，会不自觉地用 A 股的经验套进去——然后被坑。两者有几个根本性的不同：</p>
+
+      <table class="glossary-table" style="margin: var(--sp-8) 0;">
+        <thead>
+          <tr><th>维度</th><th>A 股（中国股市）</th><th>美股（美国股市）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>涨跌幅限制</td><td>主板 ±10%，科创板 ±20%</td><td>无涨跌幅限制（可以单日腰斩或翻倍）</td></tr>
+          <tr><td>交易时间</td><td>北京时间 9:30–15:00</td><td>美东时间 9:30–16:00（北京冬令时 22:30–5:00）</td></tr>
+          <tr><td>T+N 制度</td><td>A 股 T+1（买了次日才能卖）</td><td>T+0（买了当天可以立刻卖）</td></tr>
+          <tr><td>做空机制</td><td>融券做空受限，门槛高</td><td>普通账户即可做空（借股票来卖）</td></tr>
+          <tr><td>退市制度</td><td>壳价值高，退市慢</td><td>连续不达标就强制退市，执行严格</td></tr>
+          <tr><td>机构占比</td><td>散户为主，情绪波动大</td><td>机构主导，基本面定价更充分</td></tr>
+        </tbody>
+      </table>
+
+      <p>对中国投资者来说，最大的实际影响有两个：</p>
+
+      <ul class="key-points">
+        <li><strong>时差问题：</strong>美国东部时间 9:30，中国是晚上 10:30（夏令时）或 11:30（冬令时）。很多人会等收盘后在睡前盯盘——这很正常，设好提醒，不用每分钟看。</li>
+        <li><strong>税务问题：</strong>美股资本利得（卖股票盈利）在美国不对非美国居民征税，但在中国你可能需要申报个人所得税，具体咨询专业税务人士。</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>小贴士：</strong>盘前（Pre-market, 4:00–9:30 ET）和盘后（After-hours, 16:00–20:00 ET）可以交易，但成交量极低、价差大，财报日前后波动剧烈，新手建议只在正常交易时间操作。</div>
+      </div>
+
+      <!-- ── Section 3 ── -->
+      <h2 id="s3">开户：选哪家券商？</h2>
+
+      <p>开户是美股投资的第一道门槛。好消息是：大多数中国大陆居民都可以合法开立美股账户，选择也比 5 年前多得多。</p>
+
+      <p>目前主流的选择：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">Interactive Brokers (IBKR)</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">老牌专业券商，支持中国大陆开户，产品丰富，支持期权，费率低但界面复杂。适合进阶用户。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Webull（微牛证券）</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">面向华人，App 体验好，支持中文，免佣金，支持期权。开户审核快，新手友好。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Moomoo（富途牛牛）</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">腾讯系，界面精美，数据丰富，支持中文。手机 App 体验一流，入门首选之一。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">老虎证券（Tiger Brokers）</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">NASDAQ 上市，面向亚裔市场，中英双语，新用户活动多，期权权限需申请。</div>
+        </div>
+      </div>
+
+      <p>开户一般需要：护照（或身份证）、居住地址证明（如水电账单）、填写 W-8BEN 表格（申明你是非美国纳税人）。一般 1-3 个工作日可完成审核。</p>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>风险提示：</strong>以上不构成对任何具体券商的推荐。选择券商前请自行核查其监管资质（是否受 FINRA/SEC 监管）、资金安全保护（SIPC 最高赔付 50 万美元）和出入金便利性。</div>
+      </div>
+
+      <!-- ── Section 4 ── -->
+      <h2 id="s4">读懂报价页面：那一堆数字是什么意思</h2>
+
+      <p>打开任何一个美股报价页面（如 Yahoo Finance、Moomoo），你会看到一堆数字。以苹果（AAPL）为例：</p>
+
+      <table class="glossary-table">
+        <thead>
+          <tr><th>字段</th><th>英文</th><th>含义</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>当前价格</td><td>Last Price</td><td>最近一笔成交价，实时变动</td></tr>
+          <tr><td>涨跌幅</td><td>Change / Change%</td><td>相对上一个交易日收盘价的涨跌</td></tr>
+          <tr><td>买价 / 卖价</td><td>Bid / Ask</td><td>当前市场最高愿意买入价 / 最低愿意卖出价，差值叫「价差（Spread）」</td></tr>
+          <tr><td>成交量</td><td>Volume</td><td>当日已成交的股票份数，反映活跃度</td></tr>
+          <tr><td>52 周高/低</td><td>52W High / Low</td><td>过去一年最高和最低成交价</td></tr>
+          <tr><td>市值</td><td>Market Cap</td><td>股价 × 总股数，苹果约 3 万亿美元</td></tr>
+          <tr><td>市盈率</td><td>P/E Ratio</td><td>股价 ÷ 每股盈利（EPS），第 03 章详讲</td></tr>
+          <tr><td>股息率</td><td>Dividend Yield</td><td>年度股息 ÷ 股价，苹果约 0.5%</td></tr>
+        </tbody>
+      </table>
+
+      <p>初学者最容易混淆的是 <strong>Bid/Ask 价差</strong>。Bid 是买家出的最高价，Ask 是卖家要的最低价。你「买入」股票时，实际上是按 Ask 价成交；你「卖出」时，按 Bid 价成交。价差越小，说明流动性越好（大型蓝筹股价差可能只有 1 美分）。</p>
+
+      <!-- ── Section 5 ── -->
+      <h2 id="s5">订单类型：该按哪个键</h2>
+
+      <p>下单不是点一下「买入」就完事的。不同的订单类型，决定了你以什么价格成交：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">市价单 Market Order</div>
+          <div class="stat-value" style="font-size: 0.75rem; font-family: var(--font-sans); color: var(--ink-secondary); line-height: 1.5;">「立刻以当前市场最优价格成交」。优点：一定会成交。缺点：成交价可能比你看到的报价贵或便宜一点（尤其是流动性差的股票）。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">限价单 Limit Order</div>
+          <div class="stat-value" style="font-size: 0.75rem; font-family: var(--font-sans); color: var(--ink-secondary); line-height: 1.5;">「只在价格达到我设定的值时成交」。买入限价单保证你不会买贵，但如果价格一直没到，就不成交。新手最推荐使用。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">止损单 Stop Loss</div>
+          <div class="stat-value" style="font-size: 0.75rem; font-family: var(--font-sans); color: var(--ink-secondary); line-height: 1.5;">价格跌到你设定的价格时，自动触发市价单卖出。用于控制最大损失——比你每天盯着屏幕可靠得多。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">限价止损 Stop-Limit</div>
+          <div class="stat-value" style="font-size: 0.75rem; font-family: var(--font-sans); color: var(--ink-secondary); line-height: 1.5;">触发后变成限价单而不是市价单，避免在极端行情中被「以任何价格甩卖」。但缺点是可能根本没有成交。</div>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>实战建议：</strong>日常买卖蓝筹股和 ETF 时，用<strong>限价单</strong>。价格填得比当前 Ask 高一分钱（买入时），几乎立刻成交，但不会意外买贵。避免在美股开盘后前 15 分钟用市价单——那段时间价格跳动最剧烈。</div>
+      </div>
+
+      <!-- ── Section 6 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch01-inline-2.png" alt="订单簿：买卖双方的报价阶梯" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>订单簿：买卖双方的报价阶梯</figcaption>
+      </figure>
+
+      <h2 id="s6">复利：时间才是你最好的朋友</h2>
+
+      <p>在学任何具体的选股策略之前，有一个概念比所有技巧加起来都重要——<strong data-term="复利">复利</strong>（Compound Interest）。</p>
+
+      <p>复利的意思是：你的收益，也会产生收益。时间越长，这个雪球越来越大，而且是指数级增长。</p>
+
+      <p>S&P 500 指数在过去 100 年的年化回报约为 <span class="data-up">+10%</span>。1926 年投入 1 美元，到 2026 年会变成多少？答案是超过 <span class="data-num">$13,000</span>。</p>
+
+      <div class="section-rule"><span>试试看 · 复利计算器</span></div>
+
+      <!-- ── Tool: Compound Calculator ── -->
+      <div class="tool-container" id="compound-calc">
+        <div class="tool-header">
+          <div class="tool-title-group">
+            <div class="tool-icon">📈</div>
+            <div>
+              <div class="tool-name">复利计算器</div>
+              <div class="tool-desc">Compound Interest Calculator</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-form">
+          <div class="tool-form-row">
+            <div class="tool-field">
+              <label class="tool-label" for="cc-principal">初始本金（美元）</label>
+              <input type="number" class="tool-input" id="cc-principal" value="10000" min="1" step="100">
+            </div>
+            <div class="tool-field">
+              <label class="tool-label" for="cc-rate">年化回报率（%）</label>
+              <input type="number" class="tool-input" id="cc-rate" value="10" min="0.1" max="50" step="0.1">
+            </div>
+          </div>
+          <div class="tool-form-row">
+            <div class="tool-field">
+              <label class="tool-label" for="cc-years">投资年限</label>
+              <input type="number" class="tool-input" id="cc-years" value="20" min="1" max="50">
+            </div>
+            <div class="tool-field">
+              <label class="tool-label" for="cc-monthly">每月追加（美元，可选）</label>
+              <input type="number" class="tool-input" id="cc-monthly" value="500" min="0" step="50">
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-result" id="cc-result">
+          <div class="tool-result-item">
+            <div class="result-label">最终总额</div>
+            <div class="result-value" id="cc-total">$67,275</div>
+          </div>
+          <div class="tool-result-item">
+            <div class="result-label">本金总投入</div>
+            <div class="result-value" id="cc-invested">$10,000</div>
+          </div>
+          <div class="tool-result-item">
+            <div class="result-label">复利收益</div>
+            <div class="result-value positive" id="cc-gain">$57,275</div>
+          </div>
+          <div class="tool-result-item">
+            <div class="result-label">收益倍数</div>
+            <div class="result-value" id="cc-multiple">6.7×</div>
+          </div>
+        </div>
+
+        <div class="tool-canvas-wrap" style="margin-top: var(--sp-4);">
+          <canvas class="tool-canvas" id="cc-chart" width="800" height="280"></canvas>
+          <div class="tool-canvas-label">COMPOUND GROWTH CURVE</div>
+        </div>
+      </div>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>买股票 = 成为公司的小股东，不是借钱给公司。持股比例决定你能分多少利润。</li>
+          <li>美股和 A 股最关键的不同：美股没有涨跌幅限制、T+0 制度、退市执行更严格。</li>
+          <li>中国大陆居民可以合法开立美股账户，常见平台有 IBKR、Webull、Moomoo 等。</li>
+          <li>读懂报价：Bid（买价）= 别人愿意买的最高价，Ask（卖价）= 卖家要的最低价；你买入时以 Ask 成交。</li>
+          <li>日常交易推荐用<strong>限价单</strong>，避免开盘前 15 分钟使用市价单。</li>
+          <li>复利是财富增长最强大的力量：S&P 500 年化约 10%，20 年 1 万变 6.7 万；如果每月再追加 500 元，终值超过 <span class="data-num">$44万</span>。</li>
+        </ul>
+      </div>
+
+      <!-- ── Glossary ── -->
+      <div class="section-rule"><span>关键术语</span></div>
+
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>股票</td><td class="en-term">Stock / Equity</td><td>公司所有权的一小份凭证</td></tr>
+          <tr><td>股东</td><td class="en-term">Shareholder</td><td>持有公司股票的人</td></tr>
+          <tr><td>市值</td><td class="en-term">Market Cap</td><td>股价 × 总股数</td></tr>
+          <tr><td>买价 / 卖价</td><td class="en-term">Bid / Ask</td><td>市场当前最高买价和最低卖价</td></tr>
+          <tr><td>价差</td><td class="en-term">Spread</td><td>Ask − Bid 的差值</td></tr>
+          <tr><td>限价单</td><td class="en-term">Limit Order</td><td>只在指定价格或更优价格成交的订单</td></tr>
+          <tr><td>止损单</td><td class="en-term">Stop Loss</td><td>触发止损价时自动卖出的订单</td></tr>
+          <tr><td>复利</td><td class="en-term">Compound Interest</td><td>利滚利，收益也产生收益</td></tr>
+          <tr><td>分红</td><td class="en-term">Dividend</td><td>公司将部分利润分配给股东</td></tr>
+          <tr><td>T+0</td><td class="en-term">Same-day Trading</td><td>美股买入当天即可卖出</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Quiz ── -->
+      <div class="quiz-section" data-chapter="01">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">3 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+
+        <div class="quiz-questions">
+          <div class="quiz-question" data-correct="1" data-explain="股票代表公司所有权，持股即成为股东，享有分红权和投票权，而非债权。">
+            <p class="quiz-q-text">购买一只股票，本质上你买到了什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>公司债务的一部分</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>公司所有权的一小份</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>一份固定利息的合约</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>公司产品的折扣券</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="限价单设定最高买入价或最低卖出价，只在满足条件时成交，但不保证一定能成交。">
+            <p class="quiz-q-text">以下哪种订单能保证以你指定的价格或更好的价格成交？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>市价单 (Market Order)</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>限价单 (Limit Order)</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>止损单 (Stop Loss)</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>追踪止损单</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="2" data-explain="复利公式：10000 × 1.1^20 ≈ 67,275 美元。这就是爱因斯坦称之为「第八大奇迹」的复利效应。">
+            <p class="quiz-q-text">如果你在 2024 年投入 1 万美元，年化收益 10%，20 年后大约有多少？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>2 万美元</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>3 万美元</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>6.7 万美元</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>20 万美元</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+        </div>
+
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <!-- Chapter Navigation -->
+    <nav class="chapter-nav-footer">
+      <div class="chapter-nav-btn prev" style="opacity:0.4; pointer-events:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">（无）</span>
+      </div>
+      <a href="02-market-structure.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">指数与市场结构</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Right TOC -->
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">股票是什么</a></li>
+      <li><a href="#s2">美股 vs A 股</a></li>
+      <li><a href="#s3">选哪家券商</a></li>
+      <li><a href="#s4">读懂报价页面</a></li>
+      <li><a href="#s5">订单类型</a></li>
+      <li><a href="#s6">复利的力量</a></li>
+    </ul>
+  </aside>
+
+</div><!-- .chapter-layout -->
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+<script src="../assets/js/tools/compound-calc.js"></script>
+</body>
+</html>

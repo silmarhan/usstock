@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股第四章：财报三表拆解——利润表、资产负债表、现金流量表全解析，自由现金流 FCF、ROE、ROIC 等核心比率，用资金流向动画理解三表联动。">
+  <meta name="base-url" content="../">
+  <title>第 04 章：财报三表拆解 · 读懂美股</title>  <meta property="og:title" content="第 04 章：财报三表拆解 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch04-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+
+<div class="reading-progress"></div>
+
+<!-- ── Nav ── -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="04-financials.html" class="active">第 04 章</a></li>
+        <li><a href="../glossary.html">术语表</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Chapter Layout ── -->
+<div class="chapter-layout">
+
+  <!-- Sidebar -->
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html" class="active"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="chapter-content">
+
+    <!-- Hero -->
+    <div class="chapter-hero">
+      <img src="../assets/images/ch04-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 04 · Financial Statements</span>
+          <h1 class="hero-title">财报三表拆解</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+
+      <!-- Lead -->
+      <p class="lead">一家公司的净利润连续两年正增长，股价却腰斩——原来看财报，只看利润表是不够的。三张财务报表各有侧重，只有读懂它们之间的联动，才能真正看清一家公司的财务健康状况。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">财报发布的节奏：财报季</h2>
+
+      <p>美国上市公司每年发布<strong>四次财务报告</strong>，分别对应四个财务季度（Q1–Q4）。财报集中发布的那几周，被称为<strong>财报季（Earnings Season）</strong>，通常在每个季度结束后的 3–4 周内展开：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">Q1 财报季</div>
+          <div class="stat-value">4 月中旬</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">报告 1 月–3 月业绩，通常以银行（JP Morgan、花旗等）打响头炮，随后其他行业跟进。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Q2 财报季</div>
+          <div class="stat-value">7 月中旬</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">报告 4 月–6 月业绩，暑假旅游旺季，消费相关公司业绩尤为受关注。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Q3 财报季</div>
+          <div class="stat-value">10 月中旬</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">报告 7 月–9 月业绩，市场开始展望年末假日购物季，零售商前景受重点评估。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Q4 / 全年财报</div>
+          <div class="stat-value">1–2 月</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">全年业绩总结，最受关注。同时发布年度报告（10-K），信息最完整、最详细。</div>
+        </div>
+      </div>
+
+      <p>美国证监会（SEC）规定，上市公司必须定期提交以下文件：</p>
+
+      <table class="glossary-table" style="margin: var(--sp-8) 0;">
+        <thead>
+          <tr><th>文件类型</th><th>提交频率</th><th>主要内容</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>10-K</strong></td><td>每年一次（全年报告）</td><td>最完整的年度财务报告，包含三张财报、管理层讨论、风险披露，通常超过 100 页</td></tr>
+          <tr><td><strong>10-Q</strong></td><td>每季度一次（季报）</td><td>季度财务报告，不需要审计，信息量少于 10-K</td></tr>
+          <tr><td><strong>8-K</strong></td><td>重大事件时随时提交</td><td>临时重大事项披露：CEO 离职、并购、诉讼、财报日期等，通常第一时间移动市场价格</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>去哪里看财报原文？</strong>SEC 的 EDGAR 数据库（edgar.sec.gov）是所有美国上市公司财报的官方一手来源，完全免费。搜索公司名字，找 10-K 或 10-Q，里面有最准确的数字。主流财经网站（Yahoo Finance、Seeking Alpha）显示的数据基本来自这里，但经过了数据处理，可能有轻微差异。</div>
+      </div>
+
+      <!-- ── Section 2 ── -->
+      <h2 id="s2">利润表：公司的「成绩单」</h2>
+
+      <p>利润表（Income Statement，又称 P&amp;L 表）回答一个核心问题：<strong>这家公司在这段时间里赚了多少钱？</strong>它记录的是一段时间内（一个季度或一年）的经营结果，就像期末成绩单，告诉你这学期的总体表现。</p>
+
+      <p>用假想公司「TechCo」来走一遍完整的利润表结构：</p>
+
+      <div class="data-card" style="font-family: var(--font-mono); font-size: var(--ts-sm);">
+        <div class="data-card-label">TechCo 年度利润表（单位：百万美元）</div>
+        <div style="margin-top: var(--sp-4); line-height: 2;">
+          <div style="display:flex; justify-content:space-between;"><span>营业收入（Revenue）</span><span style="color: var(--color-up);">$1,000</span></div>
+          <div style="display:flex; justify-content:space-between; color: var(--ink-muted);"><span>  − 营业成本（Cost of Revenue / COGS）</span><span>($400)</span></div>
+          <div style="display:flex; justify-content:space-between; border-top: 1px solid var(--border); padding-top: var(--sp-2);"><span><strong>毛利润（Gross Profit）</strong></span><span style="color: var(--color-up);">$600</span></div>
+          <div style="display:flex; justify-content:space-between; color: var(--ink-muted);"><span>  − 研发支出（R&amp;D）</span><span>($150)</span></div>
+          <div style="display:flex; justify-content:space-between; color: var(--ink-muted);"><span>  − 营销与管理费（SG&amp;A）</span><span>($200)</span></div>
+          <div style="display:flex; justify-content:space-between; border-top: 1px solid var(--border); padding-top: var(--sp-2);"><span><strong>营业利润（Operating Income / EBIT）</strong></span><span style="color: var(--color-up);">$250</span></div>
+          <div style="display:flex; justify-content:space-between; color: var(--ink-muted);"><span>  − 利息支出</span><span>($20)</span></div>
+          <div style="display:flex; justify-content:space-between; border-top: 1px solid var(--border); padding-top: var(--sp-2);"><span><strong>税前利润（Pre-tax Income）</strong></span><span style="color: var(--color-up);">$230</span></div>
+          <div style="display:flex; justify-content:space-between; color: var(--ink-muted);"><span>  − 所得税（约 21%）</span><span>($48)</span></div>
+          <div style="display:flex; justify-content:space-between; border-top: 1px solid var(--border); padding-top: var(--sp-2);"><span><strong>净利润（Net Income）</strong></span><span style="color: var(--color-up); font-size: var(--ts-base);">$182</span></div>
+        </div>
+      </div>
+
+      <p>从利润表衍生出三个最关键的利润率指标：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">毛利率 Gross Margin</div>
+          <div class="stat-value">60%</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">= 毛利润 ÷ 营收。衡量产品本身有多赚钱，不考虑运营成本。软件公司毛利率通常 70%+，零售商可能只有 25%。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">营业利润率 Operating Margin</div>
+          <div class="stat-value">25%</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">= 营业利润 ÷ 营收。扣除运营成本后的利润率，反映公司核心业务的经营效率。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">净利率 Net Margin</div>
+          <div class="stat-value">18.2%</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">= 净利润 ÷ 营收。最终留在股东口袋里的比例，考虑了所有成本、利息和税费。</div>
+        </div>
+      </div>
+
+      <p>看利润表时，要特别关注<strong>利润率趋势</strong>而不只是绝对数字。如果一家公司营收增长 20%，但毛利率从 65% 下滑到 58%，这意味着竞争加剧或成本上升正在侵蚀它的竞争优势——这比收入数字本身更值得警惕。</p>
+
+      <!-- ── Section 3 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch04-inline-1.png" alt="利润表瀑布：营收如何流向净利润" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>利润表瀑布：营收如何流向净利润</figcaption>
+      </figure>
+
+      <h2 id="s3">资产负债表：公司的「家底」</h2>
+
+      <p>资产负债表（Balance Sheet）不是记录一段时间的变化，而是拍了一张<strong>某个时间点的「财务快照」</strong>——就像是在年末盘点家底：我有多少资产，欠了多少债，净剩多少是属于股东的。</p>
+
+      <p>资产负债表的铁律，也是会计学的基础：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">会计恒等式</div>
+        <div class="data-card-value">资产（Assets）= 负债（Liabilities）+ 股东权益（Shareholders' Equity）</div>
+        <div class="data-card-sub">这个等式永远成立，这就是「复式记账法」的精髓。资产的钱从哪来？要么借的（负债），要么股东投入或公司自己赚的（股东权益）。</div>
+      </div>
+
+      <p>资产和负债各自又分「流动」和「非流动」两类：</p>
+
+      <table class="glossary-table" style="margin: var(--sp-8) 0;">
+        <thead>
+          <tr><th>分类</th><th>资产侧</th><th>负债侧</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>流动（Current）</strong><br><small style="color:var(--ink-muted);">1 年内可变现 / 需偿还</small></td>
+            <td>现金及等价物、应收账款、存货、短期投资</td>
+            <td>应付账款、短期借款、当期到期的长期债务、递延收入</td>
+          </tr>
+          <tr>
+            <td><strong>非流动（Non-current）</strong><br><small style="color:var(--ink-muted);">超过 1 年</small></td>
+            <td>不动产、厂房、设备（PP&amp;E）、长期投资、商誉、无形资产</td>
+            <td>长期债务、递延所得税负债</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>两个从资产负债表衍生的重要流动性指标：</p>
+
+      <ul class="key-points">
+        <li><strong>流动比率（Current Ratio）= 流动资产 ÷ 流动负债。</strong>衡量公司在未来 12 个月内偿还短期债务的能力。通常 &gt; 1.5 较健康，&lt; 1 意味着流动性紧张，可能需要外部融资来应对短期债务。</li>
+        <li><strong>速动比率（Quick Ratio）= （流动资产 − 存货）÷ 流动负债。</strong>比流动比率更严格——把无法快速变现的存货排除在外。对零售商、制造商尤其重要，因为它们库存规模大。</li>
+      </ul>
+
+      <p>资产负债表还有一个值得关注的科目：<strong>商誉（Goodwill）</strong>。当公司以溢价收购另一家公司时，超出被收购公司账面净资产的部分就会计入商誉。商誉本身不产生收入，一旦收购失败或业务恶化需要「减值」，会在利润表上产生巨额亏损。长期关注一家有大量商誉的公司，要定期检查它是否存在减值风险。</p>
+
+      <!-- ── Section 4 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch04-inline-2.png" alt="资产负债表 T 字账户" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>资产负债表 T 字账户</figcaption>
+      </figure>
+
+      <h2 id="s4">现金流量表：最不会骗人的报表</h2>
+
+      <p>如果说利润表是「公司说它赚了多少」，那现金流量表就是「账户里真实进出了多少钱」。</p>
+
+      <p>为什么这个区别重要？因为现代会计使用<strong>权责发生制（Accrual Accounting）</strong>——收入和费用在发生那一刻确认，而不是在现金实际到账时确认。这意味着：</p>
+
+      <ul class="key-points">
+        <li>公司卖出价值 $100 万的货物，但客户 60 天后才付款——利润表上确认了 $100 万收入，但现金还没到账。</li>
+        <li>公司花 $500 万买了一台机器，使用寿命 10 年——现金一次性流出，但利润表上每年只分摊 $50 万的折旧。</li>
+      </ul>
+
+      <p>这就导致：一家公司可以账面盈利（利润表漂亮），但现金账户见底（经营性现金流为负）。现金流量表把这些「会计差异」剥离出来，告诉你<em>真实的现金流动情况</em>。</p>
+
+      <p>现金流量表分三个部分：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">① 经营活动现金流（CFO）</div>
+          <div class="stat-value" style="font-size: var(--ts-base); color: var(--color-up);">最重要</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">核心业务实际产生的现金流入/流出。从净利润出发，调整非现金项目（折旧、摊销）和运营资本变动（应收/应付款、存货）。<strong>这是最真实、最难造假的数字。</strong></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">② 投资活动现金流（CFI）</div>
+          <div class="stat-value" style="font-size: var(--ts-base);">增长信号</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">购买/出售固定资产、收购其他公司、买卖证券投资等。通常为负值（流出）——公司在购置资产和进行投资，这是<strong>增长型支出的体现</strong>，未必是坏事。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">③ 融资活动现金流（CFF）</div>
+          <div class="stat-value" style="font-size: var(--ts-base);">资本决策</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">借款、还款、发行股票、股票回购、派发股息等。反映公司如何筹集和回报资本。持续大规模发新股融资可能摊薄股东权益；大规模回购则代表管理层认为股价被低估。</div>
+        </div>
+      </div>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>利润表与现金流差异的警示信号：</strong>如果一家公司连续多年净利润为正，但经营性现金流持续为负或远低于净利润，要高度警惕。这可能意味着：应收账款疯狂增加（客户不付款）、存货积压（产品卖不出去）、或者收入确认激进（把未来收入提前计入）。这是财务造假的高发地带。</div>
+      </div>
+
+      <!-- ── Section 5 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch04-inline-3.png" alt="现金流三路径：经营、投资、融资" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>现金流三路径：经营、投资、融资</figcaption>
+      </figure>
+
+      <h2 id="s5">自由现金流：巴菲特最看重的数字</h2>
+
+      <p>在所有财务指标里，<strong>自由现金流（Free Cash Flow，FCF）</strong>是巴菲特和很多价值投资者最看重的「终极指标」。原因很简单：它代表公司在维持和扩展业务之后，<em>真正剩余的现金</em>——这笔钱可以用来回购股票、发放股息、偿还债务或进行新的投资，完全由管理层自由支配。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">自由现金流公式</div>
+        <div class="data-card-value">FCF = 经营活动现金流（CFO）− 资本支出（CapEx）</div>
+        <div class="data-card-sub">资本支出（CapEx）= 购置固定资产的现金流出，在投资活动现金流中可以找到。FCF 告诉你：维持现有业务运转（CapEx）之后，核心业务还能产生多少自由现金。</div>
+      </div>
+
+      <p>以 TechCo 为例：经营性现金流 $220M，资本支出 $40M，则 FCF = $180M。注意这和净利润 $182M 非常接近——这通常是一个好信号，说明利润质量高，没有大量「纸面利润」。</p>
+
+      <p>对比一家「利润不错但 FCF 很差」的公司：净利润 $200M，但为了维持业务，每年需要投入 $300M 资本支出（比如电信公司铺设网络、航空公司更新机队），FCF = −$100M。这家公司账面盈利，却需要不断举债或融资才能维持运营——投资者需要对这类「资本密集型」行业保持额外谨慎。</p>
+
+      <div class="pull-quote">
+        <p>会计利润是观点，现金流才是事实。公司可以活在亏损里，但不能活在没有现金里。</p>
+        <cite>— 投资格言</cite>
+      </div>
+
+      <!-- ── Section 6 ── -->
+      <h2 id="s6">关键比率：ROE、ROA、ROIC</h2>
+
+      <p>三张财报读完，还有三个比率能帮你快速判断一家公司「用钱的效率」有多高。</p>
+
+      <h3 style="margin: var(--sp-8) 0 var(--sp-4);">ROE：净资产回报率</h3>
+
+      <div class="data-card">
+        <div class="data-card-label">公式</div>
+        <div class="data-card-value">ROE = 净利润 ÷ 股东权益</div>
+        <div class="data-card-sub">衡量「股东每投入 $1，公司能赚回多少」。ROE = 20% 意味着每 $100 股东权益，公司能创造 $20 利润。巴菲特偏爱持续 ROE &gt; 15% 的公司，认为这代表公司具有持久竞争优势（护城河）。</div>
+      </div>
+
+      <p>ROE 可以用<strong>杜邦分解（DuPont Decomposition）</strong>拆开来看：</p>
+
+      <p style="font-family: var(--font-mono); font-size: var(--ts-sm); background: var(--surface-2); padding: var(--sp-4); border-radius: var(--radius-md); line-height: 2.2;">
+        ROE = 净利率 × 资产周转率 × 财务杠杆<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= (净利润/营收) × (营收/总资产) × (总资产/股东权益)
+      </p>
+
+      <p>这个分解的价值在于：同样是 ROE 20%，可能有完全不同的来源——有的是利润率高（品牌溢价，如奢侈品），有的是资产周转快（高效运营，如沃尔玛），有的是大量举债（高杠杆，风险更高）。只看结果数字，看不出来源，杜邦分解帮你看清。</p>
+
+      <h3 style="margin: var(--sp-8) 0 var(--sp-4);">ROA：总资产回报率</h3>
+
+      <div class="data-card">
+        <div class="data-card-label">公式</div>
+        <div class="data-card-value">ROA = 净利润 ÷ 总资产</div>
+        <div class="data-card-sub">衡量「公司利用所有资产（无论是股东的钱还是借来的钱）赚了多少」。ROA 比 ROE 更「中性」，不受财务杠杆影响，适合比较资产结构差异大的公司。银行的 ROA 通常只有 1%–2%，因为它们资产规模极大。</div>
+      </div>
+
+      <h3 style="margin: var(--sp-8) 0 var(--sp-4);">ROIC：投入资本回报率——最严格的效率指标</h3>
+
+      <div class="data-card">
+        <div class="data-card-label">公式</div>
+        <div class="data-card-value">ROIC = 税后净营业利润（NOPAT）÷ 投入资本</div>
+        <div class="data-card-sub">投入资本 = 股东权益 + 有息负债 − 现金。ROIC 衡量「公司投入的每一块资本创造了多少价值」。如果 ROIC 持续高于资本成本（WACC），公司就在创造价值；低于 WACC 则在销毁价值——无论利润表看起来多好看。</div>
+      </div>
+
+      <p>ROIC 是最严格的「资本效率」指标，也是巴菲特、芒格最看重的之一。历史上，ROIC 持续保持在 20%+ 的公司（苹果、微软、好市多等），往往就是最好的长期投资标的——因为高 ROIC 意味着公司拥有真正的竞争优势，能将投入的资本转化为远超平均的回报。</p>
+
+      <!-- ── Cashflow Animation Tool ── -->
+      <div class="section-rule"><span>试试看 · 资金流向动画</span></div>
+
+      <div class="tool-container" id="cashflow-anim">
+        <div class="tool-header">
+          <div class="tool-title-group">
+            <div class="tool-icon">💰</div>
+            <div>
+              <div class="tool-name">资金流向动画</div>
+              <div class="tool-desc">Cash Flow Through Three Statements</div>
+            </div>
+          </div>
+        </div>
+        <div id="cashflow-svg-area" style="min-height:280px; display:flex; align-items:center; justify-content:center;">
+          <p style="color:var(--ink-muted); font-family:var(--font-sans); font-size:var(--ts-sm);">点击下方按钮开始演示</p>
+        </div>
+        <div style="display:flex; gap:var(--sp-3); margin-top:var(--sp-4);">
+          <button class="btn btn-ghost btn-sm" id="cf-btn-income">① 收入到利润</button>
+          <button class="btn btn-ghost btn-sm" id="cf-btn-balance">② 资产与负债</button>
+          <button class="btn btn-ghost btn-sm" id="cf-btn-cashflow">③ 现金流</button>
+        </div>
+      </div>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>美股公司每季度发布财报（10-Q），每年发布年度报告（10-K）。财报季集中在每季末后 3–4 周，银行通常打头阵。</li>
+          <li>利润表记录一段时间的经营结果：营收→毛利润→营业利润→净利润。关注利润率<strong>趋势</strong>比绝对值更重要。</li>
+          <li>资产负债表是时间点快照：资产 = 负债 + 股东权益，这个恒等式永远成立。流动比率和速动比率衡量短期偿债能力。</li>
+          <li>现金流量表分三块：经营（最重要）、投资、融资。净利润与经营性现金流的差异，是识别利润质量的关键。</li>
+          <li>自由现金流（FCF）= 经营性现金流 − 资本支出，是巴菲特最看重的「真实盈利能力」指标。</li>
+          <li>ROE 衡量股东资本效率，ROIC 是更严格的全资本效率指标。ROIC 持续高于资本成本，是公司拥有真实竞争优势的最好证明。</li>
+        </ul>
+      </div>
+
+      <!-- ── Glossary ── -->
+      <div class="section-rule"><span>关键术语</span></div>
+
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>利润表</td><td class="en-term">Income Statement / P&amp;L</td><td>记录一段时间内营收、成本和利润的财务报告</td></tr>
+          <tr><td>资产负债表</td><td class="en-term">Balance Sheet</td><td>某时间点的财务快照：资产 = 负债 + 股东权益</td></tr>
+          <tr><td>现金流量表</td><td class="en-term">Cash Flow Statement</td><td>记录实际现金流入流出，分经营、投资、融资三部分</td></tr>
+          <tr><td>自由现金流</td><td class="en-term">Free Cash Flow (FCF)</td><td>经营性现金流减去资本支出，代表真正可自由支配的现金</td></tr>
+          <tr><td>毛利率</td><td class="en-term">Gross Margin</td><td>毛利润 ÷ 营收，衡量产品本身的盈利能力</td></tr>
+          <tr><td>净资产回报率</td><td class="en-term">ROE (Return on Equity)</td><td>净利润 ÷ 股东权益，衡量股东资金使用效率</td></tr>
+          <tr><td>总资产回报率</td><td class="en-term">ROA (Return on Assets)</td><td>净利润 ÷ 总资产，不受杠杆影响的资产使用效率</td></tr>
+          <tr><td>投入资本回报率</td><td class="en-term">ROIC (Return on Invested Capital)</td><td>最严格的资本效率指标，持续高 ROIC 是护城河的最好证明</td></tr>
+          <tr><td>资本支出</td><td class="en-term">CapEx (Capital Expenditure)</td><td>购置固定资产的资金投入，维持或扩大业务的必要支出</td></tr>
+          <tr><td>权责发生制</td><td class="en-term">Accrual Accounting</td><td>收入/费用在发生时确认，而非现金实际到账时确认</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Quiz ── -->
+      <div class="quiz-section" data-chapter="04">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">3 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="2" data-explain="自由现金流（FCF）= 经营活动现金流 − 资本支出。它代表公司在维持业务运营所需资本支出之后，真正剩余的可自由支配现金，是衡量公司真实盈利能力的最重要指标之一。">
+            <p class="quiz-q-text">自由现金流（FCF）的计算公式是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>净利润 − 所得税</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>营业收入 − 总成本</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>经营活动现金流 − 资本支出（CapEx）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>经营活动现金流 + 投资活动现金流</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="0" data-explain="资产负债表的基本恒等式是：资产 = 负债 + 股东权益。这个等式永远成立，是复式记账法的基础。资产代表公司拥有的一切，负债是借来的，股东权益是股东投入和积累盈利的部分。">
+            <p class="quiz-q-text">资产负债表的基本恒等式是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>资产 = 负债 + 股东权益</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>营收 = 成本 + 利润</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>现金流入 = 现金流出 + 净变动</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>资产 = 股东权益 − 负债</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="当一家公司净利润为正但经营活动现金流为负，通常说明账面利润与实际现金产生出现了背离。常见原因包括：应收账款大幅增加（已确认收入但未收到现金）、存货积压、或收入确认政策过于激进。这是需要重点警惕的财务红旗。">
+            <p class="quiz-q-text">如果一家公司净利润连续为正，但经营活动现金流持续为负，最可能说明什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>公司非常健康，大量投资于未来增长</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>账面利润质量存疑，可能存在应收账款积压、存货堆积或收入确认激进等问题</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>公司在积极回购股票和发放股息</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>会计规则要求这两个数字必然不同，不必担心</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <!-- Chapter Navigation -->
+    <nav class="chapter-nav-footer">
+      <a href="03-valuation.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">估值指标</span>
+      </a>
+      <a href="05-technical.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">K线与技术分析</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Right TOC -->
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">财报季节奏</a></li>
+      <li><a href="#s2">利润表解析</a></li>
+      <li><a href="#s3">资产负债表</a></li>
+      <li><a href="#s4">现金流量表</a></li>
+      <li><a href="#s5">自由现金流 FCF</a></li>
+      <li><a href="#s6">ROE · ROA · ROIC</a></li>
+    </ul>
+  </aside>
+
+</div><!-- .chapter-layout -->
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+<script src="../assets/js/tools/cashflow-anim.js"></script>
+</body>
+</html>

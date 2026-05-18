@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股术语速查表——50+ 个中英文对照词条，从股票、指数到期权希腊字母，一页查清楚。">
+  <title>术语速查 · 读懂美股</title>  <meta property="og:title" content="术语速查 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="assets/images/ch01-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/typography.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .glossary-page { max-width: 860px; margin: 0 auto; padding: 80px 24px 120px; }
+    .glossary-page-title { font-family: var(--font-display); font-size: clamp(2.5rem,6vw,4rem); margin-bottom: 8px; }
+    .glossary-page-sub { color: var(--ink-secondary); font-size: 1.05rem; margin-bottom: 48px; }
+    .glossary-search { width: 100%; padding: 14px 20px; background: var(--bg-panel); border: 1px solid var(--rule); border-radius: 8px; color: var(--ink-primary); font-family: var(--font-serif); font-size: 1rem; margin-bottom: 40px; outline: none; }
+    .glossary-search:focus { border-color: var(--amber); }
+    .glossary-group { margin-bottom: 48px; }
+    .glossary-group-title { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+    .glossary-entry { display: grid; grid-template-columns: 1fr 1.2fr 2fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: start; }
+    .glossary-entry:last-child { border-bottom: none; }
+    .ge-cn { font-family: var(--font-serif); font-weight: 600; font-size: 1rem; color: var(--ink-primary); }
+    .ge-en { font-family: var(--font-mono); font-size: 0.8rem; color: var(--amber); padding-top: 2px; }
+    .ge-def { font-size: 0.88rem; color: var(--ink-secondary); line-height: 1.6; }
+    .glossary-entry.hidden { display: none; }
+    .no-results { text-align: center; color: var(--ink-muted); padding: 60px 0; font-size: 0.95rem; }
+    @media (max-width: 600px) {
+      .glossary-entry { grid-template-columns: 1fr; gap: 4px; }
+      .ge-en { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav class="nav-chapters">
+      <a href="index.html">首页</a>
+      <span class="nav-sep">·</span>
+      <a href="about.html">关于</a>
+    </nav>
+    <button class="theme-toggle" aria-label="切换主题">◐</button>
+  </div>
+</header>
+
+<main class="glossary-page">
+  <div class="chapter-kicker">Glossary · 术语表</div>
+  <h1 class="glossary-page-title">术语速查</h1>
+  <p class="glossary-page-sub">50+ 个核心词条，中英文对照，一页查清。</p>
+
+  <input class="glossary-search" type="search" placeholder="搜索中文术语或英文…" id="gl-search" autocomplete="off">
+
+  <div id="glossary-content">
+    <!-- Populated by JS -->
+    <div class="no-results" id="gl-no-results" style="display:none">未找到匹配词条</div>
+  </div>
+</main>
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/nav.js"></script>
+<script>
+(async function() {
+  const resp = await fetch('assets/data/glossary.json');
+  const terms = await resp.json();
+
+  const GROUPS = [
+    { label: '基础概念', keys: ['股票','市值','IPO','ETF','蓝筹股','成长股','价值股','分红','回购','做空','杠杆','流动性','波动率'] },
+    { label: '指数与市场', keys: ['标普500','纳斯达克','道琼斯','做市商','联邦基金利率','国债收益率','通货膨胀','VIX'] },
+    { label: '估值指标', keys: ['市盈率','市净率','市销率','EV/EBITDA'] },
+    { label: '财务报表', keys: ['利润表','资产负债表','现金流量表','自由现金流','ROE','ROIC'] },
+    { label: '技术分析', keys: ['K线','均线','MACD','成交量'] },
+    { label: '期权基础', keys: ['期权','看涨期权','看跌期权','执行价','到期日','权利金','隐含波动率'] },
+    { label: '期权希腊字母', keys: ['Delta','Gamma','Theta','Vega'] },
+    { label: '期权策略', keys: ['备兑买权','价差','铁鹰','跨式'] },
+    { label: '风险与心理', keys: ['止损','Kelly公式','损失厌恶','确认偏误','锚定效应'] },
+  ];
+
+  const termMap = {};
+  terms.forEach(t => termMap[t.term] = t);
+
+  const content = document.getElementById('glossary-content');
+  const noResults = document.getElementById('gl-no-results');
+
+  function buildGroups(filter) {
+    content.querySelectorAll('.glossary-group').forEach(g => g.remove());
+    let totalShown = 0;
+
+    GROUPS.forEach(group => {
+      const filtered = group.keys.map(k => termMap[k]).filter(Boolean).filter(t => {
+        if (!filter) return true;
+        const q = filter.toLowerCase();
+        return t.term.includes(filter) || t.en.toLowerCase().includes(q) || t.def.includes(filter);
+      });
+      if (filtered.length === 0) return;
+      totalShown += filtered.length;
+
+      const section = document.createElement('div');
+      section.className = 'glossary-group reveal';
+      const title = document.createElement('div');
+      title.className = 'glossary-group-title';
+      title.textContent = group.label;
+      section.appendChild(title);
+
+      filtered.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'glossary-entry';
+        row.innerHTML = `<div class="ge-cn">${t.term}</div><div class="ge-en">${t.en}</div><div class="ge-def">${t.def}</div>`;
+        section.appendChild(row);
+      });
+
+      content.insertBefore(section, noResults);
+    });
+
+    // Show uncategorized
+    const categorizedKeys = GROUPS.flatMap(g => g.keys);
+    const uncategorized = terms.filter(t => !categorizedKeys.includes(t.term)).filter(t => {
+      if (!filter) return true;
+      const q = filter.toLowerCase();
+      return t.term.includes(filter) || t.en.toLowerCase().includes(q) || t.def.includes(filter);
+    });
+    if (uncategorized.length > 0) {
+      totalShown += uncategorized.length;
+      const section = document.createElement('div');
+      section.className = 'glossary-group reveal';
+      section.innerHTML = '<div class="glossary-group-title">其他术语</div>';
+      uncategorized.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'glossary-entry';
+        row.innerHTML = `<div class="ge-cn">${t.term}</div><div class="ge-en">${t.en}</div><div class="ge-def">${t.def}</div>`;
+        section.appendChild(row);
+      });
+      content.insertBefore(section, noResults);
+    }
+
+    noResults.style.display = totalShown === 0 ? 'block' : 'none';
+  }
+
+  buildGroups('');
+
+  document.getElementById('gl-search').addEventListener('input', e => {
+    buildGroups(e.target.value.trim());
+  });
+})();
+</script>
+</body>
+</html>

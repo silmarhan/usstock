@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股第二章：股票指数是什么、S&P 500 / Nasdaq / 道琼斯 / Russell 2000 详解、NYSE vs Nasdaq 交易所、做市商机制、交易时段与 ETF 入门。">
+  <meta name="base-url" content="../">
+  <title>第 02 章：指数与市场结构 · 读懂美股</title>  <meta property="og:title" content="第 02 章：指数与市场结构 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch02-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+
+<div class="reading-progress"></div>
+
+<!-- ── Nav ── -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="02-market-structure.html" class="active">第 02 章</a></li>
+        <li><a href="../glossary.html">术语表</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Chapter Layout ── -->
+<div class="chapter-layout">
+
+  <!-- Sidebar -->
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html" class="active"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="chapter-content">
+
+    <!-- Hero -->
+    <div class="chapter-hero">
+      <img src="../assets/images/ch02-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 02 · Market Structure &amp; Indices</span>
+          <h1 class="hero-title">指数与市场结构</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+
+      <!-- Lead -->
+      <p class="lead">你可能听过「今天道指涨了 200 点」或「科技股集体崩盘」，但你有没有想过：这个「涨了」的意思，是所有股票都涨了吗？答案是：不一定。搞清楚指数背后的规则，才能真正读懂新闻里那些数字。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">什么是股票指数（不是所有股票的平均）</h2>
+
+      <p>全美上市股票有超过 <strong>8000 只</strong>。如果你想每天早上一眼看出「市场今天怎么了」，你不可能把 8000 只股票一一查看。于是，人们发明了<strong>股票指数</strong>（Stock Index）——从市场中挑选一批有代表性的股票，用一个数字来代表整体市场的涨跌。</p>
+
+      <p>关键点来了：指数<em>不是</em>所有股票的平均，而是<strong>一个经过精心设计的样本</strong>。选哪些股票、每只股票占多大权重——这两个问题的答案，决定了一个指数的「性格」。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">核心概念</div>
+        <div class="data-card-value">指数 = 精选样本 + 加权规则</div>
+        <div class="data-card-sub">不同的样本选择和加权方式，造就了性格迥异的四大指数。S&P 500 代表大公司，Russell 2000 代表小公司，它们同一天可能走出完全相反的走势。</div>
+      </div>
+
+      <p>最常见的加权方式有两种：<strong>市值加权</strong>（Market-cap weighted）和<strong>价格加权</strong>（Price-weighted）。市值加权意思是：公司越大，在指数里占的比重越高。价格加权则更奇怪——股票价格越高的公司占比越大，和公司实际大小完全无关。</p>
+
+      <p>为什么要区分这两种？因为你在新闻里看到的「道指涨了 300 点」和「S&P 500 涨了 0.8%」，背后驱动它们的公司可能完全不同。</p>
+
+      <!-- ── Section 2 ── -->
+      <h2 id="s2">四大指数详解</h2>
+
+      <p>美股有四个你必须认识的指数。它们各有侧重，观察市场的角度完全不同：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">S&amp;P 500</div>
+          <div class="stat-value">500 只</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">市值加权 · 总市值约 $42 万亿 · 年化约 +10%（含分红）。美国最重要的市场基准，涵盖科技、金融、医疗等所有行业。机构投资者用它衡量自己的业绩。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Nasdaq 综合指数</div>
+          <div class="stat-value">3000+ 只</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">市值加权 · 科技股占比超 50% · 波动性显著高于 S&P 500。苹果、微软、英伟达、亚马逊等科技巨头主导走势。牛市涨得猛，熊市跌得也猛。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">道琼斯工业指数</div>
+          <div class="stat-value">30 只蓝筹</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">价格加权（设计奇葩）· 历史最悠久，1896 年创立。只包含 30 家超大型公司。因为是「价格加权」，股价高的公司影响力更大，与公司市值大小无关。参考意义有限，但媒体最爱引用。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Russell 2000</div>
+          <div class="stat-value">2000 只小盘股</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">市值加权 · 覆盖美国中小型企业 · 被视为美国经济健康度的「体温计」。小公司对国内经济更敏感，外贸收入少，反映的是美国本土经济的真实状态。</div>
+        </div>
+      </div>
+
+      <p>关于道琼斯的「价格加权」，举个例子你就明白为什么这个设计很奇葩：假设 A 公司股价 $500，市值 $10 亿；B 公司股价 $50，市值 $1 万亿。在道指里，A 公司的权重是 B 公司的 10 倍——尽管 B 公司大 1000 倍。这个设计是 1896 年的历史遗留，当时没有计算机，用价格加权方便手算。如今没人会认为这是合理的，但道指太出名了，没人想改。</p>
+
+      <p>S&P 500 则不同。作为<strong>市值加权</strong>指数，苹果（市值约 $3 万亿）在指数里的权重，就是等比例大于一家市值 $100 亿的小公司。这更合理——但也带来一个问题：<strong>前 10 大成分股占了整个指数近 30% 的权重</strong>。当你买一个「S&P 500 指数基金」，你以为买了 500 家公司的均匀分散，实际上你的持仓有将近三成集中在苹果、微软、英伟达、亚马逊、谷歌这几家科技巨头身上。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>实战应用：</strong>看新闻的时候，「大盘」通常指 S&P 500；「科技股」走势看 Nasdaq-100（QQQ）；判断经济景气度还可以参考 Russell 2000。三个指数同时走强，往往是真正的多头市场；仅 Nasdaq 独涨，可能只是科技板块的行情。</div>
+      </div>
+
+      <!-- ── Section 3 ── -->
+      <h2 id="s3">市场交易所的结构：NYSE vs Nasdaq</h2>
+
+      <p>美国有两个主要的股票交易所：<strong>纽约证券交易所（NYSE）</strong>和<strong>纳斯达克（Nasdaq）</strong>。很多人以为纳斯达克只交易科技股——这是个误解。两者最本质的区别在于<em>交易机制</em>，而不是上市公司的类型。</p>
+
+      <table class="glossary-table" style="margin: var(--sp-8) 0;">
+        <thead>
+          <tr><th>维度</th><th>NYSE（纽交所）</th><th>Nasdaq（纳斯达克）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>成立年份</td><td>1792 年</td><td>1971 年</td></tr>
+          <tr><td>交易方式</td><td>有实体交易大厅（华尔街 11 号），指定做市商负责维护秩序</td><td>纯电子化撮合，无实体大厅，多个做市商竞争</td></tr>
+          <tr><td>上市标准</td><td>更严格：盈利要求高、最低市值 $4 亿、股东人数要求高</td><td>相对宽松，允许未盈利公司上市，吸引成长型科技公司</td></tr>
+          <tr><td>典型上市公司</td><td>JP Morgan、可口可乐、伯克希尔、沃尔玛</td><td>苹果、微软、亚马逊、特斯拉、英伟达</td></tr>
+          <tr><td>交易量</td><td>按市值排全球第一</td><td>按交易股数排全球第一</td></tr>
+        </tbody>
+      </table>
+
+      <p>有意思的是：苹果虽然是全球市值最大的公司，却在 Nasdaq 上市，而不是 NYSE——因为苹果 1980 年上市时选的是 Nasdaq，此后也没有迁移过。所以不要根据「在哪个交易所」来判断公司的质量或规模。</p>
+
+      <p>你可能注意到：NYSE 有个「实体交易大厅」，那些头戴耳机、手拿单据、在镜头前做手势的交易员形象，就是 NYSE 的招牌画面。但别被表象迷惑——NYSE 99% 以上的交易量也是电子化完成的，那个大厅主要是仪式感和媒体露出，真正的交易早就在数据中心里以微秒级速度完成了。</p>
+
+      <h3 style="margin: var(--sp-8) 0 var(--sp-4);">做市商：市场流动性的幕后功臣</h3>
+
+      <p>不管是 NYSE 还是 Nasdaq，背后都有<strong data-term="做市商">做市商</strong>（Market Maker）在默默维护市场的流动性。</p>
+
+      <p>想象你去一个外币兑换柜台，不管你什么时候去，柜台都会告诉你：「我这里美元兑人民币，买价 7.20，卖价 7.25。」你随时可以按这个价格买或卖，不需要等另一个客户刚好想和你做反向交易。这就是做市商的角色。</p>
+
+      <p>在股票市场里，做市商持续向市场挂出买价（Bid）和卖价（Ask），确保你任何时候想买卖股票都有对手方。他们的利润来源就是这个买卖价差（Spread）。做市商承担的风险是：如果价格剧烈波动，他们手里的库存（持仓）可能亏损。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">做市商的收益来源</div>
+        <div class="data-card-value">买卖价差（Bid-Ask Spread）</div>
+        <div class="data-card-sub">以苹果（AAPL）为例：Bid $189.98，Ask $190.00，价差 $0.02。做市商每促成一笔买卖交易，赚取这 $0.02。对于日均交易量数亿股的 AAPL，这是一笔可观的收入。</div>
+      </div>
+
+      <p>正因为有做市商的存在，你才可以在开盘后几秒内买到任何一只大盘股，而不需要等待另一个散户刚好挂出卖单。这就是市场<strong data-term="流动性">流动性</strong>（Liquidity）的来源。流动性越好的股票（成交量大、价差小），买卖越方便，冲击成本越低。</p>
+
+      <!-- ── Section 4 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch02-inline-1.png" alt="做市商撮合机制示意" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>做市商撮合机制示意</figcaption>
+      </figure>
+
+      <h2 id="s4">交易时段：盘前、正常交易和盘后</h2>
+
+      <p>美股的交易时间按<strong>美国东部时间（ET）</strong>计算，分为三个时段。对于中国投资者，最重要的是换算成北京时间（夏令时 -12 小时，冬令时 -13 小时）：</p>
+
+      <table class="glossary-table" style="margin: var(--sp-8) 0;">
+        <thead>
+          <tr><th>时段</th><th>美东时间（ET）</th><th>北京时间（夏令时）</th><th>特点</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>盘前交易</strong> Pre-market</td><td>4:00 – 9:30</td><td>16:00 – 21:30</td><td>成交量极低，价差大，主要是机构和对冲基金在对财报和新闻作出反应</td></tr>
+          <tr><td><strong>正常交易</strong> Regular Hours</td><td>9:30 – 16:00</td><td>21:30 – 04:00（次日）</td><td>成交量最大，价差最小，流动性最好，是绝大多数散户操作的黄金时段</td></tr>
+          <tr><td><strong>盘后交易</strong> After-hours</td><td>16:00 – 20:00</td><td>04:00 – 08:00（次日）</td><td>成交量偏低，价格波动可以很大（尤其是财报发布后），价差大，滑点风险高</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>开盘前 15 分钟最危险：</strong>美东时间 9:30–9:45 是全天波动最剧烈的时段。前一天积累的买卖单集中爆发，价格可能在几秒内跳动数个百分点。机构算法交易在这段时间最活跃，散户很容易在这个时段以糟糕的价格成交。<strong>建议新手在开盘 15 分钟后再下单</strong>，等价格稳定再操作。</div>
+      </div>
+
+      <p>财报发布通常在<strong>盘前</strong>（开盘前）或<strong>盘后</strong>（收盘后）公布，目的是给市场时间消化信息。这也是为什么你会看到某只股票收盘价 $100，但第二天开盘直接跳到 $120 或 $80——这个「缺口」（Gap）就是盘后信息被重新定价的结果。</p>
+
+      <!-- ── Section 5 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch02-inline-2.png" alt="三段交易时段：盘前、正常、盘后" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>三段交易时段：盘前、正常、盘后</figcaption>
+      </figure>
+
+      <h2 id="s5">ETF：普通投资者最合适的工具</h2>
+
+      <p>学完指数之后，你可能会想：「我认可 S&P 500 长期向上，那我能直接买 S&P 500 吗？」答案是：可以，通过 <strong>ETF（交易所交易基金）</strong>。</p>
+
+      <p>ETF 的工作原理很简单：基金公司买入 S&P 500 里所有 500 家公司的股票，然后把这个「一篮子股票」打包成一份新的证券，在交易所上市，让你像买普通股票一样买卖。你买一股 SPY（S&P 500 最大的 ETF），实际上就相当于按比例持有了苹果、微软、亚马逊等 500 家公司。</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">SPY · SPDR S&amp;P 500 ETF</div>
+          <div class="stat-value">追踪 S&amp;P 500</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">全球规模最大的 ETF，管理资产超 $5500 亿。费率极低（0.09%/年）。流动性极好，日均成交量数十亿美元，价差极小。是追踪大盘的首选工具。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">QQQ · Invesco Nasdaq-100 ETF</div>
+          <div class="stat-value">追踪 Nasdaq-100</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">追踪纳斯达克前 100 大非金融公司。科技股浓度高，苹果+微软+英伟达+亚马逊+谷歌合计超 40% 权重。牛市超跑 S&P 500，熊市也跌得更猛。适合对科技行业有信念的投资者。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">IWM · iShares Russell 2000 ETF</div>
+          <div class="stat-value">追踪 Russell 2000</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">追踪 2000 家美国中小型企业。当美国经济景气、降息预期升温时，小盘股往往表现亮眼。波动性最大，但也代表了美国本土经济最真实的状态。</div>
+        </div>
+      </div>
+
+      <p>ETF 有一个参数叫<strong>费用率（Expense Ratio）</strong>，是每年从你的资产中扣除的管理费。SPY 费率 0.09%，意味着你持有 $10000，每年只被收 $9 的管理费。主动型基金的平均费率是 1–2%，长期下来差距惊人。</p>
+
+      <div class="pull-quote">
+        <p>超过 90% 的主动型基金，在 10 年内无法持续跑赢 S&P 500 指数。最聪明的投资，往往是最简单的投资。</p>
+        <cite>— 来源：SPIVA 报告，标普道琼斯指数公司</cite>
+      </div>
+
+      <p>对于大多数普通投资者，定期买入 SPY 或 QQQ，然后长期持有，是最有据可查、最经得起时间检验的投资策略之一。你不需要挑股票，不需要预测市场，只需要让时间和复利做它们该做的事。</p>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>股票指数是精选样本+加权规则，不是所有股票的平均值。加权方式决定哪些公司对指数影响最大。</li>
+          <li>S&P 500（500 只，市值加权）是最重要的市场基准；Nasdaq 科技浓度高；道琼斯只有 30 只且是价格加权（设计奇葩）；Russell 2000 反映中小企业和经济景气度。</li>
+          <li>NYSE 有实体交易大厅和指定做市商；Nasdaq 是纯电子化交易。上市标准 NYSE 更严，但公司质量与交易所无必然关系。</li>
+          <li>做市商持续提供买卖报价，赚取买卖价差，是市场流动性的来源。</li>
+          <li>交易时间分三段：盘前（4:00–9:30）、正常（9:30–16:00）、盘后（16:00–20:00），均为美东时间。新手建议只在正常交易时段下单。</li>
+          <li>ETF 是买入指数的最简单方式：SPY 追踪 S&P 500，QQQ 追踪 Nasdaq-100，IWM 追踪 Russell 2000。费率低、流动性好，是长期投资者的首选。</li>
+        </ul>
+      </div>
+
+      <!-- ── Glossary ── -->
+      <div class="section-rule"><span>关键术语</span></div>
+
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>指数</td><td class="en-term">Index</td><td>一篮子精选股票构成的市场晴雨表</td></tr>
+          <tr><td>市值加权</td><td class="en-term">Market-cap Weighted</td><td>公司市值越大，在指数中占比越高</td></tr>
+          <tr><td>成分股</td><td class="en-term">Component Stocks</td><td>构成某个指数的具体股票</td></tr>
+          <tr><td>做市商</td><td class="en-term">Market Maker</td><td>持续提供买卖报价、维护市场流动性的机构</td></tr>
+          <tr><td>ETF</td><td class="en-term">Exchange-Traded Fund</td><td>在交易所上市的指数基金，像股票一样交易</td></tr>
+          <tr><td>流动性</td><td class="en-term">Liquidity</td><td>资产在不影响价格的情况下快速买卖的能力</td></tr>
+          <tr><td>盘前交易</td><td class="en-term">Pre-market Trading</td><td>正常开市（9:30 ET）前的交易时段，流动性低</td></tr>
+          <tr><td>费用率</td><td class="en-term">Expense Ratio</td><td>ETF 每年收取的管理费，以资产百分比表示</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Quiz ── -->
+      <div class="quiz-section" data-chapter="02">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">5 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="2" data-explain="S&P 500 包含 500 只股票，是美国最重要的股市基准指数，采用市值加权方式。道琼斯只有 30 只，Nasdaq 有 3000 多只。">
+            <p class="quiz-q-text">S&P 500 包含多少只股票？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>30 只蓝筹股</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>100 只</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>500 只</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>全部美国上市股票</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="NYSE 最大的特点是有实体交易大厅（位于华尔街 11 号），但绝大多数交易量仍是电子化完成的。两者都可以上市各类行业的公司，Nasdaq 并不只交易科技股。">
+            <p class="quiz-q-text">NYSE 与 Nasdaq 最大的区别是？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>两者上市标准完全相同</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>NYSE 有实体交易大厅，Nasdaq 是纯电子化交易所</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>Nasdaq 只交易科技股</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>NYSE 交易量比 Nasdaq 大得多</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="做市商的核心职能是持续向市场提供买价和卖价，确保投资者随时有对手方完成交易，从而维护市场流动性。他们的利润来自买卖价差。">
+            <p class="quiz-q-text">「做市商」的主要作用是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>监管市场，防止价格操纵</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>持续提供买价和卖价，为市场提供流动性</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>替散户分析和选择股票</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>设定官方交易价格</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="0" data-explain="道琼斯工业指数采用「价格加权」方式，股价越高的公司权重越大，与公司实际规模（市值）无关。这个设计是 1896 年为了方便手工计算而设计的，在现代来看确实不合理。">
+            <p class="quiz-q-text">道琼斯工业指数采用什么加权方式？为什么说这个设计「奇葩」？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>价格加权：股价高的公司权重大，与公司市值大小无关</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>市值加权：市值越大权重越高</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>等权重：每只股票权重相同</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>盈利加权：盈利越多权重越高</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="2" data-explain="正常交易时段是美东时间 9:30 到 16:00，对应北京夏令时是 21:30 到次日 4:00。盘前是 4:00–9:30 ET，盘后是 16:00–20:00 ET，这两个时段流动性低、价差大，新手应避免在这些时段下单。">
+            <p class="quiz-q-text">美股正常交易时段（Regular Hours）是美东时间哪个时段？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>8:00 – 17:00 ET</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>4:00 – 20:00 ET（全天）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>9:30 – 16:00 ET</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>10:00 – 15:30 ET</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <!-- Chapter Navigation -->
+    <nav class="chapter-nav-footer">
+      <a href="01-getting-started.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">开户与市场入门</span>
+      </a>
+      <a href="03-valuation.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">估值指标</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Right TOC -->
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">什么是股票指数</a></li>
+      <li><a href="#s2">四大指数详解</a></li>
+      <li><a href="#s3">NYSE vs Nasdaq</a></li>
+      <li><a href="#s4">三大交易时段</a></li>
+      <li><a href="#s5">ETF 入门工具</a></li>
+    </ul>
+  </aside>
+
+</div><!-- .chapter-layout -->
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+</body>
+</html>

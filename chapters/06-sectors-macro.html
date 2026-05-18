@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股板块轮动与宏观入门：GICS 11个板块、经济周期时钟、VIX恐慌指数、Sahm衰退法则、美联储FOMC与CPI——读懂宏观大局才能顺势而为。">
+  <meta name="base-url" content="../">
+  <title>第 06 章：板块轮动与宏观 · 读懂美股</title>  <meta property="og:title" content="第 06 章：板块轮动与宏观 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch06-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+<div class="reading-progress"></div>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-mark">US</span>读懂美股</a>
+    <nav><ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="06-sectors-macro.html" class="active">第 06 章</a></li>
+      <li><a href="../glossary.html">术语表</a></li>
+    </ul></nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="chapter-layout">
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html" class="active"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+    <div class="chapter-hero">
+      <img src="../assets/images/ch06-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 06 · Sector Rotation &amp; Macro</span>
+          <h1 class="hero-title">板块轮动与宏观</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+      <p class="lead">有没有注意到，2022年能源股涨了<span class="data-up">+60%</span>，同年科技股跌了<span class="data-down">−30%</span>？这不是运气，也不是巧合——是经济周期在按照某种规律旋转。理解这个规律，你就能在大多数人困惑时，找到相对清晰的方向。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">GICS 11 个板块——美股的「行政区划」</h2>
+
+      <p>美国股市有超过5000只上市股票，如果每一只都要单独研究，人一辈子都看不完。所以，投资界按照行业把它们归类为11个大板块（Sector），这套分类标准叫做 <strong data-term="GICS">GICS</strong>（Global Industry Classification Standard，全球行业分类标准），由标普和明晟于1999年联合推出，是全球最通用的股票行业分类体系。</p>
+
+      <p>记住这11个板块，就像记住了美股世界的「地图」：</p>
+
+      <table class="glossary-table" style="margin:var(--sp-8) 0;">
+        <thead><tr><th>板块</th><th>英文</th><th>代表公司</th><th>ETF</th></tr></thead>
+        <tbody>
+          <tr><td>信息技术</td><td class="en-term">Technology</td><td>AAPL、MSFT、NVDA</td><td>XLK</td></tr>
+          <tr><td>医疗健康</td><td class="en-term">Health Care</td><td>JNJ、UNH、LLY</td><td>XLV</td></tr>
+          <tr><td>金融</td><td class="en-term">Financials</td><td>JPM、BAC、BRK.B</td><td>XLF</td></tr>
+          <tr><td>工业</td><td class="en-term">Industrials</td><td>CAT、BA、HON</td><td>XLI</td></tr>
+          <tr><td>可选消费</td><td class="en-term">Consumer Discretionary</td><td>AMZN、TSLA、HD</td><td>XLY</td></tr>
+          <tr><td>必需消费</td><td class="en-term">Consumer Staples</td><td>KO、WMT、PG</td><td>XLP</td></tr>
+          <tr><td>能源</td><td class="en-term">Energy</td><td>XOM、CVX、COP</td><td>XLE</td></tr>
+          <tr><td>原材料</td><td class="en-term">Materials</td><td>LIN、FCX、NEM</td><td>XLB</td></tr>
+          <tr><td>公用事业</td><td class="en-term">Utilities</td><td>NEE、DUK、SO</td><td>XLU</td></tr>
+          <tr><td>房地产</td><td class="en-term">Real Estate</td><td>AMT、PLD、EQIX</td><td>XLRE</td></tr>
+          <tr><td>通信服务</td><td class="en-term">Communication Services</td><td>META、GOOGL、NFLX</td><td>XLC</td></tr>
+        </tbody>
+      </table>
+
+      <p>这11个板块在标普500中的权重差别很大。2024年，信息技术板块一家就占标普500总权重的约<span class="data-num">29%</span>，而公用事业和原材料加起来不到<span class="data-num">5%</span>。这意味着，科技股的涨跌对整个指数的影响，远超其他任何板块。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>为什么要关注板块？</strong>因为你不需要每只股票都选对——选对「在风口上的板块」，即使在该板块里买了平庸的公司，也可能跑赢大市。反之，再优秀的公司，如果整个板块正在被市场抛弃，也可能原地踏步甚至下跌。</div>
+      </div>
+
+      <p>还有一个实用视角：<strong>防御型板块</strong>（Defensive）vs <strong>周期型板块</strong>（Cyclical）。必需消费、公用事业、医疗——无论经济好坏，人们都要吃饭、用电、看病，这些板块的盈利相对稳定，熊市中抗跌。相比之下，可选消费、工业、金融，景气时大涨，萧条时重跌，与经济周期高度同步。</p>
+
+      <!-- ── Section 2 ── -->
+      <h2 id="s2">经济周期与板块轮动时钟</h2>
+
+      <p>如果你把经济比作四季，那么不同的季节，适合生长的作物也不同。这就是<span data-term="板块轮动">板块轮动</span>（Sector Rotation）的核心逻辑：随着经济从复苏→扩张→顶部→衰退的循环，资金会从一个板块流向另一个板块。</p>
+
+      <div class="section-rule"><span>板块轮动时钟</span></div>
+
+      <div class="tool-container" id="sector-rotation-tool">
+        <div class="tool-header">
+          <div class="tool-title-group">
+            <div class="tool-icon">🔄</div>
+            <div><div class="tool-name">板块轮动时钟</div><div class="tool-desc">Sector Rotation Clock</div></div>
+          </div>
+        </div>
+        <div class="sector-clock-wrap">
+          <div><svg class="sector-svg" id="sector-clock-svg" viewBox="0 0 300 300"></svg></div>
+          <div class="sector-list" id="sector-list"></div>
+        </div>
+        <p style="font-family:var(--font-sans);font-size:var(--ts-xs);color:var(--ink-muted);margin-top:var(--sp-3);">点击时钟上的阶段查看对应强势板块</p>
+      </div>
+
+      <p>让我们把时钟拆开来看，每个阶段的特征和领涨板块：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">🌱 复苏期（Early Cycle）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;"><strong>信号：</strong>GDP触底回升，失业率开始下降，利率处于低位，信贷开始扩张。<br><strong>领涨板块：</strong>金融（信贷扩张带来利差收入）、可选消费（消费者信心回升）、房地产。<br><strong>典型案例：</strong>2009年3月−2010年，金融板块涨幅超100%。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">🚀 扩张期（Mid Cycle）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;"><strong>信号：</strong>GDP高速增长，企业盈利强劲，失业率持续下降，消费者信心高。<br><strong>领涨板块：</strong>信息技术（企业加大IT支出）、工业（制造与基建需求旺）。<br><strong>典型案例：</strong>2016−2019年，科技板块年化涨幅远超大盘。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">🔥 过热期（Late Cycle）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;"><strong>信号：</strong>通货膨胀上升，美联储开始加息，劳动力市场紧张，产能接近极限。<br><strong>领涨板块：</strong>能源（大宗商品价格上涨）、原材料、公用事业。<br><strong>典型案例：</strong>2021年底−2022年，能源板块年涨幅<span class="data-up">+65%</span>。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">❄️ 衰退期（Recession）</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;"><strong>信号：</strong>GDP连续两季度负增长，失业率攀升，企业盈利下滑，信贷收紧。<br><strong>领涨板块（抗跌）：</strong>必需消费（不能不喝可乐）、公用事业（不能不用电）、医疗健康。<br><strong>典型案例：</strong>2022年全年，公用事业<span class="data-down">−1%</span>，而成长股跌了30%−70%。</div>
+        </div>
+      </div>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>重要提示：</strong>板块轮动时钟是一个理论框架，现实中周期的时长和顺序会发生偏差，甚至跳跃。2020年新冠疫情引发的衰退只持续了两个月，随后进入史上最快的复苏。不要机械套用时钟，而要结合实际的经济数据动态判断。</div>
+      </div>
+
+      <p>一个实用的「傻瓜看板块」方法：打开 <strong>finviz.com</strong> 的 Map 功能，按板块查看颜色深浅（深绿 = 强势，深红 = 弱势）。每周花5分钟扫一眼板块热力图，比看100篇分析报告更直观。</p>
+
+      <!-- ── Section 3 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch06-inline-1.png" alt="经济周期四阶段与板块强弱" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>经济周期四阶段与板块强弱</figcaption>
+      </figure>
+
+      <h2 id="s3">VIX——市场的恐慌温度计</h2>
+
+      <p><span data-term="VIX">VIX</span>（Volatility Index，波动率指数），常被称为「恐慌指数」，是由芝加哥期权交易所（CBOE）计算发布的。它衡量的是市场参与者预期标普500指数在未来30天内的价格波动幅度——用期权的隐含波动率推算出来的。</p>
+
+      <p>VIX不是直接可以买卖的资产，但它的数值告诉你市场当前的「情绪体温」：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--green);">VIX &lt; 15 · 平静</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">市场极度平静，投资者普遍乐观，几乎没有对冲需求。历史上，VIX长期维持在15以下往往是牛市中期的特征。但「极度平静」有时也意味着自满——离下一次爆发不远。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--amber);">VIX 15–25 · 正常</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">市场正常波动范围，有一定的不确定性，但还谈不上恐慌。大多数时间VIX都在这个区间徘徊，这是投资者「保持警惕、但不必恐慌」的区域。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label" style="color:var(--red);">VIX &gt; 30 · 恐慌</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">市场出现明显恐慌，机构大量买入看跌期权对冲，散户争相抛售。从历史数据看，VIX在30以上出现时，往往是<em>反向布局</em>的好时机——但这需要强大的心理素质。</div>
+        </div>
+      </div>
+
+      <p>历史上VIX最极端的时刻：</p>
+      <ul class="key-points">
+        <li><strong>2008年10月</strong>：金融危机最恐慌时，VIX冲到 <span class="data-num">80.86</span>——股市在过去两周已经跌了20%，而大多数人以为这只是开始（实际上那是恐慌的顶峰）。</li>
+        <li><strong>2020年3月16日</strong>：新冠疫情引发的恐慌，VIX达到 <span class="data-num">82.69</span>，创历史新高。两周后的4月，标普500开始历史上最快的反弹。</li>
+        <li><strong>平常时期</strong>：VIX的长期历史均值约为 <span class="data-num">19.5</span>，但在2017年超低波动率时期，VIX甚至跌破了 <span class="data-num">10</span>。</li>
+      </ul>
+
+      <div class="data-card">
+        <div class="data-card-label">巴菲特的格言与VIX</div>
+        <div class="data-card-value">别人贪婪时我恐惧，别人恐惧时我贪婪</div>
+        <div class="data-card-sub">VIX高企（&gt;40）时往往对应着别人极度恐惧的时刻。2008年10月，巴菲特在纽约时报发文《Buy American. I Am.》；2020年3月VIX创历史高点后两个月，标普500开始一路走高到2022年初。但要注意：抄底需要强大的流动性储备和心理素质，不是每个人都适合。</div>
+      </div>
+
+      <p>VIX还可以通过 <strong>VIX ETF/ETP</strong> 间接参与，如 UVXY（2倍做多VIX）、SVXY（做空VIX）。但这些产品因为期货展期损耗（Contango Roll），长期持有几乎必然亏损，只适合极短线交易或专业投机者使用。</p>
+
+      <!-- ── Section 4 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch06-inline-2.png" alt="VIX 恐慌指数：平静与恐慌的对比" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>VIX 恐慌指数：平静与恐慌的对比</figcaption>
+      </figure>
+
+      <h2 id="s4">Sahm 法则与衰退预警</h2>
+
+      <p><span data-term="Sahm法则">Sahm 法则</span>（Sahm Rule）是由前美联储经济学家克劳迪娅·萨姆（Claudia Sahm）提出的一个简单而有效的衰退指标，精准程度令人惊讶：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">Sahm 法则定义</div>
+        <div class="data-card-value">当 3个月平均失业率 ≥ 过去12个月最低失业率 + 0.5%</div>
+        <div class="data-card-sub">就触发了衰退信号。例如：过去12个月最低失业率为3.4%，如果最近3个月平均失业率升至3.9%（3.4 + 0.5），就触发Sahm法则，预警衰退已经开始。</div>
+      </div>
+
+      <p>这个法则从未在1970年以来的每次美国衰退中失效。它的优势在于：它用的是实时可得的月度失业率数据，而GDP数据通常要等到衰退结束后几个月才被官方确认。</p>
+
+      <p>2024年8月，Sahm法则短暂触发（失业率从3.4%的低点上升到了4.3%），引发了市场短暂恐慌，美股单日大跌超3%。但随后数据好转，那次预警成为了「假触发」。克劳迪娅·萨姆本人也在那时公开表示：新冠后大量移民涌入推高劳动力供给，可能使这次的失业率上升与历史衰退时的情况不同。这也说明，任何指标都不是放之四海而皆准的，要结合背景判断。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>哪里查Sahm指数？</strong>美联储圣路易斯分行的FRED数据库（fred.stlouisfed.org）实时更新，搜索「Sahm Real-time Recession Indicator」即可。这个网站是查宏观数据的宝库，完全免费。</div>
+      </div>
+
+      <p>除了Sahm法则，还有几个常用的衰退领先指标值得关注：</p>
+      <ul class="key-points">
+        <li><strong>收益率曲线倒挂（Yield Curve Inversion）：</strong>10年期国债收益率低于2年期，历史上每次衰退前约12−18个月都会出现。2022年7月倒挂，2023年部分媒体大喊衰退来临，但直到2024年末，美国官方都未宣布衰退。倒挂给出时间窗口，但不告诉你具体何时。</li>
+        <li><strong>Conference Board领先经济指数（LEI）：</strong>综合了10个前瞻性数据的综合指数，连续多月下降通常是衰退的前兆。</li>
+        <li><strong>制造业PMI：</strong>低于50代表制造业萎缩，是经济降温的早期信号。</li>
+      </ul>
+
+      <!-- ── Section 5 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch06-inline-3.png" alt="Sahm 法则：失业率触发衰退信号" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>Sahm 法则：失业率触发衰退信号</figcaption>
+      </figure>
+
+      <h2 id="s5">宏观数据日历（美联储、CPI、非农）</h2>
+
+      <p>美股是一个对宏观数据极其敏感的市场。几个关键的月度/季度数据发布日，往往会造成标普500单日<span class="data-num">1%−3%</span>的波动——有时候市场的走势不取决于哪家公司发布了好财报，而取决于这周五早上8:30美国劳工部发布的那张就业报告。</p>
+
+      <p>最重要的宏观数据和发布频率：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">FOMC 会议 · 每年8次</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">美联储联邦公开市场委员会（FOMC）每年开8次会议，决定联邦基准利率。每次发布声明，每隔一次（季度）还有经济预测摘要（SEP）和点阵图（Dot Plot）——显示委员们对未来利率路径的预期。美联储主席新闻发布会结束后，市场经常剧烈波动。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">CPI · 每月中旬</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">消费者物价指数（CPI）衡量一篮子商品的价格变化，是最直观的通胀指标。高通胀 → 美联储可能加息 → 股市可能下跌（尤其是高估值成长股）。2022年6月CPI公布同比<span class="data-down">+9.1%</span>，标普500当天跌超2%。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">非农就业 · 每月第一个周五</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">非农就业报告（Non-farm Payrolls）是最重要的月度劳动市场数据，包含新增非农就业人数、失业率、平均时薪增长。美东时间8:30发布，是「最贵的早上」——数据好坏可能让市场开盘直接跳空<span class="data-num">1%</span>以上。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">PCE · 每月月末</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">个人消费支出物价指数（PCE）是美联储最偏爱的通胀指标（比CPI更广泛）。核心PCE剔除食品和能源，反映更稳定的通胀趋势。美联储的通胀目标是<span class="data-num">2%</span> PCE。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">GDP · 每季度</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">国内生产总值增长率，是经济健康的总体指标。GDP连续两个季度负增长 = 技术性衰退。首次估值（Advance Estimate）通常在季度结束后约30天公布，之后还有修订版。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">ISM 制造业/服务业PMI · 每月初</div>
+          <div class="stat-value" style="font-size:var(--ts-sm);font-family:var(--font-sans);color:var(--ink-secondary);line-height:1.5;">采购经理人指数，大于50代表扩张，小于50代表收缩。制造业PMI每月第一个工作日发布，服务业PMI第三个工作日。是最早反映经济冷暖的月度数据之一。</div>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        <p>读宏观数据，不是要预测市场，而是要理解市场正在害怕什么、期待什么——然后判断这种情绪是否已经过度。</p>
+        <cite>— 改编自 Howard Marks《周期》</cite>
+      </div>
+
+      <p>如何跟踪这些数据？推荐以下几个免费工具：</p>
+      <ul class="key-points">
+        <li><strong>Investing.com 经济日历</strong>（investing.com/economic-calendar）：列出全球所有重要数据发布时间，可以按国家和重要性筛选，支持中文。</li>
+        <li><strong>FRED 数据库</strong>（fred.stlouisfed.org）：美联储圣路易斯分行维护的宏观数据库，超过50万个系列，免费下载和可视化。</li>
+        <li><strong>Atlanta Fed GDPNow</strong>：实时追踪GDP预测，每次重要数据发布后更新，不用等季度末。</li>
+      </ul>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>美股按GICS分为11个板块，科技板块权重最大（约29%）。理解板块才能看懂资金流向。</li>
+          <li>经济周期决定板块轮动方向：复苏→金融/可选消费；扩张→科技/工业；过热→能源/材料；衰退→必需消费/公用事业/医疗。</li>
+          <li>VIX是「恐慌温度计」：低于15代表平静，超过30代表恐慌。历史上VIX极端高点往往对应着好的买入机会——但需要强大心理和充足流动性。</li>
+          <li>Sahm法则：3个月平均失业率比12个月最低点高出0.5%，即触发衰退预警。自1970年代以来准确率100%。</li>
+          <li>最重要的宏观数据：FOMC利率决议（每年8次）、CPI（每月中旬）、非农就业（每月第一个周五8:30 ET）、PCE（每月月末）。</li>
+          <li>宏观分析不是要精确预测市场，而是要理解市场情绪和资金流向的背后逻辑，避免在错误的时间逆势而为。</li>
+        </ul>
+      </div>
+
+      <div class="section-rule"><span>关键术语</span></div>
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>GICS</td><td class="en-term">Global Industry Classification Standard</td><td>标普与明晟联合推出的全球股票行业分类体系，分11个板块</td></tr>
+          <tr><td>板块轮动</td><td class="en-term">Sector Rotation</td><td>资金随经济周期在不同板块之间流动的现象</td></tr>
+          <tr><td>经济周期</td><td class="en-term">Business Cycle</td><td>经济扩张与收缩交替出现的规律性波动</td></tr>
+          <tr><td>防御型板块</td><td class="en-term">Defensive Sectors</td><td>必需消费、公用事业、医疗，景气度受经济周期影响小</td></tr>
+          <tr><td>VIX</td><td class="en-term">Volatility Index / Fear Index</td><td>CBOE恐慌指数，反映市场预期未来30天标普500的波动率</td></tr>
+          <tr><td>Sahm法则</td><td class="en-term">Sahm Rule</td><td>3个月失业率均值比12个月低点高0.5%即预示衰退</td></tr>
+          <tr><td>FOMC</td><td class="en-term">Federal Open Market Committee</td><td>美联储的货币政策委员会，每年8次会议决定联邦基准利率</td></tr>
+          <tr><td>CPI</td><td class="en-term">Consumer Price Index</td><td>消费者物价指数，衡量通货膨胀的最直观指标</td></tr>
+          <tr><td>非农就业</td><td class="en-term">Non-farm Payrolls</td><td>美国每月新增非农就业人数，是最重要的劳动市场数据</td></tr>
+          <tr><td>PCE</td><td class="en-term">Personal Consumption Expenditures</td><td>美联储最偏爱的通胀指标，覆盖比CPI更广泛的消费支出</td></tr>
+          <tr><td>收益率曲线倒挂</td><td class="en-term">Yield Curve Inversion</td><td>2年期国债收益率高于10年期，历史上衰退前常见现象</td></tr>
+        </tbody>
+      </table>
+
+      <div class="quiz-section" data-chapter="06">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">3 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="3" data-explain="根据板块轮动时钟，经济扩张中期（Mid Cycle）的特征是GDP高速增长、企业盈利强劲、企业IT支出上升，此时信息技术和工业板块表现最好。必需消费和公用事业属于防御型板块，在扩张期往往跑输大盘。">
+            <p class="quiz-q-text">根据板块轮动时钟，经济扩张中期（Mid Cycle）通常哪类板块表现最好？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>能源与原材料</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>公用事业与必需消费</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>医疗健康与房地产</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>信息技术与工业</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="VIX超过30代表市场出现明显恐慌情绪，机构大量买入看跌期权对冲风险。从历史数据看，VIX在极端高位时往往是市场接近底部的信号，但这需要强大的心理素质才能在恐慌中逆向操作。">
+            <p class="quiz-q-text">VIX 指数超过 30，通常意味着什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>市场出现明显恐慌，投资者大量购买看跌期权对冲</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>市场极度平静，几乎不需要对冲</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>标普500即将上涨超过30%</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>美联储即将降息</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="Sahm法则是由前美联储经济学家克劳迪娅·萨姆提出的，当3个月平均失业率比过去12个月中的最低失业率高出0.5个百分点时，即判断美国经济已进入衰退。这个指标自1970年代以来准确率为100%。">
+            <p class="quiz-q-text">Sahm 法则主要用于判断什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>美国经济是否已进入衰退</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>美联储下次是否会降息</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>股市是否处于泡沫状态</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>通货膨胀率是否超过目标</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <nav class="chapter-nav-footer">
+      <a href="05-technical.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">K线与技术分析</span>
+      </a>
+      <a href="07-options-basics.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">期权原理与希腊</span>
+      </a>
+    </nav>
+  </main>
+
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">GICS 11个板块</a></li>
+      <li><a href="#s2">经济周期与轮动时钟</a></li>
+      <li><a href="#s3">VIX 恐慌温度计</a></li>
+      <li><a href="#s4">Sahm 法则与衰退预警</a></li>
+      <li><a href="#s5">宏观数据日历</a></li>
+    </ul>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+<script src="../assets/js/tools/sector-rotation.js"></script>
+</body>
+</html>

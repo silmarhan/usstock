@@ -1,0 +1,120 @@
+[
+  {
+    "id": "01",
+    "slug": "getting-started",
+    "title": "开户与市场入门",
+    "subtitle": "从「股票是什么」到第一笔美股订单",
+    "en": "Getting Started",
+    "emoji": "🏛️",
+    "tags": ["入门", "开户", "订单"],
+    "tool": "复利计算器",
+    "level": "beginner",
+    "readingTime": 12
+  },
+  {
+    "id": "02",
+    "slug": "market-structure",
+    "title": "指数与市场结构",
+    "subtitle": "S&P 500、Nasdaq、Dow——它们到底代表什么",
+    "en": "Market Structure",
+    "emoji": "📊",
+    "tags": ["指数", "交易所", "盘前盘后"],
+    "level": "beginner",
+    "readingTime": 10
+  },
+  {
+    "id": "03",
+    "slug": "valuation",
+    "title": "估值指标",
+    "subtitle": "P/E、P/B、EV/EBITDA——读懂「贵不贵」的语言",
+    "en": "Valuation Metrics",
+    "emoji": "⚖️",
+    "tags": ["PE", "PB", "估值"],
+    "tool": "PE/PB 对比器",
+    "level": "beginner",
+    "readingTime": 14
+  },
+  {
+    "id": "04",
+    "slug": "financials",
+    "title": "财报三表拆解",
+    "subtitle": "利润表、资产负债表、现金流——三张纸读懂一家公司",
+    "en": "Financial Statements",
+    "emoji": "📋",
+    "tags": ["财报", "FCF", "ROE"],
+    "tool": "资金流向动画",
+    "level": "intermediate",
+    "readingTime": 16
+  },
+  {
+    "id": "05",
+    "slug": "technical",
+    "title": "K线与技术分析",
+    "subtitle": "蜡烛图、均线、MACD——价格语言的基础词汇",
+    "en": "Technical Analysis",
+    "emoji": "📈",
+    "tags": ["K线", "MACD", "均线"],
+    "tool": "K线形态图鉴",
+    "level": "intermediate",
+    "readingTime": 18
+  },
+  {
+    "id": "06",
+    "slug": "sectors-macro",
+    "title": "板块轮动与宏观",
+    "subtitle": "经济周期四阶段，和你的持仓该在哪个舱",
+    "en": "Sector Rotation & Macro",
+    "emoji": "🔄",
+    "tags": ["板块", "宏观", "VIX"],
+    "tool": "板块轮动时钟",
+    "level": "intermediate",
+    "readingTime": 14
+  },
+  {
+    "id": "07",
+    "slug": "options-basics",
+    "title": "期权原理与希腊字母",
+    "subtitle": "Call、Put、Delta、Gamma——你真的不需要学数学",
+    "en": "Options & The Greeks",
+    "emoji": "🔑",
+    "tags": ["期权", "Delta", "Theta"],
+    "tool": "希腊字母模拟器",
+    "level": "advanced",
+    "readingTime": 20
+  },
+  {
+    "id": "08",
+    "slug": "options-strategies",
+    "title": "期权策略实战",
+    "subtitle": "备兑买权、价差、铁鹰——用不同策略对付不同市场",
+    "en": "Options Strategies",
+    "emoji": "♟️",
+    "tags": ["备兑", "铁鹰", "跨式"],
+    "tool": "Payoff 损益图",
+    "level": "advanced",
+    "readingTime": 22
+  },
+  {
+    "id": "09",
+    "slug": "risk-psychology",
+    "title": "仓位管理与投资心理",
+    "subtitle": "止损不是认错，是专业——和你对抗的其实是自己",
+    "en": "Risk & Psychology",
+    "emoji": "🧠",
+    "tags": ["止损", "Kelly", "心理"],
+    "tool": "仓位计算器",
+    "level": "advanced",
+    "readingTime": 14
+  },
+  {
+    "id": "10",
+    "slug": "case-studies",
+    "title": "三个真实案例复盘",
+    "subtitle": "NVDA长牛、META大跌、SVB跳水——在真实故事里学习",
+    "en": "Case Studies",
+    "emoji": "🔬",
+    "tags": ["复盘", "实战", "案例"],
+    "level": "advanced",
+    "readingTime": 16
+  }
+]

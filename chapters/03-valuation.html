@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="美股第三章：估值指标全解——市盈率 P/E、市净率 P/B、市销率 P/S、EV/EBITDA、CAPE 和 Buffett Indicator，用 PE/PB 对比工具直观理解相对估值。">
+  <meta name="base-url" content="../">
+  <title>第 03 章：估值指标 · 读懂美股</title>  <meta property="og:title" content="第 03 章：估值指标 · 读懂美股">  <meta property="og:description" content="美股从入门到期权的完整中文教程，通俗易懂，含8个互动工具。">  <meta property="og:type" content="article">  <meta property="og:image" content="../assets/images/ch03-hero.png">  <meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('usstock-theme')||'dark';document.documentElement.setAttribute('data-theme',t==='paper'?'paper':'');})();</script>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/tools.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body>
+
+<div class="reading-progress"></div>
+
+<!-- ── Nav ── -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-mark">US</span>
+      读懂美股
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="03-valuation.html" class="active">第 03 章</a></li>
+        <li><a href="../glossary.html">术语表</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="mobile-menu-btn" aria-label="打开目录" aria-expanded="false">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+      </button>
+      <button class="theme-toggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Chapter Layout ── -->
+<div class="chapter-layout">
+
+  <!-- Sidebar -->
+  <aside class="chapter-sidebar">
+    <p class="sidebar-nav-label">所有章节</p>
+    <ul class="sidebar-chapter-list">
+      <li><a href="01-getting-started.html"><span class="sidebar-chapter-num">01</span>开户与市场入门<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="02-market-structure.html"><span class="sidebar-chapter-num">02</span>指数与市场结构<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="03-valuation.html" class="active"><span class="sidebar-chapter-num">03</span>估值指标<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="04-financials.html"><span class="sidebar-chapter-num">04</span>财报三表拆解<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="05-technical.html"><span class="sidebar-chapter-num">05</span>K线与技术分析<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="06-sectors-macro.html"><span class="sidebar-chapter-num">06</span>板块轮动与宏观<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="07-options-basics.html"><span class="sidebar-chapter-num">07</span>期权原理与希腊<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="08-options-strategies.html"><span class="sidebar-chapter-num">08</span>期权策略实战<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="09-risk-psychology.html"><span class="sidebar-chapter-num">09</span>风控与心理<span class="sidebar-progress-dot"></span></a></li>
+      <li><a href="10-case-studies.html"><span class="sidebar-chapter-num">10</span>三个案例复盘<span class="sidebar-progress-dot"></span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="chapter-content">
+
+    <!-- Hero -->
+    <div class="chapter-hero">
+      <img src="../assets/images/ch03-hero.png" alt="" loading="lazy" class="ken-burns" onerror="this.style.display='none'">
+    <div class="chapter-hero-placeholder">
+        <div class="chapter-hero-overlay">
+          <span class="chapter-kicker">Chapter 03 · Valuation Metrics</span>
+          <h1 class="hero-title">估值指标</h1>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose">
+
+      <!-- Lead -->
+      <p class="lead">2021 年，特斯拉的市盈率（P/E）一度超过 1000 倍。按这个逻辑，买一块钱的特斯拉年盈利，你要付 1000 块。它值吗？要回答这个问题，你需要一套衡量价值的工具——这就是<em>估值指标</em>。</p>
+
+      <!-- ── Section 1 ── -->
+      <h2 id="s1">为什么要学估值：贵不贵，是个相对概念</h2>
+
+      <p>「这只股票贵不贵？」——这是每个投资者都想知道的问题，也是最难直接回答的问题。</p>
+
+      <p>一只价格 $5 的股票可能很贵，一只价格 $500 的股票可能很便宜。价格本身什么都说明不了。你需要把价格和某个基本面数据挂钩——比较的是<strong>你花了多少钱，买到了多少「东西」</strong>。</p>
+
+      <p>举个生活中的例子：同样是一套房子，你不会只看总价，你还会看「每平方米多少钱」。每平方米单价，才是跨越地段、面积的可比指标。估值指标做的事情完全一样——把股价「归一化」到一个可以横向比较的维度。</p>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>核心警告：</strong>所有估值指标都<strong>只在同行业内比较才有意义</strong>。科技公司 P/E 普遍高于银行股，这不代表科技公司一定更贵——它代表市场对科技公司未来增长的预期更高。跨行业比较 P/E，就像比较北京每平米单价和三线城市，不是没意义，但结论需要谨慎。</div>
+      </div>
+
+      <!-- ── Section 2 ── -->
+      <h2 id="s2">市盈率 P/E：最常用也最容易误用</h2>
+
+      <p><strong>市盈率（Price-to-Earnings Ratio，P/E）</strong>是最广为人知的估值指标，也是被误用最多的。</p>
+
+      <p>理解它的最好方式是这个比喻：假设你考虑买下一家街角小店，这家店一年能净赚 10 万元。你愿意花多少钱买下它？如果你出价 200 万，那你就是以「20 倍 P/E」买入——意味着不考虑增长的情况下，你需要 20 年才能回本。</p>
+
+      <div class="data-card">
+        <div class="data-card-label">公式</div>
+        <div class="data-card-value">P/E = 股价（Price）÷ 每股收益（EPS）</div>
+        <div class="data-card-sub">例：苹果股价 $190，每股盈利（EPS）$6.5，则 P/E = 190 ÷ 6.5 ≈ 29 倍。你花 $29 买到苹果每年 $1 的盈利能力。</div>
+      </div>
+
+      <p>P/E 有三种常见版本，对应国内财经平台上常见的「静态/动态/TTM」叫法：</p>
+
+      <div class="stat-grid" style="margin: var(--sp-4) 0 var(--sp-6);">
+        <div class="stat-item">
+          <div class="stat-label">静态 P/E</div>
+          <div class="stat-value" style="font-size: var(--ts-md);">上一完整财年</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">用上一个会计年度的年度 EPS 计算。数据稳定但可能已经过时一年，在非财报季参考意义最弱。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">TTM（Trailing Twelve Months）</div>
+          <div class="stat-value" style="font-size: var(--ts-md);">过去滚动 12 个月</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">把最近四个季度的实际 EPS 相加。比静态更及时，是大多数财经网站的默认标准，也是本章提到的 Trailing P/E。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">动态 P/E（Forward P/E）</div>
+          <div class="stat-value" style="font-size: var(--ts-md);">未来 12 个月预测</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">用分析师共识预期的未来 12 个月 EPS 计算。最前瞻，但准确性依赖预测质量，财报季容易大幅修正。</div>
+        </div>
+      </div>
+
+      <p>三者关系：动态 P/E 通常最低（用未来盈利除，分母最大），静态 P/E 最高，TTM 居中。比较两家公司时，<strong>一定要用同一种口径</strong>，否则很容易得出错误结论。</p>
+
+      <p>不同类型的公司，「正常」的 P/E 范围差异很大：</p>
+
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-label">成熟蓝筹股</div>
+          <div class="stat-value">10–20×</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">如可口可乐、强生、沃尔玛。增长稳定但慢，市场给的溢价有限。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">大型科技股</div>
+          <div class="stat-value">25–40×</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">如苹果、谷歌、微软。盈利强劲，增长预期高，市场愿意付出更高溢价。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">高增长科技</div>
+          <div class="stat-value">50–200×</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">如早期 Salesforce、Snowflake。当下盈利少，但市场预期未来盈利会爆发式增长。</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">周期性行业</div>
+          <div class="stat-value">变化剧烈</div>
+          <div style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary); margin-top: var(--sp-2); line-height: 1.6;">如钢铁、航运、石油。景气时 EPS 高 P/E 反而低；萧条时 EPS 低 P/E 反而高——信号完全相反。</div>
+        </div>
+      </div>
+
+      <p>周期性行业是 P/E 最容易误导你的地方。以航运公司为例：2021 年集装箱运费爆涨，某航运公司当年 EPS 是 $20，股价 $60，P/E 只有 3 倍，看起来「极度便宜」。但这 $20 的 EPS 是行业景气高峰的一次性收益，2022 年运费暴跌后 EPS 回落到 $2，股价也随之崩塌。用景气高峰的 P/E 来判断「便宜」，结果是追顶。</p>
+
+      <!-- ── Section 3 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch03-inline-1.png" alt="市盈率 = 股价 ÷ 每股收益" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>市盈率 = 股价 ÷ 每股收益</figcaption>
+      </figure>
+
+      <h2 id="s3">市净率 P/B 和市销率 P/S</h2>
+
+      <p>P/E 的前提是公司有盈利——对于亏损的公司，P/E 没有意义（负数）。这时候就需要其他指标。</p>
+
+      <h3 style="margin: var(--sp-8) 0 var(--sp-4);">市净率 P/B（Price-to-Book Ratio）</h3>
+
+      <div class="data-card">
+        <div class="data-card-label">公式</div>
+        <div class="data-card-value">P/B = 股价 ÷ 每股净资产（Book Value Per Share）</div>
+        <div class="data-card-sub">净资产 = 总资产 − 总负债，即股东权益。P/B = 1 意味着你以「账面价值」买入，P/B &lt; 1 意味着市场认为公司资产比账面估计的还不值钱。</div>
+      </div>
+
+      <p>P/B 适合哪类公司？最适合<strong>银行、保险、地产</strong>等资产重型行业——这些公司的核心价值体现在资产负债表上（贷款组合、不动产、投资组合），用净资产来锚定价值是合理的。</p>
+
+      <p>P/B 不适合哪类？<strong>轻资产科技公司</strong>。谷歌的核心资产是搜索算法和工程师团队，这些在资产负债表上几乎不体现，账面净资产大幅低估了公司真实价值，P/B 会显得极高，但这不意味着「贵」。</p>
+
+      <h3 style="margin: var(--sp-8) 0 var(--sp-4);">市销率 P/S（Price-to-Sales Ratio）</h3>
+
+      <div class="data-card">
+        <div class="data-card-label">公式</div>
+        <div class="data-card-value">P/S = 市值 ÷ 年营收（或 股价 ÷ 每股营收）</div>
+        <div class="data-card-sub">P/S 的分母是营收，而不是利润，因此适用于亏损阶段的成长公司。P/S = 10 意味着你花 $10 买 $1 的年营收。</div>
+      </div>
+
+      <p>P/S 在 2015–2021 年的 SaaS（软件即服务）热潮中被广泛使用。很多云软件公司烧钱扩张、尚未盈利，P/E 无意义，分析师用 P/S 来比较估值。然而 2022 年加息周期中，这些高 P/S 公司遭到了最惨烈的杀跌——从 P/S 30–50 倍跌回 5–10 倍，股价普遍腰斩到三折。</p>
+
+      <p>P/S 的使用要配合一个关键前提：<strong>公司的商业模式要有足够高的利润率潜力</strong>。营收没有意义，如果永远转化不成利润的话。</p>
+
+      <!-- ── Section 4 ── -->
+      <h2 id="s4">EV/EBITDA：更公平的跨公司比较</h2>
+
+      <p>当你比较两家同行业公司的估值，P/E 有一个隐藏问题：<strong>它会被不同的资本结构扭曲</strong>。</p>
+
+      <p>举个例子：A 公司零负债，B 公司负债累累。B 公司每年要支付大量利息，导致净利润被压低，P/E 反而「显得」更高，像是更贵。但这不公平——两家公司的经营能力可能完全一样，只是融资方式不同。</p>
+
+      <p><strong data-term="EV/EBITDA">EV/EBITDA</strong> 解决了这个问题：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">两个公式</div>
+        <div class="data-card-value">EV = 市值 + 净负债（总负债 − 现金）</div>
+        <div class="data-card-sub">EBITDA = 息税折旧摊销前利润（Earnings Before Interest, Taxes, Depreciation &amp; Amortization）。EV/EBITDA 在比较时「消除」了资本结构差异，是并购分析和行业比较最常用的指标。制造业正常范围 6–12 倍，科技行业 15–30 倍。</div>
+      </div>
+
+      <p>EBITDA 通俗理解：把利息支出、所得税、折旧、摊销都加回来，得到的是公司「纯经营层面赚了多少钱」，不受融资方式和会计政策影响。</p>
+
+      <p>EV（企业价值）则代表「如果你要完整收购这家公司，真正要付出多少」。你买下它，不仅要支付股票市价（市值），还要承接它的债务，但可以拿走它的现金——这就是 EV 的计算逻辑。</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>实战场景：</strong>当你对比两家同行业公司时，先看 EV/EBITDA，再用 P/E 验证。如果 P/E 差异很大但 EV/EBITDA 接近，差异很可能来自资本结构而非经营能力。这种洞察帮你避免被表面数字误导。</div>
+      </div>
+
+      <!-- ── Section 5 ── -->
+      <h2 id="s5">Buffett Indicator 和 CAPE：宏观视角</h2>
+
+      <p>以上指标都是针对单一公司的微观估值。有时候你需要从宏观角度判断：整个市场是便宜还是贵？</p>
+
+      <h3 style="margin: var(--sp-8) 0 var(--sp-4);">Buffett Indicator（巴菲特指标）</h3>
+
+      <div class="data-card">
+        <div class="data-card-label">公式</div>
+        <div class="data-card-value">Buffett Indicator = 全市场总市值 ÷ GDP</div>
+        <div class="data-card-sub">巴菲特曾说这是他「判断市场整体估值最好的单一指标」。历史上，该比率在 75%–90% 时市场偏便宜，超过 150% 则偏贵。2021 年高峰时该指标曾超过 200%，随后 2022 年美股大跌。</div>
+      </div>
+
+      <p>Buffett Indicator 的逻辑：股票市场的总价值，长期来看不应该大幅偏离一个国家真实创造财富的能力（GDP）。当市值远超 GDP，意味着市场对未来的预期过于乐观，风险在积累。</p>
+
+      <h3 style="margin: var(--sp-8) 0 var(--sp-4);">CAPE（Shiller P/E，周期调整市盈率）</h3>
+
+      <div class="data-card">
+        <div class="data-card-label">公式</div>
+        <div class="data-card-value">CAPE = 当前股价 ÷ 过去 10 年实际 EPS 的平均值（经通胀调整）</div>
+        <div class="data-card-sub">由诺贝尔经济学奖得主 Robert Shiller 提出。用 10 年 EPS 平均值平滑掉经济周期的扭曲，历史平均约 17 倍。2000 年科技泡沫峰值时超 44 倍，2009 年金融危机谷底时约 13 倍。</div>
+      </div>
+
+      <p>为什么要用 10 年平均而不是当年 EPS？因为经济有周期，当年 EPS 受景气程度影响巨大。用 10 年平均，可以平滑掉一个完整经济周期的波动，得到更稳定的估值基准。</p>
+
+      <p>CAPE 的局限是：它对市场时机的预测力很弱。CAPE 高达 30+ 倍时，市场可能还会再涨 5 年才见顶。它更适合作为<strong>长期风险的参考</strong>，而不是短期的买卖信号。</p>
+
+      <!-- ── Section 6 ── -->
+      <figure class="chapter-figure reveal">
+        <img src="../assets/images/ch03-inline-2.png" alt="Buffett Indicator：股市市值 vs GDP" loading="lazy" onerror="this.style.display='none'">
+        <figcaption>Buffett Indicator：股市市值 vs GDP</figcaption>
+      </figure>
+
+      <h2 id="s6">估值的局限：高 P/E 不一定贵</h2>
+
+      <p>学到这里，你可能会觉得：找一只低 P/E 的股票买入，不就行了？如果这么简单，华尔街就不需要那么多分析师了。</p>
+
+      <p>估值指标的核心局限在于：<strong>它们是静态的，而公司是动态的</strong>。一只股票的「合理 P/E」，取决于它未来的增长速度。增长越快，合理的 P/E 越高。这就引出了一个更实用的指标——<strong>PEG（Price/Earnings-to-Growth）</strong>：</p>
+
+      <div class="data-card">
+        <div class="data-card-label">PEG 公式</div>
+        <div class="data-card-value">PEG = P/E ÷ 盈利增长率（%）</div>
+        <div class="data-card-sub">经验法则：PEG &lt; 1 可能被低估，PEG = 1 大致合理，PEG &gt; 2 可能偏贵。例：某公司 P/E = 30，但每年盈利增长 30%，PEG = 1，并不算贵。另一公司 P/E = 15，但增长只有 2%，PEG = 7.5，反而更贵。</div>
+      </div>
+
+      <p>回到本章开头的特斯拉案例：2021 年特斯拉 P/E 超 1000 倍，看起来荒谬。但当时市场相信特斯拉的汽车交付量每年增长 50%+，并且会进入能源、软件、机器人等多个市场。这个预期如果实现，当年的利润会在几年内暴涨，1000 倍 P/E 会迅速收缩到合理区间。当然，如果预期不实现——2022 年我们就看到了结果。</p>
+
+      <div class="pull-quote">
+        <p>Price is what you pay, value is what you get.</p>
+        <cite>— Warren Buffett</cite>
+      </div>
+
+      <p>这句话的深意是：价格每天都在屏幕上跳动，但真正的价值来自公司创造现金流的能力——这不会每天变化，但市场的情绪会每天给它贴上不同的价格标签。估值分析，就是在这两者之间寻找差价。</p>
+
+      <!-- ── PE Comparator Tool ── -->
+      <div class="section-rule"><span>试试看 · 估值对比工具</span></div>
+
+      <div class="tool-container" id="pe-comparator">
+        <div class="tool-header">
+          <div class="tool-title-group">
+            <div class="tool-icon">⚖️</div>
+            <div>
+              <div class="tool-name">PE/PB 对比器</div>
+              <div class="tool-desc">Compare Valuation Multiples</div>
+            </div>
+          </div>
+        </div>
+        <!-- rest wired by JS -->
+        <div id="pe-chart-area"></div>
+        <p style="font-family:var(--font-mono);font-size:var(--ts-xs);color:var(--ink-muted);margin-top:var(--sp-4);line-height:1.6;">
+          数据来源：Bloomberg / Macrotrends 公开数据，以 TTM 口径计算，近似截至 2025 年底。仅供教育演示，不构成投资建议，实际数值请参考实时行情工具。
+        </p>
+      </div>
+
+      <div class="callout callout-tip" style="margin-top: var(--sp-6);">
+        <span class="callout-icon">📊</span>
+        <div class="callout-body">
+          <strong>怎么读这张图？</strong>
+          <ul style="margin-top:var(--sp-3);display:flex;flex-direction:column;gap:var(--sp-2);padding-left:var(--sp-4);">
+            <li><strong>雷达图轴越靠外 = 估值倍数越高</strong>（越「贵」）。四个轴分别是 P/E、P/B、P/S、EV/EBITDA。</li>
+            <li><strong>AAPL vs MSFT（同为科技股）：</strong>微软的 P/E 和 P/S 更高，因市场对云业务增长的预期更强；苹果的 P/B 极高（轻资产+海量回购压缩了账面净资产），但 P/E 反而相对温和，说明苹果盈利能力极强。</li>
+            <li><strong>JPM（银行）vs 科技股：</strong>JPM 在所有指标上都紧贴圆心——银行是重资产、增长慢的成熟行业，市场给予低溢价。P/B 约 2 倍是银行业健康经营的正常区间。直接拿 JPM 和 AAPL 比 P/E 毫无意义，行业逻辑完全不同。</li>
+            <li><strong>TSLA（消费/科技混合）：</strong>P/E 和 EV/EBITDA 遥遥领先，代表市场在为「未来的特斯拉」付费，不是为今天的汽车盈利付费。这种高溢价一旦增长不及预期，就会剧烈回落。</li>
+            <li><strong>核心结论：</strong>四家公司同时选中时，会看到四个重叠形状大小悬殊——这正是本章的核心教训：<em>跨行业比较估值必须搭配行业背景，数字本身没有绝对的贵贱。</em></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── Key Takeaways ── -->
+      <div class="section-key-points">
+        <div class="key-points-header">本章要点</div>
+        <ul class="key-points">
+          <li>估值指标把价格归一化，让你比较「你花了多少钱，买到了多少价值」。所有估值指标只在<strong>同行业内</strong>比较才有意义。</li>
+          <li>P/E = 股价 ÷ EPS，代表你花多少钱买 $1 的年盈利。周期股的 P/E 在景气高峰时反而最低，最具迷惑性。</li>
+          <li>P/B 适合银行和重资产行业；P/S 适合高增长但暂时亏损的公司，但要注意利润率潜力。</li>
+          <li>EV/EBITDA 消除了资本结构差异，是跨公司比较和并购分析最常用的工具。</li>
+          <li>CAPE（Shiller P/E）用 10 年平均盈利平滑经济周期，是判断市场整体贵贱的更可靠工具。</li>
+          <li>高 P/E 不一定贵——PEG 指标把增长因素纳入考量，才是更完整的估值框架。</li>
+        </ul>
+      </div>
+
+      <!-- ── Glossary ── -->
+      <div class="section-rule"><span>关键术语</span></div>
+
+      <table class="glossary-table">
+        <thead><tr><th>中文</th><th>英文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>市盈率</td><td class="en-term">P/E (Price-to-Earnings)</td><td>股价 ÷ 每股收益，衡量你为 $1 盈利付了多少钱</td></tr>
+          <tr><td>每股收益</td><td class="en-term">EPS (Earnings Per Share)</td><td>公司净利润 ÷ 总股本，代表每股创造多少利润</td></tr>
+          <tr><td>市净率</td><td class="en-term">P/B (Price-to-Book)</td><td>股价 ÷ 每股净资产，适合银行等重资产行业</td></tr>
+          <tr><td>市销率</td><td class="en-term">P/S (Price-to-Sales)</td><td>市值 ÷ 年营收，适合亏损阶段的成长公司</td></tr>
+          <tr><td>企业价值</td><td class="en-term">EV (Enterprise Value)</td><td>市值 + 净负债，代表收购整家公司的实际成本</td></tr>
+          <tr><td>EV/EBITDA</td><td class="en-term">EV/EBITDA</td><td>消除资本结构差异的估值倍数，最适合跨公司比较</td></tr>
+          <tr><td>周期调整市盈率</td><td class="en-term">CAPE / Shiller P/E</td><td>用 10 年平均盈利计算的 P/E，平滑经济周期</td></tr>
+          <tr><td>巴菲特指标</td><td class="en-term">Buffett Indicator</td><td>全市场总市值 ÷ GDP，判断市场整体估值水平</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ── Quiz ── -->
+      <div class="quiz-section" data-chapter="03">
+        <div class="quiz-header">
+          <div class="quiz-icon">📝</div>
+          <div>
+            <div class="quiz-title">本章小测验</div>
+            <div class="quiz-subtitle">4 题 · 即时反馈 · 可重做</div>
+          </div>
+        </div>
+
+        <div class="quiz-questions">
+
+          <div class="quiz-question" data-correct="2" data-explain="P/E = 股价 ÷ 每股收益（EPS）。例如股价 $100、EPS $5，则 P/E = 20 倍，意味着你花 $20 买 $1 的年盈利能力。P/E 高不一定贵，要结合增长率看。">
+            <p class="quiz-q-text">市盈率（P/E）的计算公式是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>股价 ÷ 每股净资产</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>市值 ÷ 年营收</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>股价 ÷ 每股收益（EPS）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>净利润 ÷ 总资产</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="0" data-explain="P/B（市净率）最适合银行、保险、地产等重资产行业，因为这类公司的核心价值体现在资产负债表的净资产上。对于轻资产的科技公司，账面净资产大幅低估真实价值，P/B 参考意义有限。">
+            <p class="quiz-q-text">市净率（P/B）最适合用于评估哪类公司？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>银行、保险等重资产行业</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>高增长互联网公司</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>正在亏损的初创公司</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>所有行业都同样适用</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="1" data-explain="EV/EBITDA 的优点在于它使用企业价值（EV = 市值 + 净负债）作为分子，消除了不同资本结构的影响。两家经营能力相同但负债水平不同的公司，P/E 可能差异很大，但 EV/EBITDA 会更接近，从而实现更公平的比较。">
+            <p class="quiz-q-text">相比 P/E，EV/EBITDA 有什么优势？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>计算更简单，数据更容易获取</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>消除了不同资本结构（负债水平）的影响，跨公司比较更公平</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>只适合盈利的公司，不适合亏损公司</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>预测未来增长的能力更强</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+          <div class="quiz-question" data-correct="3" data-explain="CAPE（Shiller P/E）用过去 10 年经通胀调整的平均 EPS 作为分母，平滑掉了经济周期对单年盈利的扭曲。历史平均约 17 倍，远高于此则市场整体偏贵，低于此则偏便宜，但它对市场短期时机的预判能力有限。">
+            <p class="quiz-q-text">CAPE（Shiller P/E）与普通 P/E 最大的不同是什么？</p>
+            <div class="quiz-options">
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>它使用「预测 EPS」而非「历史 EPS」</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>它只用于评估科技行业</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>它将公司负债纳入分母计算</div>
+              <div class="quiz-option"><span class="quiz-option-letter">D</span>它使用过去 10 年的平均盈利，平滑掉了经济周期的扭曲</div>
+            </div>
+            <div class="quiz-result"></div>
+          </div>
+
+        </div>
+
+        <div class="quiz-score"></div>
+      </div>
+
+    </article>
+
+    <!-- Chapter Navigation -->
+    <nav class="chapter-nav-footer">
+      <a href="02-market-structure.html" class="chapter-nav-btn prev" style="text-decoration:none;">
+        <span class="chapter-nav-label">← 上一章</span>
+        <span class="chapter-nav-title">指数与市场结构</span>
+      </a>
+      <a href="04-financials.html" class="chapter-nav-btn next" style="text-decoration:none;">
+        <span class="chapter-nav-label">下一章 →</span>
+        <span class="chapter-nav-title">财报三表拆解</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Right TOC -->
+  <aside class="chapter-toc">
+    <p class="toc-label">本章目录</p>
+    <ul class="toc-list">
+      <li><a href="#s1">为什么要学估值</a></li>
+      <li><a href="#s2">市盈率 P/E</a></li>
+      <li><a href="#s3">P/B 与 P/S</a></li>
+      <li><a href="#s4">EV/EBITDA</a></li>
+      <li><a href="#s5">CAPE 与巴菲特指标</a></li>
+      <li><a href="#s6">高 PE 不一定贵</a></li>
+    </ul>
+  </aside>
+
+</div><!-- .chapter-layout -->
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 读懂美股 · 内容仅供教育，不构成投资建议</span>
+  <ul class="footer-links">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="../glossary.html">术语表</a></li>
+  </ul>
+</footer>
+
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/quiz.js"></script>
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/tooltip.js"></script>
+<script src="../assets/js/tools/pe-comparator.js"></script>
+</body>
+</html>
