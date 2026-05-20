@@ -120,15 +120,15 @@
 
       <div class="data-card">
         <div class="data-card-label">真实案例：AAPL Call</div>
-        <div class="data-card-value">AAPL $190 Call，到期日 30 天后，权利金 $3.50/股</div>
+        <div class="data-card-value">AAPL $300 Call，到期日 30 天后，权利金 $5.00/股</div>
         <div class="data-card-sub">
-          你支付：$3.50 × 100 = <strong>$350</strong>（这是你的最大损失）<br><br>
-          情景 A：30天后 AAPL 涨到 $210<br>
-          → 你有权以 $190 买入，立即卖出市价 $210，每股利润 $20<br>
-          → 减去权利金 $3.50，净利润 = $16.50/股 × 100 = <strong>$1,650</strong>（投入$350，回报372%！）<br><br>
-          情景 B：30天后 AAPL 跌到 $180<br>
-          → 执行价$190高于市价$180，没有人会愿意以$190买股票<br>
-          → 期权作废，损失权利金 = <strong>$350</strong>（仅此而已，不会亏更多）
+          你支付：$5.00 × 100 = <strong>$500</strong>（这是你的最大损失）<br><br>
+          情景 A：30天后 AAPL 涨到 $325<br>
+          → 你有权以 $300 买入，立即卖出市价 $325，每股利润 $25<br>
+          → 减去权利金 $5.00，净利润 = $20.00/股 × 100 = <strong>$2,000</strong>（投入$500，回报300%！）<br><br>
+          情景 B：30天后 AAPL 跌到 $280<br>
+          → 执行价$300高于市价$280，没有人会愿意以$300买股票<br>
+          → 期权作废，损失权利金 = <strong>$500</strong>（仅此而已，不会亏更多）
         </div>
       </div>
 
@@ -144,13 +144,13 @@
 
       <div class="data-card">
         <div class="data-card-label">真实案例：AAPL Put（保护性用途）</div>
-        <div class="data-card-value">持有 AAPL 100股（成本$190），买入 AAPL $185 Put，权利金 $2.80</div>
+        <div class="data-card-value">持有 AAPL 100股（成本$300），买入 AAPL $290 Put，权利金 $4.00</div>
         <div class="data-card-sub">
-          如果 AAPL 跌到 $160：<br>
-          → 股票亏损：（$190 − $160）× 100 = -$3,000<br>
-          → Put 获利：（$185 − $160）× 100 = +$2,500，减去权利金 $280 = +$2,220<br>
-          → 净亏损：-$3,000 + $2,220 = <strong>-$780</strong>（而不是 -$3,000）<br>
-          这份 Put 把损失从 $3,000 压缩到了 $780——保险发挥作用了。
+          如果 AAPL 跌到 $250：<br>
+          → 股票亏损：（$300 − $250）× 100 = -$5,000<br>
+          → Put 获利：（$290 − $250）× 100 = +$4,000，减去权利金 $400 = +$3,600<br>
+          → 净亏损：-$5,000 + $3,600 = <strong>-$1,400</strong>（而不是 -$5,000）<br>
+          这份 Put 把损失从 $5,000 压缩到了 $1,400——保险发挥作用了。
         </div>
       </div>
 
@@ -185,9 +185,9 @@
         </div>
       </div>
 
-      <p>一个具体例子：AAPL 当前股价 <span class="data-num">$195</span>，持有 AAPL $190 Call（价内），权利金 <span class="data-num">$8.20</span>。</p>
+      <p>一个具体例子：AAPL 当前股价 <span class="data-num">$305</span>，持有 AAPL $300 Call（价内），权利金 <span class="data-num">$8.20</span>。</p>
       <ul class="key-points">
-        <li><strong>内在价值</strong> = $195 − $190 = <span class="data-num">$5.00</span></li>
+        <li><strong>内在价值</strong> = $305 − $300 = <span class="data-num">$5.00</span></li>
         <li><strong>时间价值</strong> = $8.20 − $5.00 = <span class="data-num">$3.20</span></li>
         <li>这 $3.20 是市场愿意为「未来30天内苹果可能继续涨」支付的溢价。</li>
       </ul>
@@ -222,13 +222,13 @@
 
       <div class="data-card">
         <div class="data-card-label">Delta 的实际应用示例</div>
-        <div class="data-card-value">你买了 AAPL $190 Call，Delta = 0.55，权利金 $5.00</div>
+        <div class="data-card-value">你买了 AAPL $300 Call，Delta = 0.55，权利金 $5.00</div>
         <div class="data-card-sub">
-          苹果股价从 $190 涨到 $195（涨 $5）：<br>
+          苹果股价从 $300 涨到 $305（涨 $5）：<br>
           → 期权价格变化 ≈ 0.55 × $5 = +$2.75（理论值，实际略有差异因Gamma）<br>
           → 新期权价格约 $7.75<br>
           → 一份合约（100股）：盈利 $275，投入 $500，回报率 = <span class="data-up">+55%</span><br>
-          → 同样的$5涨幅，直接持股100股回报 $500，但需要投入 $19,000<br>
+          → 同样的$5涨幅，直接持股100股回报 $500，但需要投入 $30,000<br>
           → 期权杠杆效应：相同资本，期权回报率远高于直接持股
         </div>
       </div>
@@ -368,7 +368,7 @@
         <div class="data-card-value">财报前：AAPL IV = 65%；财报后：AAPL IV = 28%</div>
         <div class="data-card-sub">
           财报前一天：你买入 AAPL ATM Call，花了 $8.50<br>
-          财报后：苹果EPS超预期，股价从$190涨到$196（涨3%）<br><br>
+          财报后：苹果EPS超预期，股价从$300涨到$309（涨3%）<br><br>
           你以为赚到了——但期权价格从$8.50变成了……$5.20<br><br>
           发生了什么？IV从65%暴跌到28%（崩塌了37个百分点）<br>
           IV崩塌损失 ≈ 0.18（Vega）× 37 = −$6.66，抵消了Delta带来的+$3.30，<br>

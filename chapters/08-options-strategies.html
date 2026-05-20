@@ -132,24 +132,24 @@
 
       <h3>具体案例：AAPL 备兑买权</h3>
 
-      <p>假设你持有 100 股苹果（AAPL），当前股价 <span class="data-num">$190</span>。你判断未来 30 天 AAPL 不会大幅上涨，于是：</p>
+      <p>假设你持有 100 股苹果（AAPL），当前股价 <span class="data-num">$300</span>。你判断未来 30 天 AAPL 不会大幅上涨，于是：</p>
 
       <div class="stat-grid">
         <div class="stat-item">
           <div class="stat-label">你的操作</div>
-          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">卖出 1 份 AAPL $200 Call，30 天后到期，收到权利金 $2.50/股</div>
+          <div class="stat-value" style="font-size: var(--ts-sm); font-family: var(--font-sans); color: var(--ink-secondary);">卖出 1 份 AAPL $315 Call，30 天后到期，收到权利金 $4.00/股</div>
         </div>
         <div class="stat-item">
           <div class="stat-label">立即到账</div>
-          <div class="stat-value"><span class="data-up">+$250</span></div>
+          <div class="stat-value"><span class="data-up">+$400</span></div>
         </div>
         <div class="stat-item">
           <div class="stat-label">执行价 (Strike)</div>
-          <div class="stat-value"><span class="data-num">$200</span></div>
+          <div class="stat-value"><span class="data-num">$315</span></div>
         </div>
         <div class="stat-item">
           <div class="stat-label">相当于年化收益率</div>
-          <div class="stat-value"><span class="data-up">~15.8%</span></div>
+          <div class="stat-value"><span class="data-up">~16%</span></div>
         </div>
       </div>
 
@@ -162,25 +162,25 @@
         <tbody>
           <tr>
             <td>股价未涨过执行价</td>
-            <td>$190 或以下（含跌破）</td>
-            <td>Call 到期作废，$250 权利金 100% 归你，股票继续持有。<strong>但若股票下跌，股票亏损由权利金部分对冲。</strong></td>
+            <td>$300 或以下（含跌破）</td>
+            <td>Call 到期作废，$400 权利金 100% 归你，股票继续持有。<strong>但若股票下跌，股票亏损由权利金部分对冲。</strong></td>
           </tr>
           <tr>
             <td>股价涨到执行价附近</td>
-            <td>$195 ~ $200</td>
-            <td>Call 仍作废（未超过 $200），你保留 $250 权利金，同时股票获得 $500–$1,000 浮盈。</td>
+            <td>$305 ~ $315</td>
+            <td>Call 仍作废（未超过 $315），你保留 $400 权利金，同时股票获得 $500–$1,500 浮盈。</td>
           </tr>
           <tr>
             <td>股价涨过执行价</td>
-            <td>$205 或以上</td>
-            <td>Call 被行权，你必须以 $200 卖出 100 股。总收益 = $(200–190)×100 + $250 = <span class="data-up">$1,250</span>。上涨超过 $200 的部分利润被买方赚走。</td>
+            <td>$320 或以上</td>
+            <td>Call 被行权，你必须以 $315 卖出 100 股。总收益 = $(315–300)×100 + $400 = <span class="data-up">$1,900</span>。上涨超过 $315 的部分利润被买方赚走。</td>
           </tr>
         </tbody>
       </table>
 
       <div class="callout callout-tip">
         <span class="callout-icon">💡</span>
-        <div class="callout-body"><strong>最大利润锁定在：</strong>执行价与买入成本之差 + 权利金。本例中：$(200−190)×100 + $250 = $1,250。无论 AAPL 涨到 $250 还是 $300，你的最大利润都是 $1,250——你放弃了上方无限的涨幅，换取了权利金。</div>
+        <div class="callout-body"><strong>最大利润锁定在：</strong>执行价与买入成本之差 + 权利金。本例中：$(315−300)×100 + $400 = $1,900。无论 AAPL 涨到 $350 还是 $400，你的最大利润都是 $1,900——你放弃了上方无限的涨幅，换取了权利金。</div>
       </div>
 
       <h3>适合谁？</h3>
@@ -189,7 +189,7 @@
 
       <div class="callout callout-warning">
         <span class="callout-icon">⚠️</span>
-        <div class="callout-body"><strong>注意：</strong>备兑买权的对冲效果有限。如果股票大幅下跌（比如 AAPL 从 $190 跌到 $150），你收到的 $250 权利金远不足以弥补 $4,000 的股票亏损。该策略的主要风险是你持有股票本身，而不是卖出 Call 这个动作。</div>
+        <div class="callout-body"><strong>注意：</strong>备兑买权的对冲效果有限。如果股票大幅下跌（比如 AAPL 从 $300 跌到 $240），你收到的 $400 权利金远不足以弥补 $6,000 的股票亏损。该策略的主要风险是你持有股票本身，而不是卖出 Call 这个动作。</div>
       </div>
 
       <!-- ── Section 3 ── -->
@@ -209,11 +209,11 @@
 
       <h3>具体案例：用 CSP 低价买入 AAPL</h3>
 
-      <p>AAPL 当前价格 <span class="data-num">$190</span>。你认为 $185 是理想买入价。你的操作：</p>
+      <p>AAPL 当前价格 <span class="data-num">$300</span>。你认为 $290 是理想买入价。你的操作：</p>
 
       <ul class="key-points">
-        <li>卖出 1 份 AAPL $185 Put，30 天到期，收到权利金 <span class="data-up">$2.00/股（共 $200）</span></li>
-        <li>账户里需锁定 $18,500 现金作为担保（如果被行权，你要以 $185 买入 100 股）</li>
+        <li>卖出 1 份 AAPL $290 Put，30 天到期，收到权利金 <span class="data-up">$3.00/股（共 $300）</span></li>
+        <li>账户里需锁定 $29,000 现金作为担保（如果被行权，你要以 $290 买入 100 股）</li>
       </ul>
 
       <table class="glossary-table">
@@ -222,19 +222,19 @@
         </thead>
         <tbody>
           <tr>
-            <td>股价未跌到 $185</td>
-            <td>$185 以上</td>
-            <td>Put 作废，$200 权利金归你。等一个月，没买到股票，但也不是空手而归。</td>
+            <td>股价未跌到 $290</td>
+            <td>$290 以上</td>
+            <td>Put 作废，$300 权利金归你。等一个月，没买到股票，但也不是空手而归。</td>
           </tr>
           <tr>
-            <td>股价跌到 $185 以下</td>
-            <td>$185 以下</td>
-            <td>Put 被行权，你以 $185 买入 100 股 AAPL。实际成本 = $185 − $2.00 = <span class="data-up">$183 有效买入成本</span>，比你直接挂单还便宜。</td>
+            <td>股价跌到 $290 以下</td>
+            <td>$290 以下</td>
+            <td>Put 被行权，你以 $290 买入 100 股 AAPL。实际成本 = $290 − $3.00 = <span class="data-up">$287 有效买入成本</span>，比你直接挂单还便宜。</td>
           </tr>
         </tbody>
       </table>
 
-      <p>这就是"<strong>领薪水等机会</strong>"的含义：你设定了一个愿意买入的价格，同时无论如何都能收到权利金。唯一的真实风险是：股票跌得远比你预期的多（比如暴跌到 $150），此时你以 $183 的有效成本持有，仍面临巨大浮亏。</p>
+      <p>这就是"<strong>领薪水等机会</strong>"的含义：你设定了一个愿意买入的价格，同时无论如何都能收到权利金。唯一的真实风险是：股票跌得远比你预期的多（比如暴跌到 $240），此时你以 $287 的有效成本持有，仍面临巨大浮亏。</p>
 
       <div class="callout callout-tip">
         <span class="callout-icon">💡</span>
@@ -259,15 +259,15 @@
 
       <h3>案例：AAPL 牛市看涨价差</h3>
 
-      <p>AAPL 当前 <span class="data-num">$190</span>，你认为 30 天内会涨到 $200：</p>
+      <p>AAPL 当前 <span class="data-num">$300</span>，你认为 30 天内会涨到 $315：</p>
 
       <div class="stat-grid">
         <div class="stat-item">
-          <div class="stat-label">买入 $190 Call</div>
+          <div class="stat-label">买入 $300 Call</div>
           <div class="stat-value"><span class="data-down">−$5.00/股</span></div>
         </div>
         <div class="stat-item">
-          <div class="stat-label">卖出 $200 Call</div>
+          <div class="stat-label">卖出 $315 Call</div>
           <div class="stat-value"><span class="data-up">+$2.00/股</span></div>
         </div>
         <div class="stat-item">
@@ -276,18 +276,18 @@
         </div>
         <div class="stat-item">
           <div class="stat-label">最大利润</div>
-          <div class="stat-value"><span class="data-up">$7.00/股 = $700</span></div>
+          <div class="stat-value"><span class="data-up">$12.00/股 = $1,200</span></div>
         </div>
       </div>
 
-      <p>最大利润 = 两个执行价之差（$10）− 净成本（$3.00）= <span class="data-up">$7.00/股</span>，发生在 AAPL 到期时 ≥ $200 的情况下。</p>
-      <p>最大亏损 = 净成本 $3.00/股 = <span class="data-down">$300</span>，发生在 AAPL 到期时 ≤ $190 的情况下（两腿全部作废）。</p>
-      <p>盈亏平衡点 = 低执行价 + 净成本 = $190 + $3.00 = <span class="data-num">$193.00</span>。</p>
+      <p>最大利润 = 两个执行价之差（$15）− 净成本（$3.00）= <span class="data-up">$12.00/股</span>，发生在 AAPL 到期时 ≥ $315 的情况下。</p>
+      <p>最大亏损 = 净成本 $3.00/股 = <span class="data-down">$300</span>，发生在 AAPL 到期时 ≤ $300 的情况下（两腿全部作废）。</p>
+      <p>盈亏平衡点 = 低执行价 + 净成本 = $300 + $3.00 = <span class="data-num">$303.00</span>。</p>
 
       <div class="data-card">
         <div class="data-card-label">风险回报对比</div>
-        <div class="data-card-value">最大收益 / 最大风险 = 7 / 3 ≈ 2.33×</div>
-        <div class="data-card-sub">相比直接买 $190 Call 花 $500（最大亏损 $500），价差策略降低了 40% 的资本投入，但封住了 $200 以上的上涨空间。</div>
+        <div class="data-card-value">最大收益 / 最大风险 = 12 / 3 = 4×</div>
+        <div class="data-card-sub">相比直接买 $300 Call 花 $500（最大亏损 $500），价差策略降低了 40% 的资本投入，但封住了 $315 以上的上涨空间。</div>
       </div>
 
       <h3>熊市看跌价差（Bear Put Spread）</h3>
@@ -319,22 +319,22 @@
 
       <h3>案例：AAPL 铁鹰</h3>
 
-      <p>AAPL 当前 <span class="data-num">$190</span>，你判断 30 天内不会大幅波动（维持在 $175–$205 区间）。</p>
+      <p>AAPL 当前 <span class="data-num">$300</span>，你判断 30 天内不会大幅波动（维持在 $280–$320 区间）。</p>
 
       <table class="glossary-table">
         <thead>
           <tr><th>操作</th><th>执行价</th><th>权利金</th></tr>
         </thead>
         <tbody>
-          <tr><td>卖出 OTM Call</td><td>$200</td><td><span class="data-up">+$1.50</span></td></tr>
-          <tr><td>买入 OTM Call（保护）</td><td>$205</td><td><span class="data-down">−$0.70</span></td></tr>
-          <tr><td>卖出 OTM Put</td><td>$180</td><td><span class="data-up">+$1.50</span></td></tr>
-          <tr><td>买入 OTM Put（保护）</td><td>$175</td><td><span class="data-down">−$0.80</span></td></tr>
+          <tr><td>卖出 OTM Call</td><td>$315</td><td><span class="data-up">+$1.50</span></td></tr>
+          <tr><td>买入 OTM Call（保护）</td><td>$320</td><td><span class="data-down">−$0.70</span></td></tr>
+          <tr><td>卖出 OTM Put</td><td>$285</td><td><span class="data-up">+$1.50</span></td></tr>
+          <tr><td>买入 OTM Put（保护）</td><td>$280</td><td><span class="data-down">−$0.80</span></td></tr>
           <tr><td colspan="2"><strong>净收取权利金</strong></td><td><span class="data-up"><strong>$2.50/股 = $250</strong></span></td></tr>
         </tbody>
       </table>
 
-      <p>只要 AAPL 到期时收盘在 <span class="data-num">$180 ~ $200</span> 之间，四条腿全部作废，你保留 $250 权利金，利润率 = 最大利润 / 最大风险。</p>
+      <p>只要 AAPL 到期时收盘在 <span class="data-num">$285 ~ $315</span> 之间，四条腿全部作废，你保留 $250 权利金，利润率 = 最大利润 / 最大风险。</p>
 
       <div class="stat-grid">
         <div class="stat-item">
@@ -347,11 +347,11 @@
         </div>
         <div class="stat-item">
           <div class="stat-label">上方盈亏平衡</div>
-          <div class="stat-value"><span class="data-num">$202.50</span>（卖出 Call 执行价 + 净权利金）</div>
+          <div class="stat-value"><span class="data-num">$317.50</span>（卖出 Call 执行价 + 净权利金）</div>
         </div>
         <div class="stat-item">
           <div class="stat-label">下方盈亏平衡</div>
-          <div class="stat-value"><span class="data-num">$177.50</span>（卖出 Put 执行价 − 净权利金）</div>
+          <div class="stat-value"><span class="data-num">$282.50</span>（卖出 Put 执行价 − 净权利金）</div>
         </div>
       </div>
 
@@ -367,7 +367,7 @@
 
       <div class="callout callout-warning">
         <span class="callout-icon">⚠️</span>
-        <div class="callout-body"><strong>铁鹰的最大风险：</strong>单边大幅突破。如果 AAPL 突然暴跌到 $160 或暴涨到 $220，你会触及最大亏损。这就是为什么铁鹰适合在没有重大催化剂（如未来没有未公布财报）时构建，并严格设置平仓止损点（例如：亏损达到最大利润的 2× 时平仓离场）。</div>
+        <div class="callout-body"><strong>铁鹰的最大风险：</strong>单边大幅突破。如果 AAPL 突然暴跌到 $265 或暴涨到 $340，你会触及最大亏损。这就是为什么铁鹰适合在没有重大催化剂（如未来没有未公布财报）时构建，并严格设置平仓止损点（例如：亏损达到最大利润的 2× 时平仓离场）。</div>
       </div>
 
       <!-- ── Section 6 ── -->
@@ -402,17 +402,17 @@
 
       <h3>案例：AAPL 财报前跨式</h3>
 
-      <p>AAPL 股价 <span class="data-num">$190</span>，距离财报公布还有 3 天。历史上 AAPL 财报日当天平均波动 ±5%。你构建跨式：</p>
+      <p>AAPL 股价 <span class="data-num">$300</span>，距离财报公布还有 3 天。历史上 AAPL 财报日当天平均波动 ±5%。你构建跨式：</p>
 
       <ul class="key-points">
-        <li>买入 $190 Call，权利金 <span class="data-down">$4.00/股</span></li>
-        <li>买入 $190 Put，权利金 <span class="data-down">$3.80/股</span></li>
-        <li>总成本 = <span class="data-down">$7.80/股 = $780</span></li>
+        <li>买入 $300 Call，权利金 <span class="data-down">$6.00/股</span></li>
+        <li>买入 $300 Put，权利金 <span class="data-down">$5.70/股</span></li>
+        <li>总成本 = <span class="data-down">$11.70/股 = $1,170</span></li>
       </ul>
 
-      <p>盈亏平衡：股价需要涨超 <span class="data-num">$197.80</span> 或跌破 <span class="data-num">$182.20</span> 才开始盈利。如果 AAPL 财报后暴涨 8%（涨到 $205.20）：</p>
+      <p>盈亏平衡：股价需要涨超 <span class="data-num">$311.70</span> 或跌破 <span class="data-num">$288.30</span> 才开始盈利。如果 AAPL 财报后暴涨 8%（涨到 $324.00）：</p>
 
-      <p>Call 价值 ≈ $15.20，Put 价值 ≈ 0，总盈利 = $15.20 − $7.80 = <span class="data-up">$7.40/股 = $740</span>，回报率约 95%。</p>
+      <p>Call 价值 ≈ $24.00，Put 价值 ≈ 0，总盈利 = $24.00 − $11.70 = <span class="data-up">$12.30/股 = $1,230</span>，回报率约 105%。</p>
 
       <h3>致命陷阱：IV Crush（隐含波动率崩塌）</h3>
 
@@ -519,12 +519,12 @@
 
         <div class="quiz-questions">
 
-          <div class="quiz-question" data-correct="2" data-explain="备兑买权的最大利润 = (执行价 − 买入成本) × 100 + 权利金。本例：(200−190)×100 + 250 = $1,250。无论股价涨到多高，超过执行价的部分被买方赚走，卖方利润封顶。">
-            <p class="quiz-q-text">你以 $190 买入 100 股 AAPL，随后卖出 $200 Call 收到 $2.50 权利金（共 $250）。到期时 AAPL 涨到 $210，备兑买权策略的最大利润是多少？</p>
+          <div class="quiz-question" data-correct="2" data-explain="备兑买权的最大利润 = (执行价 − 买入成本) × 100 + 权利金。本例：(315−300)×100 + 400 = $1,900。无论股价涨到多高，超过执行价的部分被买方赚走，卖方利润封顶。">
+            <p class="quiz-q-text">你以 $300 买入 100 股 AAPL，随后卖出 $315 Call 收到 $4.00 权利金（共 $400）。到期时 AAPL 涨到 $330，备兑买权策略的最大利润是多少？</p>
             <div class="quiz-options">
-              <div class="quiz-option"><span class="quiz-option-letter">A</span>$2,250（$210−$190 的全部涨幅 + 权利金）</div>
-              <div class="quiz-option"><span class="quiz-option-letter">B</span>$250（仅保留权利金）</div>
-              <div class="quiz-option"><span class="quiz-option-letter">C</span>$1,250（执行价涨幅 $1,000 + 权利金 $250）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">A</span>$3,400（$330−$300 的全部涨幅 + 权利金）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">B</span>$400（仅保留权利金）</div>
+              <div class="quiz-option"><span class="quiz-option-letter">C</span>$1,900（执行价涨幅 $1,500 + 权利金 $400）</div>
               <div class="quiz-option"><span class="quiz-option-letter">D</span>$0（被行权后一无所获）</div>
             </div>
             <div class="quiz-result"></div>
@@ -541,8 +541,8 @@
             <div class="quiz-result"></div>
           </div>
 
-          <div class="quiz-question" data-correct="2" data-explain="牛市看涨价差的最大亏损 = 净权利金支出。买入 $190 Call 花 $5.00，卖出 $200 Call 收 $2.00，净成本 = $3.00/股 = $300。无论两腿如何作废，你损失的最多就是这 $300。">
-            <p class="quiz-q-text">构建 AAPL 牛市看涨价差：买入 $190 Call 花 $5.00，卖出 $200 Call 收 $2.00。若到期时 AAPL 跌到 $185，最大亏损是多少？</p>
+          <div class="quiz-question" data-correct="2" data-explain="牛市看涨价差的最大亏损 = 净权利金支出。买入 $300 Call 花 $5.00，卖出 $315 Call 收 $2.00，净成本 = $3.00/股 = $300。无论两腿如何作废，你损失的最多就是这 $300。">
+            <p class="quiz-q-text">构建 AAPL 牛市看涨价差：买入 $300 Call 花 $5.00，卖出 $315 Call 收 $2.00。若到期时 AAPL 跌到 $295，最大亏损是多少？</p>
             <div class="quiz-options">
               <div class="quiz-option"><span class="quiz-option-letter">A</span>$500（买入 Call 全部权利金损失）</div>
               <div class="quiz-option"><span class="quiz-option-letter">B</span>$1,000（两腿执行价差额）</div>
